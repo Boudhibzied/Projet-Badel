@@ -6,6 +6,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
@@ -22,6 +23,12 @@ if (config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var server = http.createServer(app);
 var socketio = require('socket.io')(server, {
   serveClient: config.env !== 'production',
