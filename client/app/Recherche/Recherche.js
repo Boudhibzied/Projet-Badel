@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('projetBadelApp')
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
-      .state('recherche', {
-        url: '/recherche',
-        templateUrl: 'app/Recherche/recherche.html',
+      .state('Recherche', {
+        url: '/Recherche',
+        templateUrl: 'app/Recherche/Recherche.html',
+        controller: 'RechercheCtrl'
       });
   });

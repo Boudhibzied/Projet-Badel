@@ -11,6 +11,8 @@
 
 import _ from 'lodash';
 import Scrappe from './scrappe.model';
+import Xray from "x-ray";
+import fs from 'fs';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -100,3 +102,25 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+export function  search(req, res)
+{
+  var xray = new Xray();
+  xray('http://www.tayara.tn/tunisie/'+req.params.name, '.item',
+    [{
+      Titre: '.item-img img@alt',
+      Prix: '.price',
+      Image: '.item-img img@src',
+      alt: '.item-img img@alt'
+    }]
+  )
+  (function(err, results){
+    fs.writeFile("./output.json", JSON.stringify(results, null, '\t'));
+  });
+
+  let objs = JSON.parse(fs.readFileSync('./output.json', "utf-8"));
+
+  //objs.respondWithResult(res);
+  res.send(objs);
+}
+

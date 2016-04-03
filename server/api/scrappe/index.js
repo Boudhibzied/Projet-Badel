@@ -6,7 +6,8 @@ var controller = require('./scrappe.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.show);
+//router.get('/:id', controller.show);
+router.get('/:name', controller.search);
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
