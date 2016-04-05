@@ -42,8 +42,8 @@ var all = {
   },
 
   facebook: {
-    clientID:     process.env.FACEBOOK_ID || 'id',
-    clientSecret: process.env.FACEBOOK_SECRET || 'secret',
+    clientID:     process.env.FACEBOOK_ID || '657718247699603',
+    clientSecret: process.env.FACEBOOK_SECRET || '676596df5f2450d70fc9ee06c5dececa',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
 
@@ -54,8 +54,8 @@ var all = {
   },
 
   google: {
-    clientID:     process.env.GOOGLE_ID || 'id',
-    clientSecret: process.env.GOOGLE_SECRET || 'secret',
+    clientID:     process.env.GOOGLE_ID || '317240869953-e6vnu6i95t4898gr9vkcifq39d06fm7t.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || 'DmcUkq-Ju0DlHmvWtakSUln4',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
   }
 };

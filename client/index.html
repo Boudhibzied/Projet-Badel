@@ -57,66 +57,40 @@
       <!-- //////////////////////////////////
       //////////////MAIN HEADER/////////////
       ////////////////////////////////////-->
-      <header class="main">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-2">
-              <a ui-sref="home" class="logo">
-                <img src="assets/img/badel.png" style="height: 42px;width: 150px" alt="Image Alternative text" title="Image Title" />
-              </a>
-            </div>
-            <div class="col-md-6">
-              <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
-              <nav>
-                <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-                  <li class="active"><a ui-sref="Home">Home</a>
-                  </li>
-                  <li></li>
-                  <li><a ui-sref="Recherche" >Recherche</a>
-                  </li>
-                  <li><a ui-sref="About" >Pourquoi Badel</a>
-                  </li>
-                  <li><a   ui-sref="contact" >Contact</a>
-                  </li>
-                </ul>
-                </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="col-md-4">
-              <ul class="login-register">
-                <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Connexion</a>
-                </li>
-                <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Inscription</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </header>
       <!-- LOGIN REGISTER LINKS CONTENT -->
+
       <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
         <i class="fa fa-sign-in dialog-icon"></i>
         <h3>Connexion</h3>
         <h5>Bienvenue, l'ami. Connecter vous pour commencer</h5>
-        <form class="dialog-form">
+        <form class="dialog-form"    name="form" ng-submit="vm.login(form)" novalidate>
           <div class="form-group">
             <label>E-mail</label>
-            <input type="text" placeholder="email@domain.com" class="form-control">
+            <input  placeholder="email@domain.com" class="form-control"   type="email" name="email"  ng-model="vm.user.email" required>
           </div>
           <div class="form-group">
             <label>Mot de passe</label>
-            <input type="password" placeholder="My secret password" class="form-control">
+            <input type="password" placeholder="mot de passe" class="form-control"  name="password" ng-model="vm.user.password" required>
           </div>
           <div class="checkbox">
             <label>
               <input type="checkbox">se souvenir de moi
             </label>
           </div>
-          <input ui-sref="compte" type="submit" value="Connexion" class="btn btn-primary">
+          <input  type="submit" value="Connexion" class="btn btn-primary">
         </form>
+        <div class="form-group has-error">
+          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
+            Please enter your email and password.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+            Please enter a valid email.
+          </p>
+
+          <p class="help-block">{{ vm.errors.other }}</p>
+        </div>
         <ul class="dialog-alt-links">
-          <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">Inscription</a>
+          <li><a class="popup-text" href="#register-dialog"data-effect="mfp-zoom-out">Inscription</a>
           </li>
           <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Mot de passe oublié ?</a>
           </li>
@@ -127,42 +101,72 @@
       <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
         <i class="fa fa-edit dialog-icon"></i>
         <h3>Inscription</h3>
-        <form class="dialog-form">
-          <div class="form-group">
-            <label>E-mail</label>
-            <input type="text" placeholder="email@domain.com" class="form-control">
+        <form class="dialog-form" name="form" ng-submit="vm.register(form)" novalidate>
+
+          <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted, 'has-error': form.name.$invalid && vm.submitted }">
+            <label>Nom</label>
+
+            <input type="text" name="name" class="form-control" ng-model="vm.user.name"
+                   required/>
+            <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
+              Votre nom est requis
+            </p>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
+                                            'has-error': form.email.$invalid && vm.submitted }">
+            <label>Email</label>
+
+            <input type="email" name="email" placeholder="email@domain.com" class="form-control" ng-model="vm.user.email"
+                   required
+                   mongoose-error/>
+            <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
+              Votre email n'est pas valide.
+            </p>
+            <p class="help-block" ng-show="form.email.$error.required && vm.submitted">
+              Quelle est votre email ?
+            </p>
+            <p class="help-block" ng-show="form.email.$error.mongoose">
+              {{ vm.errors.email }}
+            </p>
+          </div>
+          <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+                                            'has-error': form.password.$invalid && vm.submitted }">
             <label>Mot de passe</label>
-            <input type="password" placeholder="My secret password" class="form-control">
+
+            <input type="password" name="password" placeholder="votre mot de passe" class="form-control" ng-model="vm.user.password"
+                   ng-minlength="3"
+                   required
+                   mongoose-error/>
+            <p class="help-block"
+               ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
+              Mot de passe doit avoir au moins 3 caractéres.
+            </p>
+            <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ vm.errors.password }}
+            </p>
           </div>
-          <div class="form-group">
-            <label>Repeat Password</label>
-            <input type="password" placeholder="Type your password again" class="form-control">
+          <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                                            'has-error': form.confirmPassword.$invalid && vm.submitted }">
+            <label>Confirmation du mot de passe</label>
+            <input type="password" name="confirmPassword" placeholder="veillez confirmer votre mot de passe" class="form-control" ng-model="vm.user.confirmPassword"
+                   match="vm.user.password"
+                   ng-minlength="3" required/>
+            <p class="help-block"
+               ng-show="form.confirmPassword.$error.match && vm.submitted">
+              No conforme.
+            </p>
           </div>
           <div class="row">
-            <div class="col-md-8">
-              <div class="form-group">
-                <label>Your Area</label>
-                <input type="password" placeholder="Boston" class="form-control">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Postal/Zip</label>
-                <input type="password" placeholder="12345" class="form-control">
-              </div>
+            <div class="col-sm-4 col-md-3">
+              <oauth-buttons classes="btn btn-oauth"></oauth-buttons>
             </div>
           </div>
           <div class="checkbox">
-            <label>
-              <input type="checkbox">Get hot offers via e-mail
-            </label>
           </div>
-          <input type="submit" value="Sign up" class="btn btn-primary">
+          <input type="submit" value="Inscription" class="btn btn-primary">
         </form>
         <ul class="dialog-alt-links">
-          <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
+          <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">déja membre ?</a>
           </li>
         </ul>
       </div>
@@ -180,7 +184,7 @@
       </div>
       <!-- END LOGIN REGISTER LINKS CONTENT -->
 
-
+    <navbar></navbar>
     <div ui-view=""></div>
 
 
@@ -258,8 +262,10 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/main/main.js"></script>
-      <script src="app/Negociation/Recherche.js"></script>
+      <script src="app/main/main.controller.js"></script>
+      <script src="app/Recherche/Recherche.controller.js"></script>
+      <script src="app/Recherche/Recherche.js"></script>
+      <script src="app/Recherche/Recherche.service.js"></script>
       <script src="app/account/account.js"></script>
       <script src="app/account/login/login.controller.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
@@ -270,8 +276,8 @@
       <script src="app/app.constant.js"></script>
       <script src="app/compte/compte.js"></script>
       <script src="app/contact/contact.js"></script>
-      <script src="app/main/main.controller.js"></script>
       <script src="app/Annonces/Annonces.js"></script>
+      <script src="app/main/main.js"></script>
       <script src="app/Home/Home.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
