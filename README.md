@@ -1,6 +1,6 @@
 # projet-badel
 
-This project was generated with the [Angular Full-Stack Generator](tahttps://github.com/DaftMonk/generator-angular-fullsck) version 3.3.0.
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
 
 ## Getting Started
 
@@ -31,6 +31,7 @@ Run `grunt build` for building and `grunt serve` for preview.
 Running `npm test` will run the unit tests with karma.
 
 
+<<<<<<< HEAD
 **testgit hatemLeGrand
 test t2 
 
@@ -43,4 +44,6 @@ test t2
 
 
 
+=======
+>>>>>>> refs/remotes/Boudhibzied/master
 
