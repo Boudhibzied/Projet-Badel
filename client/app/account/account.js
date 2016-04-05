@@ -10,7 +10,7 @@ angular.module('projetBadelApp')
         controllerAs: 'vm'
       })
       .state('logout', {
-        url: '/logout?referrer',
+        url: '',
         referrer: 'main',
         template: '',
         controller: function($state, Auth) {
@@ -18,7 +18,7 @@ angular.module('projetBadelApp')
                           $state.current.referrer ||
                           'main';
           Auth.logout();
-          $state.go(referrer);
+          $state.go(Home);
         }
       })
       .state('signup', {
@@ -29,7 +29,7 @@ angular.module('projetBadelApp')
       })
       .state('settings', {
         url: '/settings',
-        templateUrl: 'app/account/settings/settings.html',
+        templateUrl: 'app/compte/compte.html',
         controller: 'SettingsController',
         controllerAs: 'vm',
         authenticate: true
