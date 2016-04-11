@@ -13,6 +13,6 @@ angular.module('projetBadelApp')
       })
       .state('Wishlist', {
         url: '/Wishlist',
-        templateUrl: 'app/compte/Wishlist.html',
+        templateUrl: 'app/wishlist/Wishlist.html',
       });
   });

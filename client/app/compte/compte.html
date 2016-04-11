@@ -1,4 +1,5 @@
 
+
 <div class="gap"></div>
 <!-- //////////////////////////////////
 //////////////PAGE CONTENT/////////////
@@ -8,54 +9,66 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <aside class="sidebar-left">
-        <ul class="nav nav-pills nav-stacked nav-arrow">
-          <li><a ui-sref="compte" >Votre compte : </a>
-          </li>
-          <li><a ui-sref="favoris">Annonces favoris :</a>
-          </li>
-          <li><a ui-sref="Wishlist">Votre Wishlist : </a>
-          </li>
-        </ul>
-      </aside>
-    </div>
-    <div class="col-md-9">
+       <div class="col-md-4">
+                 <aside class="sidebar-left">
+                        <ul class="nav nav-pills nav-stacked nav-arrow">
+                               <li><a ui-sref="compte" >Votre compte : </a>
+                              </li>
+                              <li><a ui-sref="favoris">Annonces favoris :</a>
+                              </li>
+                              <li><a ui-sref="Wishlist">Votre Wishlist : </a>
+                              </li>
+                            </ul>
+                 </aside>
+         </div>
+  <br>
+    <div class="col-md-8">
       <div class="row">
         <div class="col-md-6">
-          <form action="">
+          <h1>Changer mot de passe </h1>
+          <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+
             <div class="form-group">
-              <label for="">Prenom : </label>
-              <input type="text" value="Zied" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Nom : </label>
-              <input type="text" value="Boudhib" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">E-mail : </label>
-              <input type="text" value="ziedboudhib@gmail.com" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Numero de telephone : </label>
-              <input type="text" value="20169434" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Login : </label>
-              <input type="text"  class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Mot de passe : </label>
-              <input type="password" value="20169434" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">confirmer : </label>
-              <input type="password" value="20169434" class="form-control">
+              <label>Mot de passe actuel</label>
+
+              <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
+                     mongoose-error/>
+              <p class="help-block" ng-show="form.password.$error.mongoose">
+                {{ vm.errors.other }}
+              </p>
             </div>
 
-            <input type="submit" value="Edit" class="btn btn-primary">
+            <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+                                            'has-error': form.password.$invalid && vm.submitted }">
+              <label>Nouveau mot de passe</label>
+                <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+                     ng-minlength="3"
+                     required/>
+              <p class="help-block"
+                 ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
+                Mot de passe doit être au moins 3 caractères.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label>Confirmer le nouveau mot de passe</label>
+              <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                                            'has-error': form.confirmPassword.$invalid && vm.submitted }">
+              <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
+                     match="vm.user.newPassword"
+                     ng-minlength="3"
+                     required=""/>
+              <p class="help-block"
+                 ng-show="form.confirmPassword.$error.match && vm.submitted">
+                Les mots de passe doivent correspondre.
+              </p>
+
+            </div>
+            <button class="btn btn-primary" type="submit">Sauvegarder</button>
+            </div>
+
           </form>
-        </div>
+
       </div>
       <div class="gap"></div>
     </div>
@@ -63,7 +76,7 @@
 
 </div>
 
-</div>
+
 <!-- //////////////////////////////////
 //////////////END PAGE CONTENT/////////
 ////////////////////////////////////-->

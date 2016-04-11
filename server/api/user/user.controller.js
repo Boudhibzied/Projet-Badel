@@ -83,6 +83,7 @@ export function changePassword(req, res, next) {
   var userId = req.user._id;
   var oldPass = String(req.body.oldPassword);
   var newPass = String(req.body.newPassword);
+  var newName =String(req.body.name);
 
   User.findByIdAsync(userId)
     .then(user => {
