@@ -1,0 +1,24 @@
+
+<div class="container">
+  <form class="form-horizontal" role="form" ng-submit="addSupplier()">
+
+
+<div class="form-group">
+  <label for="socialReason" class="col-sm-2 control-label">Titre</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="supplier.name" class="form-control" id="socialReason" placeholder="Votre Produit"/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="creationDate" class="col-sm-2 control-label">Description</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="supplier.info" class="form-control" id="creationDate"/>
+  </div>
+</div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" class="btn btn-primary" value="Save"/>
+      </div>
+    </div>
+  </form>
+</div>
