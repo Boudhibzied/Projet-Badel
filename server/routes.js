@@ -3,19 +3,19 @@
  */
 
 'use strict';
-
 import errors from './components/errors';
 import path from 'path';
 
 export default function(app) {
   // Insert routes below
+
   app.use('/api/Recherches', require('./api/Recherche'));
+  app.use('/api/announces', require('./api/announce'));
   app.use('/api/Favoriss', require('./api/Favoris'));
   app.use('/api/wishlists', require('./api/wishlist'));
   app.use('/api/scrappes', require('./api/scrappe'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
-
   app.use('/auth', require('./auth'));
 
   // All undefined asset or api routes should return a 404
