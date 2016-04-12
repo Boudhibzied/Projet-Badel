@@ -3,44 +3,44 @@
  */
 angular.module('projetBadelApp')
 
-  .controller('SupplierListController',function($scope,$state,$window,Supplier){
+  .controller('WishlistListController',function($scope,$state,$window,Wishlist){
 
-    $scope.Suppliers=Supplier.query();
+    $scope.Wishlists=Wishlist.query();
 
-    $scope.deleteSupplier=function(Supplier){
-      Supplier.$delete(function(){
-        $window.location.href='';
+    $scope.deleteWishlist=function(Wishlist){
+      Wishlist.$delete(function(){
+        $window.location.href='Wishlists';
       });
     }
 
   })
-  .controller('SupplierViewController',function($scope,$stateParams,Supplier){
+  .controller('WishlistViewController',function($scope,$stateParams,Wishlist){
 
-    $scope.supplier=Supplier.get({id:$stateParams.id});
+    $scope.wishlist=Wishlist.get({_id:$stateParams.id});
 
   })
-  .controller('SupplierCreateController',function($scope,$state,$stateParams,Supplier){
+  .controller('WishlistCreateController',function($scope,$state,$stateParams,Wishlist){
 
-    $scope.supplier=new Supplier();
+    $scope.wishlist=new Wishlist();
 
-    $scope.addSupplier=function(){
-      $scope.supplier.$save(function(){
-        $state.go('Suppliers');
+    $scope.addWishlist=function(){
+      $scope.wishlist.$save(function(){
+        $state.go('Wishlists');
       });
     }
 
   })
-  .controller('SupplierEditController',function($scope,$state,$stateParams,Supplier){
+  .controller('WishlistEditController',function($scope,$state,$stateParams,Wishlist){
 
-    $scope.updateSupplier=function(){
-      $scope.supplier.$update(function(){
-        $state.go('Suppliers');
+    $scope.updateWishlist=function(){
+      $scope.wishlist.$update(function(){
+        $state.go('Wishlists');
       });
     };
 
-    $scope.loadSupplier=function(){
-      $scope.supplier=Supplier.get({id:$stateParams.id});
+    $scope.loadWishlist=function(){
+      $scope.wishlist=Wishlist.get({id:$stateParams.id});
     };
 
-    $scope.loadSupplier();
+    $scope.loadWishlist();
   });

@@ -1,17 +1,17 @@
 <div class="container">
-    <table class="table suppliertable">
+    <table class="table wishlisttable">
       <tr>
-        <td><h3>Details for {{supplier.name}}</h3></td>
+        <td><h3>Details for {{wishlist.name}}</h3></td>
         <td></td>
       </tr>
       <tr>
         <td>description</td>
-        <td>{{supplier.info}}</td>
+        <td>{{wishlist.info}}</td>
       </tr>
 
     </table>
       <div>
-        <a class="btn btn-primary" ui-sref="editSupplier({id:supplier.id})">Edit</a>
+        <a class="btn btn-primary" ui-sref="editWishlist({id:wishlist.id})">Edit</a>
       </div>
 
 </div>

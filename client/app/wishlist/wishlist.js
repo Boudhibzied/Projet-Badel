@@ -1,21 +1,21 @@
 'use strict';
 angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
-  $stateProvider.state('Suppliers',{
-    url:'/Suppliers',
+  $stateProvider.state('Wishlists',{
+    url:'/Wishlists',
     templateUrl:'app/wishlist/wishlist.html',
-    controller:'SupplierListController'
-  }).state('viewSupplier',{
-    url:'/Suppliers/:id/view',
+    controller:'WishlistListController'
+  }).state('viewWishlist',{
+    url:'/Wishlists/:id/view',
     templateUrl:'app/wishlist/wishlist-view.html',
-    controller:'SupplierViewController'
-  }).state('newSupplier',{
-    url:'/Suppliers/new',
+    controller:'WishlistViewController'
+  }).state('newWishlist',{
+    url:'/Wishlists/new',
     templateUrl:'app/wishlist/wishlist-add.html',
-    controller:'SupplierCreateController'
-  }).state('editSupplier',{
-    url:'/Suppliers/:id/edit',
+    controller:'WishlistCreateController'
+  }).state('editWishlist',{
+    url:'/Wishlists/:id/edit',
     templateUrl:'app/wishlist/wishlist-edit.html',
-    controller:'SupplierEditController'
+    controller:'WishlistEditController'
   });
 });
 
