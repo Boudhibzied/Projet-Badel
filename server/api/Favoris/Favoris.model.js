@@ -1,10 +1,11 @@
 'use strict';
 
 import mongoose from 'mongoose';
-var WishlistSchema = new mongoose.Schema({
+
+var FavorisSchema = new mongoose.Schema({
   name: String,
   info: String,
   active: Boolean
 });
 
-export default mongoose.model('Wishlist', WishlistSchema);
+export default mongoose.model('Favoris', FavorisSchema);

@@ -1,24 +1,28 @@
 
 <div class="container">
-  <form class="form-horizontal" role="form" ng-submit="addSupplier()">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+  <form class="form-horizontal" role="form" ng-submit="addWishlist()">
 
 
 <div class="form-group">
   <label for="socialReason" class="col-sm-2 control-label">Titre</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="supplier.name" class="form-control" id="socialReason" placeholder="Votre Produit"/>
+    <input type="text" ng-model="wishlist.name" class="form-control" id="socialReason" placeholder="Votre Produit"/>
   </div>
 </div>
 <div class="form-group">
   <label for="creationDate" class="col-sm-2 control-label">Description</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="supplier.info" class="form-control" id="creationDate"/>
+    <input type="text" ng-model="wishlist.info" class="form-control" id="creationDate"/>
   </div>
 </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary" value="Save"/>
+        <input type="submit" class="btn btn-primary" value="Ajouter"/>
       </div>
     </div>
   </form>
+    </div>
+  </div>
 </div>

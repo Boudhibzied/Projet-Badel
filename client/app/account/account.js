@@ -29,7 +29,7 @@ angular.module('projetBadelApp')
       })
       .state('settings', {
         url: '/settings',
-        templateUrl: 'app/compte/compte.html',
+        templateUrl: 'app/account/settings/compte.html',
         controller: 'SettingsController',
         controllerAs: 'vm',
         authenticate: true

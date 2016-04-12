@@ -10,11 +10,11 @@
     <div class="col-md-3">
       <aside class="sidebar-left">
         <ul class="nav nav-pills nav-stacked nav-arrow">
-          <li><a ui-sref="compte" >Votre compte : </a>
+          <li><a ui-sref="settings" >Votre compte : </a>
           </li>
           <li><a ui-sref="favoris"> Annonces favoris : </a>
           </li>
-          <li><a ui-sref="Wishlist">Votre Wishlist :</a>
+          <li><a ui-sref="Wishlists">Votre Wishlist :</a>
           </li>
         </ul>
       </aside>
@@ -26,24 +26,26 @@
             <thead>
             <tr>
               <th>Nom</th>
+              <th>Description</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="supplier in Suppliers">
-              <td>{{supplier.name}}</td>
+            <tr ng-repeat="wishlist in Wishlists">
+              <td>{{wishlist.name}}</td>
+              <td>{{wishlist.info}}</td>
               <td>
-                <a class="btn btn-primary" ui-sref="viewSupplier({id:supplier.id})">View</a>
-                <a class="btn btn-danger"  ng-click="deleteSupplier(supplier)">Delete</a>
+                <a class="btn btn-primary" ui-sref="viewWishlist({id:wishlist.id})">Vue</a>
+                <a class="btn btn-danger"  ng-click="deleteWishlist(wishlist)">effacer</a>
               </td>
             </tr>
           </table>
-          <a ui-sref="newSupplier" class="btn-primary btn-lg nodecoration">Ajoutez un nouveau produit</a>
-          <div class="gap"></div>
 
+          <a ui-sref="newWishlist" class="btn-primary btn-lg nodecoration">Ajoutez un nouveau produit</a>
           <div class="gap"></div>
-          <div class="gap"></div>
+        </div>
+      </div>
 
-          <!-- //////////////////////////////////
-          //////////////END PAGE CONTENT/////////
-          ////////////////////////////////////-->
+    </div>
+  </div>
+</div>
 
