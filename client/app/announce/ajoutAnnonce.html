@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-1"><h1>Créez votre annonce</h1></div>
+  </div>
+  <form class="form-horizontal" role="form" ng-submit="addAnnounce()">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <div >
+        <input type="text" ng-model="announce.title" class="form-control" id="title" placeholder="Votre annonce"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">price</label>
+      <div>
+        <input type="number" ng-model="announce.price" class="form-control" id="price"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">description</label>
+      <div>
+        <input type="text" ng-model="announce.description" class="form-control" id="description"/>
+      </div>
+    </div>
+      </div>
+    </div>
+
+        <div class="row">
+          <div class="col-md-3 col-md-offset-3">
+            <div class="form-group">
+      <label for="Categorie">Categorie</label>
+      <div>
+        <select  ng-model="announce.category"  id="categorie">
+          <option value="objets personnels"> objets personnels</option>
+          <option value="beautÃ© et santÃ©">beautÃ© et santÃ©</option>
+          <option value="loisirs">loisirs</option>
+          <option value="MultimÃ©dia">MultimÃ©dia</option>
+          <option value="Maison">Maison</option>
+          <option value="VÃ©hicules">VÃ©hicules</option>
+          <option value="Autres">Autres</option>
+        </select>
+      </div>
+    </div>
+          </div>
+
+      <div class="col-md-5 col-md-offset-1">
+        <div class="form-group">
+      <label for="sousCategorie">SousCategorie</label>
+      <div>
+        <select  ng-model="announce.underCategory"  id="sousCategorie">
+          <option value="vetement">vetement</option>
+          <optio0n value="beautÃ© et santÃ©">beautÃ© et santÃ©</optio0n>
+          <option value="montre et bijoux">montre et bijoux</option>
+          <option value="sac et accessoires">sac et accessoires</option>
+          <option value="maison">maison</option>
+          <option value="produits cosmetiques">produits cosmetiques</option>
+          <option value="equipement medicale">equipement medicale</option>
+          <option value="films , livres et magazines">films , livres et magazines</option>
+          <option value="animaux domestique">animaux domestique</option>
+          <option value="intruments musiquales">intruments musiquales</option>
+          <option value="tÃ©lÃ©phonie">tÃ©lÃ©phonie</option>
+          <option value="informatique et accessoires">informatique et accessoires</option>
+          <option value="jeux videos et console">jeux videos et console</option>
+          <option value="intÃ©rieur">intÃ©rieur</option>
+          <option value="electromenager">electromenager</option>
+          <option value="moto">moto</option>
+          <option value="velo">velo</option>
+          <option value="piece de rechange et accessoires">piece de rechange et accessoires</option>
+          <option value="autres">autres</option>
+        </select>
+      </div>
+    </div>
+    </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-10">
+        <button type="submit" class="btn btn-primary" value="Save" style="height:80px;width:200px">Déposez votre annonce</button>
+      </div>
+        </div>
+
+  </form>
+</div>
