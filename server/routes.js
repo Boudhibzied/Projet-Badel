@@ -10,6 +10,7 @@ import path from 'path';
 export default function(app) {
   // Insert routes below
   app.use('/api/announces', require('./api/announce'));
+  app.use('/api/Recherches', require('./api/Recherche'));
   app.use('/api/Favoriss', require('./api/Favoris'));
   app.use('/api/wishlists', require('./api/wishlist'));
   app.use('/api/scrappes', require('./api/scrappe'));
