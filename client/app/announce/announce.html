@@ -1,0 +1,18 @@
+
+<div class="container">
+<table class="table Announcetable">
+  <tr>
+    <td><h3>mes announces</h3></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="announce in Announces">
+    <td>{{announce.title}}</td>
+    <td>{{announce.price}}</td>
+    <td>{{announce.description}}</td>
+    <td>
+      <a class="btn btn-primary" ui-sref="viewAnnounce({id:announce.id})">Vue</a>
+      <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)">effacer </a>
+    </td>
+  </tr>
+</table>
+</div>

@@ -20,6 +20,8 @@
             </li>
             <li><a   ui-sref="contact" >Contact</a>
             </li>
+            <li><a   ui-sref="newAnnounce" >Déposez votre annonce</a>
+            </li>
           </ul>
           </li>
           </ul>
@@ -29,7 +31,7 @@
           <ul class="login-register nav navbar-nav navbar-right">
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="signup" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Inscription</a></li>
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="login" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Connexion</a></li>
-            <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Bonjour {{ nav.getCurrentUser().name }}</p> </li>
+            <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Bonjour<span> </span> {{ nav.getCurrentUser().name }}</p> </li>
             <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
             <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><i class="fa fa-sign-out"></i>Deconnexion</a></li>
           </ul>
