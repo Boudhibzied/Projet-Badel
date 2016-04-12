@@ -20,7 +20,7 @@
             </li>
             <li><a   ui-sref="contact" >Contactez</a>
             </li>
-            <li><a   ui-sref="newAnnounce" >Déposez votre annonce</a>
+            <li ng-show="nav.isLoggedIn()"><a   ui-sref="newAnnounce" >Déposez votre annonce</a>
             </li>
           </ul>
 
@@ -34,7 +34,7 @@
             <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
             <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><i class="fa fa-sign-out"></i>Deconnexion</a></li>
           </ul>
-        </div>
+      </div>
       </div>
     </div>
   </header>
