@@ -198,6 +198,10 @@
             <div class="col-md-9">
               <div class="row">
                 <div class="col-md-3">
+
+
+
+
                   <div class="product-sort">
                     <span class="product-sort-selected">Trier par  <b>Date</b></span>
                     <a href="#" class="product-sort-order fa fa-angle-down"></a>
@@ -414,11 +418,24 @@
                       </ul>
                       <div class="gap"></div>
                     </div>
-                  </div>
 
+          <div ng-controller="AnnounceListController">
+          <table class="table Announcetable" class="table table-order">
+            <tr>
+              <td><h3>tout les announces</h3></td>
+              <td></td>
+            </tr>
+            <tr ng-repeat="announce in Announces">
+              <td>{{announce.title}}</td>
+              <td>{{announce.price}}</td>
+              <td>{{announce.description}}</td>
+              <td><img style=" width: 100px;height: 100px" src="assets/images/{{announce.category}}" alt="Description"/></td>
+              <td> <a class="btn btn-primary" ui-sref="viewAnnounce({id:announce._id})">Vue</a> </td>
+            </tr>
+          </table>
                 </div>
+          </div> </div>
 
-
-                <!-- //////////////////////////////////
-                //////////////END PAGE CONTENT/////////
-                ////////////////////////////////////-->
+          <!-- //////////////////////////////////
+              //////////////END PAGE CONTENT/////////
+              ////////////////////////////////////-->
