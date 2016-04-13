@@ -12,9 +12,9 @@
         <ul class="nav nav-pills nav-stacked nav-arrow">
           <li><a ui-sref="settings" >Votre compte : </a>
           </li>
-          <li><a ui-sref="favoris"> Annonces favoris : </a>
+          <li><a ui-sref="showAnnounce({id:nav.getCurrentUser()._id})">Votre Annonce :</a>
           </li>
-          <li><a ui-sref="Wishlists">Votre Wishlist :</a>
+          <li><a ui-sref="Wishlists({id:nav.getCurrentUser()._id})">Votre Wishlist : </a>
           </li>
         </ul>
       </aside>
@@ -22,6 +22,7 @@
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-9">
+          <h1>Mes souhaits</h1>
           <table class="table table-order">
             <thead>
 <tr>
@@ -30,18 +31,18 @@
 </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="wishlist in Wishlists">
-              <td>{{wishlist.name}}</td>
-              <td>{{wishlist.info}}</td>
+            <tr ng-repeat="Wish in Wishlists">
+              <td>{{Wish.name}}</td>
+              <td>{{Wish.info}}</td>
               <td>
-                <a class="btn btn-primary" ui-sref="viewWishlist({id:wishlist.id})">Vue</a>
-                <a class="btn btn-danger"  ng-click="deleteWishlist(wishlist)">effacer</a>
+                <a class="btn btn-primary" ui-sref="editWishlist({id:Wish._id})">Modifier</a>
+                <a class="btn btn-danger"  ng-click="deleteWishlist(Wish)">abandonner</a>
               </td>
             </tr>
             </tbody>
           </table>
 
-          <a ui-sref="newWishlist" class="btn-primary btn-lg nodecoration">Ajoutez un nouveau produit</a>
+          <a ui-sref="newWishlist" class="btn-primary btn-lg nodecoration">Ajoutez vos souhaits</a>
           <div class="gap"></div>
         </div>
       </div>

@@ -6,14 +6,30 @@ angular.module('projetBadelApp')
 
     $scope.deleteAnnounce=function(Announce){
       Announce.$delete(function(){
-        $window.location.href='';
+        $window.location.href='Announces';
       });
     }
 
   })
+
+  .controller('AnnounceShowController',function($scope,$state,$window,$stateParams,Annonce){
+
+    $scope.Announces=Annonce.getByID({id:$stateParams.id});
+
+    $scope.deleteAnnounce=function(Annonce){
+      Annonce.$delete(function(){
+        $window.location.href='showAnnounce';
+      });
+    }
+
+  })
+
+
+
+
   .controller('AnnounceViewController',function($scope,$stateParams,Announce){
 
-    $scope.announce=Announce.get({id:$stateParams.id});
+    $scope.announce=Announce.get({id:$stateParams._id});
 
   })
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
