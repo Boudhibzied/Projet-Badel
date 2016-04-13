@@ -10,14 +10,7 @@
           <input class="form-control" type="text" placeholder="Que cherchez-vous ?"  />
         </div>
       </div>
-      <div class="col-md-3 clearfix">
-        <label><i class="fa fa-map-marker"></i><span>A</span>
-        </label>
-        <div class="search-area-division search-area-division-location">
-          <input class="form-control" type="text" placeholder="Ariana" />
-        </div>
-      </div>
-      <div class="col-md-1">
+      <div class="col-md-3">
         <button class="btn btn-block btn-white search-btn" type="submit">Rechercher</button>
       </div>
     </div>
@@ -26,7 +19,6 @@
 <!-- END SEARCH AREA -->
 
 <div class="gap"></div>
-
 
 <!-- //////////////////////////////////
 //////////////PAGE CONTENT/////////////
@@ -222,168 +214,211 @@
                   </div>
                 </div>
               </div>
-              <div class="row row-wrap">
-                <div class="col-md-4">
-                  <div class="product-thumb">
-                    <header class="product-header">
-                      <img src="assets/img/opel1.jpg" alt="Image Alternative text"  />
-                    </header>
-                    <div class="product-inner">
-                      <ul class="icon-group icon-list-rating" title="5/5 rating">
-                        <li><i class="fa fa-star"></i>
+              <div class="row row-wrap" ng-controller="RechercheCtrl">
+                <td ng-repeat="scrappe in scrappes">
+                  <td>{{ scrappe.Image }}</td>
+                  <td>{{ scrappe.alt }}</td>
+                  <td>{{ scrappe.Prix }}</td>
+                </tr>
+
+                <!--<div class="col-md-4">
+                 <div class="product-thumb">
+                   <header class="product-header">
+                     <img src="" alt="{{ scrappe.alt }}"  />
+                   <div class="product-inner">
+                     <ul class="icon-group icon-list-rating" title="5/5 rating">
+                       <li><i class="fa fa-star"></i>
+                       </li>
+                       <li><i class="fa fa-star"></i>
+                       </li>
+                       <li><i class="fa fa-star"></i>
+                       </li>
+                       <li><i class="fa fa-star"></i>
+                       </li>
+                       <li><i class="fa fa-star"></i>
+                       </li>
+                     </ul>
+                     <h5 class="product-title">{{ scrappe.alt }}</h5>
+                     <p class="product-desciption">Annonce Tayara.Tn</p>
+                     <div class="product-meta">
+                       <ul class="product-price-list">
+                         <li><span class="product-price">{{ scrappe.Prix }}</span>
+                         </li>
+                       </ul>
+                       <ul class="product-actions-list">
+                         <li><a ui-sref="Annonce" class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                         </li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+
+
+
+                               <div class="col-md-4">
+                                 <div class="product-thumb">
+                                   <header class="product-header">
+                                     <img src="assets/img/opel1.jpg" alt="Image Alternative text"  />
+                                   </header>
+                                   <div class="product-inner">
+                                     <ul class="icon-group icon-list-rating" title="5/5 rating">
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                     </ul>
+                                     <h5 class="product-title">Opel Astra Diesel</h5>
+                                     <p class="product-desciption"> Une trés jolie OPEL Astra blanche en bonne état </p>
+                                     <div class="product-meta">
+                                       <ul class="product-price-list">
+                                         <li><span class="product-price">$12.000</span>
+                                         </li>
+                                       </ul>
+                                       <ul class="product-actions-list">
+                                         <li><a ui-sref="Annonce" class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                                         </li>
+                                       </ul>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                               <div class="col-md-4">
+                                 <div class="product-thumb">
+                                   <header class="product-header">
+                                     <img src="assets/img/oca3.jpg" alt="Image Alternative text" title="a turn" />
+                                   </header>
+                                   <div class="product-inner">
+                                     <ul class="icon-group icon-list-rating" title="3.9/5 rating">
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star-o"></i>
+                                       </li>
+                                     </ul>
+                                     <h5 class="product-title">BMW Serie 1</h5>
+                                     <p class="product-desciption">Erat nunc adipiscing enim inceptos posuere pellentesque egestas</p>
+                                     <div class="product-meta">
+                                       <ul class="product-price-list">
+                                         <li><span class="product-price">$80000</span>
+                                         </li>
+                                       </ul>
+                                       <ul class="product-actions-list">
+                                         <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                                         </li>
+                                       </ul>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                               <div class="col-md-4">
+                                 <div class="product-thumb">
+                                   <header class="product-header">
+                                     <img src="assets/img/oca2.jpg" alt="Image Alternative text" title="Ana 29" />
+                                   </header>
+                                   <div class="product-inner">
+                                     <ul class="icon-group icon-list-rating" title="5/5 rating">
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                     </ul>
+                                     <h5 class="product-title">Polo 5</h5>
+                                     <p class="product-desciption">Bonne ocasion....</p>
+                                     <div class="product-meta">
+                                       <ul class="product-price-list">
+                                         <li><span class="product-price">$12000</span>
+                                         </li>
+                                       </ul>
+                                       <ul class="product-actions-list">
+
+                                         <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                                         </li>
+                                       </ul>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                               -->
+                               <div class="col-md-4">
+                                 <div class="product-thumb">
+                                   <header class="product-header">
+                                     <img src="assets/img/oca1.jpg" alt="Image Alternative text" title="Our Coffee miss u" />
+                                   </header>
+                                   <div class="product-inner">
+                                     <ul class="icon-group icon-list-rating" title="3/5 rating">
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star"></i>
+                                       </li>
+                                       <li><i class="fa fa-star-o"></i>
+                                       </li>
+                                       <li><i class="fa fa-star-o"></i>
+                                       </li>
+                                     </ul>
+                                     <h5 class="product-title">Range Rover</h5>
+                                     <p class="product-desciption">Voiture neuf...</p>
+                                     <div class="product-meta">
+                                       <ul class="product-price-list">
+                                         <li><span class="product-price">$190000</span>
+                                         </li>
+                                       </ul>
+                                       <ul class="product-actions-list">
+                                         <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                                         </li>
+                                       </ul>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+
+
+                              </div>
+                      <ul class="pagination">
+                        <li class="prev disabled">
+                          <a href="#"></a>
                         </li>
-                        <li><i class="fa fa-star"></i>
+                        <li class="active"><a href="#">1</a>
                         </li>
-                        <li><i class="fa fa-star"></i>
+                        <li><a href="#">2</a>
                         </li>
-                        <li><i class="fa fa-star"></i>
+                        <li><a href="#">3</a>
                         </li>
-                        <li><i class="fa fa-star"></i>
+                        <li><a href="#">4</a>
+                        </li>
+                        <li><a href="#">5</a>
+                        </li>
+                        <li class="next">
+                          <a href="#"></a>
                         </li>
                       </ul>
-                      <h5 class="product-title">Opel Astra Diesel</h5>
-                      <p class="product-desciption"> Une trés jolie OPEL Astra blanche en bonne état </p>
-                      <div class="product-meta">
-                        <ul class="product-price-list">
-                          <li><span class="product-price">$12.000</span>
-                          </li>
-                        </ul>
-                        <ul class="product-actions-list">
-                          <li><a ui-sref="Annonce" class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                          </li>
-                        </ul>
-                      </div>
+                      <div class="gap"></div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="product-thumb">
-                    <header class="product-header">
-                      <img src="assets/img/oca3.jpg" alt="Image Alternative text" title="a turn" />
-                    </header>
-                    <div class="product-inner">
-                      <ul class="icon-group icon-list-rating" title="3.9/5 rating">
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star-o"></i>
-                        </li>
-                      </ul>
-                      <h5 class="product-title">BMW Serie 1</h5>
-                      <p class="product-desciption">Erat nunc adipiscing enim inceptos posuere pellentesque egestas</p>
-                      <div class="product-meta">
-                        <ul class="product-price-list">
-                          <li><span class="product-price">$80000</span>
-                          </li>
-                        </ul>
-                        <ul class="product-actions-list">
-                          <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="product-thumb">
-                    <header class="product-header">
-                      <img src="assets/img/oca2.jpg" alt="Image Alternative text" title="Ana 29" />
-                    </header>
-                    <div class="product-inner">
-                      <ul class="icon-group icon-list-rating" title="5/5 rating">
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <h5 class="product-title">Polo 5</h5>
-                      <p class="product-desciption">Bonne ocasion....</p>
-                      <div class="product-meta">
-                        <ul class="product-price-list">
-                          <li><span class="product-price">$12000</span>
-                          </li>
-                        </ul>
-                        <ul class="product-actions-list">
 
-                          <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="product-thumb">
-                    <header class="product-header">
-                      <img src="assets/img/oca1.jpg" alt="Image Alternative text" title="Our Coffee miss u" />
-                    </header>
-                    <div class="product-inner">
-                      <ul class="icon-group icon-list-rating" title="3/5 rating">
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star-o"></i>
-                        </li>
-                        <li><i class="fa fa-star-o"></i>
-                        </li>
-                      </ul>
-                      <h5 class="product-title">Range Rover</h5>
-                      <p class="product-desciption">Voiture neuf...</p>
-                      <div class="product-meta">
-                        <ul class="product-price-list">
-                          <li><span class="product-price">$190000</span>
-                          </li>
-                        </ul>
-                        <ul class="product-actions-list">
-                          <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
 
-      </div>
-      <ul class="pagination">
-        <li class="prev disabled">
-          <a href="#"></a>
-        </li>
-        <li class="active"><a href="#">1</a>
-        </li>
-        <li><a href="#">2</a>
-        </li>
-        <li><a href="#">3</a>
-        </li>
-        <li><a href="#">4</a>
-        </li>
-        <li><a href="#">5</a>
-        </li>
-        <li class="next">
-          <a href="#"></a>
-        </li>
-      </ul>
-      <div class="gap"></div>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- //////////////////////////////////
-//////////////END PAGE CONTENT/////////
-////////////////////////////////////-->
+                <!-- //////////////////////////////////
+                //////////////END PAGE CONTENT/////////
+                ////////////////////////////////////-->
