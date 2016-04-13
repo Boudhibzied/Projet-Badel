@@ -16,6 +16,7 @@ angular.module('projetBadelApp')
     $scope.announce=Announce.get({id:$stateParams.id});
 
   })
+
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
     $scope.announce=new Announce();
 
