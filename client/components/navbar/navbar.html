@@ -11,16 +11,20 @@
         <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
         <nav>
           <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-            <li class="active"><a ui-sref="Home">Accueil</a>
+            <li>
+              <a ui-sref="Home">Accueil</a>
             </li>
-            <li></li>
-            <li><a ui-sref="Recherche" >Rechercher des annonces</a>
+            <li>
+              <a ui-sref="Recherche" >Rechercher</a>
             </li>
-            <li><a ui-sref="About" >Pourquoi Badel</a>
+            <li>
+              <a ui-sref="About" >Pourquoi Badel</a>
             </li>
-            <li><a   ui-sref="contact" >Contactez</a>
+            <li>
+              <a   ui-sref="contact" >Contactez</a>
             </li>
-            <li ng-show="nav.isLoggedIn()"><a   ui-sref="newAnnounce" >Déposez votre annonce</a>
+            <li ng-show="nav.isLoggedIn()">
+              <a   ui-sref="newAnnounce" >Déposez votre annonce</a>
             </li>
           </ul>
 
