@@ -3,22 +3,8 @@
  */
 angular.module('projetBadelApp')
 
-  .controller('WishlistListController',function($scope,$state,$window,Wishlist){
 
-    $scope.Wishlists=Wishlist.query();
 
-    $scope.deleteWishlist=function(Wishlist){
-      Wishlist.$delete(function(){
-        $window.location.href='Wishlists';
-      });
-    }
-
-  })
-  .controller('WishlistViewController',function($scope,$stateParams,Wishlist){
-
-    $scope.wishlist=Wishlist.get({_id:$stateParams.id});
-
-  })
   .controller('WishlistCreateController',function($scope,$state,$stateParams,Wishlist){
 
     $scope.wishlist=new Wishlist();
@@ -26,6 +12,18 @@ angular.module('projetBadelApp')
     $scope.addWishlist=function(){
       $scope.wishlist.$save(function(){
         $state.go('Wishlists');
+      });
+    }
+
+  })
+
+  .controller('WishlistShowController',function($scope,$state,$window,$stateParams,Wish){
+
+    $scope.Wishlists=Wish.getByID({id:$stateParams.id});
+
+    $scope.deleteWishlist=function(Wish){
+      Wish.$delete(function(){
+        $window.location.href='';
       });
     }
 

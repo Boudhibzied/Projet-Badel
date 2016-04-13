@@ -2,12 +2,16 @@
 angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
   $stateProvider.state('Announces',{
     url:'/Announces',
-    templateUrl:'app/announce/announce.html',
+    templateUrl:'app/Recherche/Recherche.html',
     controller:'AnnounceListController'
   }).state('viewAnnounce',{
-    url:'/Announces/:id/view',
+    url:'/Announces/:id',
     templateUrl:'app/announce/Annonces.html',
     controller:'AnnounceViewController'
+  }).state('showAnnounce',{
+    url:'/MesAnnounces/:id',
+    templateUrl:'app/Favoris/Favoris.html',
+    controller:'AnnounceShowController'
   }).state('newAnnounce',{
     url:'/Announces/new',
     templateUrl:'app/announce/ajoutAnnonce.html',
