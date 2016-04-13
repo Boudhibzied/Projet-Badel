@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-        <a ui-sref="home" class="logo">
-          <img src="assets/img/badel.png" style="height: 42px;width: 150px" alt="Image Alternative text" title="Image Title" ui-sref="Home" />
+        <a ui-sref="Home" class="logo">
+          <img src="assets/img/badel.png" style="height: 42px;width: 150px" alt="Image Alternative text" title="Image Title" />
         </a>
       </div>
       <div class="col-md-6">
@@ -13,26 +13,25 @@
           <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
             <li class="active"><a ui-sref="Home">Accueil</a>
             </li>
-            <li></li>
             <li><a ui-sref="Recherche" >Rechercher des annonces</a>
             </li>
-            <li><a ui-sref="About" >Pourquoi Badel</a>
+            <li ng-hide="nav.isLoggedIn()"><a ui-sref="About" >Pourquoi Badel</a>
             </li>
-            <li><a   ui-sref="contact" >Contactez</a>
+            <li><a ui-sref="contact" >Contactez</a>
             </li>
-            <li><a   ui-sref="newAnnounce" >Déposez votre annonce</a>
+            <li ng-show="nav.isLoggedIn()"><a  ui-sref="newAnnounce" >Déposez votre annonce</a>
             </li>
           </ul>
-
         </nav>
       </div>
+
       <div class="col-md-4"  id="navbar-main">
           <ul class="login-register nav navbar-nav navbar-right">
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="signup" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Inscription</a></li>
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="login" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Connexion</a></li>
-            <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Bonjour  <span>   </span>{{ nav.getCurrentUser().name }}</p> </li>
+            <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Bonjour{{ nav.getCurrentUser().name }}</p> </li>
             <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-            <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><i class="fa fa-sign-out"></i>Deconnexion</a></li>
+            <li ng-show="nav.isLoggedIn()"><a ui-sref="Home"><i class="fa fa-sign-out"></i>Deconnexion</a></li>
           </ul>
         </div>
       </div>
