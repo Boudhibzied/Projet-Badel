@@ -1,6 +1,6 @@
 
 <div class="container">
-<table class="table Announcetable">
+<table class="table Announcetable" class="table table-order">
   <tr>
     <td><h3>mes announces</h3></td>
     <td></td>
@@ -9,10 +9,10 @@
     <td>{{announce.title}}</td>
     <td>{{announce.price}}</td>
     <td>{{announce.description}}</td>
-    <td>{{announce.user}}</td>
+    <td><img src="assets/images/{{announce.category}}" alt="Description"/></td>
     <td>
-      <a class="btn btn-primary" ui-sref="viewAnnounce({id:announce.id})">Vue</a>
-      <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)">effacer </a>
+
+
     </td>
   </tr>
 </table>
