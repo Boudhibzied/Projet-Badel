@@ -74,6 +74,14 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
+// Gets my Wishlist from the DB
+export function showByUser(req, res) {
+  return Wishlist.find().where('user').equals(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Creates a new Wishlist in the DB
 export function create(req, res) {
   return Wishlist.create(req.body)
@@ -100,3 +108,4 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+

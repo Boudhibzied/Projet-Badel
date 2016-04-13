@@ -5,9 +5,13 @@ angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
     templateUrl:'app/announce/announce.html',
     controller:'AnnounceListController'
   }).state('viewAnnounce',{
-    url:'/Announces/:id/view',
-    templateUrl:'app/announce/Annonces.html',
+    url:'/Announces/:id',
+    templateUrl:'app/announce/viewAnnounce.html',
     controller:'AnnounceViewController'
+  }).state('showAnnounce',{
+    url:'/MesAnnounces/:id',
+    templateUrl:'app/Favoris/Favoris.html',
+    controller:'AnnounceShowController'
   }).state('newAnnounce',{
     url:'/Announces/new',
     templateUrl:'app/announce/ajoutAnnonce.html',

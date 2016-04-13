@@ -31,8 +31,7 @@ Run `grunt build` for building and `grunt serve` for preview.
 Running `npm test` will run the unit tests with karma.
 
 
-<<<<<<< HEAD
-**testgit hatemLeGrand
+
 test t2 
 
 ## test git zied
@@ -44,6 +43,5 @@ test t2
 
 
 
-=======
->>>>>>> refs/remotes/Boudhibzied/master
+
 

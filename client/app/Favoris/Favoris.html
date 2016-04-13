@@ -1,10 +1,4 @@
 
-<div class="gap"></div>
-<!-- //////////////////////////////////
-//////////////PAGE CONTENT/////////////
-////////////////////////////////////-->
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -12,61 +6,79 @@
         <ul class="nav nav-pills nav-stacked nav-arrow">
           <li><a ui-sref="settings" >Votre compte : </a>
           </li>
-          <li><a ui-sref="favoris">Annonces favoris :</a>
+          <li><a ui-sref="showAnnounce({id:nav.getCurrentUser()._id})">Votre Annonce :</a>
           </li>
-          <li><a ui-sref="Wishlists">Votre Wishlist : </a>
+          <li><a ui-sref="Wishlists({id:nav.getCurrentUser()._id})">Votre Wishlist : </a>
           </li>
         </ul>
       </aside>
     </div>
 
     <br>
-
     <div class="col-md-8">
-      <div class="row row-wrap">
+      <div class="row">
         <div class="col-md-6">
-          <div class="product-thumb">
-            <header class="product-header">
-              <img src="assets/img/opel1.jpg" alt="Image Alternative text" />
-            </header>
-            <div class="product-inner">
-              <ul class="icon-group icon-list-rating" title="3.7/5 rating">
-                <li><i class="fa fa-star"></i>
-                </li>
-                <li><i class="fa fa-star"></i>
-                </li>
-                <li><i class="fa fa-star"></i>
-                </li>
-                <li><i class="fa fa-star"></i>
-                </li>
-                <li><i class="fa fa-star-o"></i>
-                </li>
-              </ul>
-              <h5 class="product-title">OPEL Astra blanche</h5>
-              <p class="product-desciption">Une trés jolie OPEL Astra blanche en bonne état.....</p>
-              <div class="product-meta">
-                <ul class="product-actions-list">
-                  <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
+<table class="table Announcetable" class="table table-order">
+  <tr>
+    <td><h3>Mes annonces</h3></td>
+
+  </tr>
+  <tr ng-repeat="announce in Announces">
+    <td>{{announce.title}}</td>
+    <td>{{announce.price}}</td>
+    <td>{{announce.description}}</td>
+    <td>{{announce.user}}</td>
+    <td>
+      <a class="btn btn-primary" ui-sref="viewAnnounce({id:announce._id})">Vue</a>
+      <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)">effacer </a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+            <div class="product-thumb">
+              <header class="product-header">
+                <img src="assets/img/opel1.jpg" alt="Image Alternative text" />
+              </header>
+              <div class="product-inner">
+                <ul class="icon-group icon-list-rating" title="3.7/5 rating">
+                  <li><i class="fa fa-star"></i>
                   </li>
-                  <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Détails</a>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star-o"></i>
                   </li>
                 </ul>
+
+
+                <h5 class="product-title">OPEL Astra blanche</h5>
+                <p class="product-desciption">Une trés jolie OPEL Astra blanche en bonne état.....</p>
+                <div class="product-meta">
+                  <ul class="product-actions-list">
+                    <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
+                    </li>
+                    <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Détails</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product-wishlist-remove"><a class="btn btn-ghost btn-sm"><i class="fa fa-times"></i> Retirer de la liste</a>
+            <div class="product-wishlist-remove"><a class="btn btn-ghost btn-sm"><i class="fa fa-times"></i> Retirer de la liste</a>
+            </div>
           </div>
         </div>
+        <div class="gap gap-small"></div>
       </div>
-      <div class="gap gap-small"></div>
     </div>
-  </div>
 
+  </div>
 </div>
 
-
-<!-- //////////////////////////////////
-//////////////END PAGE CONTENT/////////
-////////////////////////////////////-->
-
+</div>
 

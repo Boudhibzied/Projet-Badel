@@ -11,14 +11,14 @@ angular.module('projetBadelApp')
       })
       .state('logout', {
         url: '',
-        referrer: 'main',
+        referrer: 'Home',
         template: '',
         controller: function($state, Auth) {
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
                           'main';
           Auth.logout();
-          $state.go(Home);
+          $state.go('Home');
         }
       })
       .state('signup', {
