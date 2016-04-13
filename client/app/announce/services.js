@@ -10,7 +10,8 @@ angular.module('projetBadelApp')
       {
         stripTrailingSlashes: false
       });
-  }).factory('Offre',function($resource){
+  })
+  .factory('Offre',function($resource){
   return $resource('http://localhost:9000/api/offres/:id',{},
     {  'get':    {method:'GET', params: { id: '@_id'}},
       'save':   {method:'POST'},
