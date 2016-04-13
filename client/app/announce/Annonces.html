@@ -54,29 +54,16 @@
         </div>
         <div class="col-md-5">
           <div class="product-info box">
-            <ul class="icon-group icon-list-rating text-color" title="4.5/5 rating">
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star-half-empty"></i>
-              </li>
-            </ul>	<small><a href="#" class="text-muted">based on 8 reviews</a></small>
-            <h3>Opel Astra Diesel</h3>
-            <p class="product-info-price">$15000</p>
+
+            <h3>{{announce.title}}</h3>
+            <p class="product-info-price">{{announce.price}} DT</p>
             <p class="text-smaller text-muted">
-              Une trés jolie OPEL Astra blanche en bonne état, appartenais a une femme en 1er main.
+              {{announce.description}}
             </p>
             <ul class="icon-list list-space product-info-list">
-              <li><i class="fa fa-check"></i>1.7 DTI</li>
-              <li><i class="fa fa-check"></i>5 CV</li>
-              <li><i class="fa fa-check"></i>Blanche</li>
-              <li><i class="fa fa-check"></i>250 000 KM</li>
-              <li><i class="fa fa-check"></i>Boite manuelle</li>
+              <li><i class="fa fa-check"></i>{{announce.category}}</li>
+              <li><i class="fa fa-check"></i>{{announce.underCategory}}</li>
+              <li><i class="fa fa-check"></i>{{announce.datePost}}</li>
             </ul>
             <ul class="list-inline">
               <li><a ui-sref="Negociation" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Badel !</a>
@@ -90,11 +77,13 @@
       <div class="gap"></div>
       <div class="tabbable">
         <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-pencil"></i>Desciption</a>
+          <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
           </li>
-          <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-info"></i>Autres Informations</a>
+          <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
           </li>
-          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
+          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-video-camera"></i>conversation en Video</a>
+          </li>
+          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
           </li>
         </ul>
         <div class="tab-content">

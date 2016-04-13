@@ -6,7 +6,7 @@ angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
     controller:'AnnounceListController'
   }).state('viewAnnounce',{
     url:'/Announces/:id/view',
-    templateUrl:'app/announce/viewAnnounce.html',
+    templateUrl:'app/announce/Annonces.html',
     controller:'AnnounceViewController'
   }).state('newAnnounce',{
     url:'/Announces/new',
