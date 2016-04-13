@@ -17,4 +17,20 @@ angular.module('projetBadelApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
-  });
+  })
+  .factory("user",[
+  "$cookies", function($cookies) {
+    var userid = "";
+    return {
+      setCookieData: function(id) {
+        userid = id;
+        $cookies.put("userid", id);
+      },
+      getCookieData: function() {
+        userid = $cookies.get("userid");
+        return userid;
+      }
+    }
+  }
+]);
+
