@@ -18,3 +18,6 @@ angular.module('projetBadelApp', [
 
     $locationProvider.html5Mode(true);
   });
+
+
+

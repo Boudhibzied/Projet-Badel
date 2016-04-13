@@ -13,7 +13,7 @@ var AnnounceSchema = new mongoose.Schema({
   category: String,
   underCategory:String,
   offer: [{body: String, rated: Boolean }],
-  user:[{}]
+  user:{type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 export default mongoose.model('announce', AnnounceSchema);

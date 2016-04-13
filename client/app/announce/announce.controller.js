@@ -17,7 +17,6 @@ angular.module('projetBadelApp')
 
   })
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
-
     $scope.announce=new Announce();
 
     $scope.addAnnounce=function(){

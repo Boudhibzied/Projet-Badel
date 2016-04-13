@@ -118,9 +118,10 @@ export function  search(req, res)
     fs.writeFile("./output.json", JSON.stringify(results, null, '\t'));
   });
 
-  let objs = JSON.parse(fs.readFileSync('./output.json', "utf-8"));
+}
 
-  //objs.respondWithResult(res);
+export function affichesearch(req, res) {
+  let objs = JSON.parse(fs.readFileSync('./output.json', "utf-8"));
   res.send(objs);
 }
 
