@@ -1,0 +1,22 @@
+
+<div class="container">
+  <table class="table Offretable">
+    <tr>
+      <td><h3>mes offres</h3></td>
+      <td></td>
+    </tr>
+    <tr ng-repeat="offre in Offres">
+      <td>{{offre.description}}</td>
+      <td>{{offre.user1}}</td>
+      <td>{{offre.user2}}</td>
+      <td>{{offre.announce}}</td>
+
+      <!--
+      <td>
+        <a class="btn btn-primary" ui-sref="viewAnnounce({id:announce.id})">Vue</a>
+        <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)">effacer </a>
+      </td>
+      -->
+    </tr>
+  </table>
+</div>

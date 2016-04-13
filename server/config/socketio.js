@@ -15,16 +15,12 @@ function onConnect(socket) {
   socket.on('info', data => {
     socket.log(JSON.stringify(data, null, 2));
   });
-
   // Insert sockets below
-
-
   require('../api/Recherche/Recherche.socket').register(socket);
   require('../api/announce/announce.socket').register(socket);
-
+  require('../api/offre/offre.socket').register(socket);
   require('../api/announce/announce.socket').register(socket);
   require('../api/Recherche/Recherche.socket').register(socket);
-
   require('../api/Favoris/Favoris.socket').register(socket);
   require('../api/wishlist/wishlist.socket').register(socket);
   require('../api/scrappe/scrappe.socket').register(socket);
