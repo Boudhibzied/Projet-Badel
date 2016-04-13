@@ -34,6 +34,7 @@
             <tr ng-repeat="Wish in Wishlists">
               <td>{{Wish.name}}</td>
               <td>{{Wish.info}}</td>
+              <td><img src="assets/images/{{Wish.image}}" alt="Description"/></td>
               <td>
                 <a class="btn btn-primary" ui-sref="editWishlist({id:Wish._id})">Modifier</a>
                 <a class="btn btn-danger"  ng-click="deleteWishlist(Wish)">abandonner</a>
