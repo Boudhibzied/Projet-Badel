@@ -4,9 +4,9 @@ angular.module('projetBadelApp')
 
     $scope.Offres=Offre.query();
 
-    $scope.Offre=function(Offre){
+    $scope.deleteOffre=function(Offre){
       Offre.$delete(function(){
-        $window.location.href='';
+        $window.location.href='Offres';
       });
     }
 
@@ -23,6 +23,8 @@ angular.module('projetBadelApp')
       $scope.offre.$save(function(){
         $state.go('Offres');
       });
+
+      window.location.href='Offres';
     }
 
   })
