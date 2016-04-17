@@ -13,6 +13,7 @@ var AnnounceSchema = new mongoose.Schema({
   category: String,
   underCategory:String,
   offer: [{body: String, rated: Boolean }],
+  premium: { type: Boolean, default: false},
   user:[{
     _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: String,
