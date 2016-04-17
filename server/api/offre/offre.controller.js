@@ -11,6 +11,10 @@
 
 import _ from 'lodash';
 import Offre from './offre.model';
+import nodemailer from 'nodemailer';
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://ziedboudhib%40gmail.com:stellax2@smtp.gmail.com');
+
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -100,3 +104,26 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+
+ export function mail(req, res, next){
+
+    var data = req.body;
+
+   // setup e-mail data with unicode symbols
+    var mailOptions = {
+    from: '"Badel : " <ziedboudhib@gmail.com>', // sender address
+    to: data.anounceUser.email, // list of receivers
+    subject: 'Notification Badel', // Subject line
+    html: 'lutilisateur : ' + data.user.name + ' vient de proposer une offre veuillez consulter votre annonce.' // html body
+    };
+
+   // send mail with defined transport object
+   transporter.sendMail(mailOptions, function(error, info){
+     if(error){
+       return console.log(error);
+     }
+     console.log('Message sent: ' + info.response);
+     next();
+   });
+ }

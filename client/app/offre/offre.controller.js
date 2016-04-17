@@ -16,16 +16,15 @@ angular.module('projetBadelApp')
     $scope.announce=Announce.get({id:$stateParams.id});
 
   })
-  .controller('OffreCreateController',function($scope,$state,$stateParams,Offre){
+  .controller('OffreCreateController',function($scope,$state,$stateParams,Offre, $http){
     $scope.offre=new Offre();
 
     $scope.addOffre=function(){
       $scope.offre.$save(function(){
-        $state.go('Offres');
+        $state.go('offre');
       });
-
-      window.location.href='Offres';
     }
+
 
   })
   .controller('AnnounceEditController',function($scope,$state,$stateParams,Announce){
