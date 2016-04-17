@@ -14,6 +14,8 @@ angular.module('projetBadelApp')
 
   .controller('AnnounceShowController',function($scope,$state,$window,$stateParams,Annonce){
 
+
+
     $scope.Announces=Annonce.getByID({id:$stateParams.id});
 
     $scope.deleteAnnounce=function(Annonce){
@@ -29,9 +31,14 @@ angular.module('projetBadelApp')
 
   .controller('AnnounceViewController',function($scope,$stateParams,Announce){
 
+    $scope.testt="LALALALA";
+    $scope.offre=Offre.query();
     $scope.announce=Announce.get({id:$stateParams._id});
 
+
+
   })
+
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
     $scope.announce=new Announce();
 

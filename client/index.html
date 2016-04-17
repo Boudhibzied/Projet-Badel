@@ -29,6 +29,7 @@
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/announce/announce.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/comments/comments.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/offre/offre.css">
       <link rel="stylesheet" href="app/wishlist/wishlist.css">
@@ -37,6 +38,59 @@
       <link rel="stylesheet" href="components/oauth-buttons/oauth-buttons.css">
       <!-- endinjector -->
     <!-- endbuild -->
+    <!-- Prettify Code -->
+    <link rel="stylesheet" type="text/css" href="assets/css/easyrtc.css" />
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="assets/js/prettify.js"></script>
+    <script type="text/javascript" src="assets/js/loadAndFilter.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/js/prettify.css" />
+    <!--show-->
+    <!-- Assumes global locations for socket.io.js and easyrtc.js -->
+    <script src="assets/js/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="assets/js/easyrtc.js"></script>
+    <script type="text/javascript" src="assets/js/demo_video_only.js"></script>
+    <!--hide-->
+    <!-- Styles used within the demo -->
+    <style type="text/css">
+      #videoDemoContainer {
+        position:relative;
+      }
+      #connectControls {
+        float:left;
+        width:250px;
+        text-align:center;
+        border: 2px solid black;
+      }
+      #otherClients {
+        height:200px;
+        overflow-y:scroll;
+      }
+      #selfVideo {
+        height:225px;
+        width:300px;
+        float:left;
+        border:1px solid gray;
+        margin-left:10px;
+      }
+      #callerVideo {
+        height:225px;
+        width:300px;
+        border:1px solid gray;
+        margin-left:10px;
+      }
+      #acceptCallBox {
+        display:none;
+        z-index:2;
+        position:absolute;
+        top:100px;
+        left:400px;
+        border:red solid 2px;
+        background-color:pink;
+        padding:15px;
+      }
+    </style>
 
 
     <!-- Google fonts -->
@@ -266,7 +320,7 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/main/main.js"></script>
+      <script src="app/main/main.controller.js"></script>
       <script src="app/Negociation/negociation.js"></script>
       <script src="app/Recherche/Recherche.controller.js"></script>
       <script src="app/Recherche/Recherche.js"></script>
@@ -282,9 +336,12 @@
       <script src="app/announce/announce.js"></script>
       <script src="app/announce/services.js"></script>
       <script src="app/app.constant.js"></script>
+      <script src="app/comments/comment.service.js"></script>
+      <script src="app/comments/comments.controller.js"></script>
+      <script src="app/comments/comments.js"></script>
       <script src="app/contact/contact.js"></script>
-      <script src="app/main/main.controller.js"></script>
       <script src="app/Favoris/Favoris.controller.js"></script>
+      <script src="app/main/main.js"></script>
       <script src="app/offre/offre.controller.js"></script>
       <script src="app/offre/offre.js"></script>
       <script src="app/offre/service.js"></script>
