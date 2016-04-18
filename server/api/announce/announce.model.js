@@ -3,7 +3,6 @@
 import mongoose from 'mongoose';
 
 var AnnounceSchema = new mongoose.Schema({
-
   title: String,
   price:Number,
   description: String,
