@@ -26,7 +26,9 @@
       </div>
     </div>
         <div >
-          <input type="text" id="announce.user"  ng-init="announce.user= nav.getCurrentUser()._id " ng-model="announce.user" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user._id"  ng-init="announce.user._id= nav.getCurrentUser()._id " ng-model="announce.user._id" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user.name"  ng-init="announce.user.name= nav.getCurrentUser().name " ng-model="announce.user.name" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user.email"  ng-init="announce.user.email= nav.getCurrentUser().email " ng-model="announce.user.email" disabled="disabled" class="form-control"  style="display: none;" />
         </div>
       </div>
     </div>

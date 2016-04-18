@@ -8,9 +8,17 @@ var OffreSchema = new mongoose.Schema({
   prix: Number,
   photo: { type: String, default:'oca1.jpg'},
   status: { type: Number, default:0},
-  user1:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  user2:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  announce:{type: mongoose.Schema.Types.ObjectId, ref: 'announce'}
+  announce:{type: mongoose.Schema.Types.ObjectId, ref: 'announce'},
+  user:[{
+    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    name: String,
+    email: String
+  }],
+  anounceUser:[{
+    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    name: String,
+    email: String
+  }]
 });
 
 export default mongoose.model('Offre', OffreSchema);
