@@ -335,8 +335,8 @@
 
 
 
-                <input type="text" ng-model="offre.description" class="form-control" id="offre.description" placeholder="Decrire votre offre ..."/>
-                <input type="text" ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
+                <div text-angular ng-model="offre.description"></div>
+                <input ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
                 <input type="text" ng-model="offre.prix" class="form-control" id="offre.prix" placeholder="Prix ..."/>
                 <input type="text" id="offre.user1"  ng-init="offre.user1= nav.getCurrentUser()._id " ng-model="offre.user1"  class="form-control"  style="display: none;"/>
                 <input type="text" id="offre.user2" ng-value="offre.user2=announce.user" ng-model="offre.user2"  class="form-control"   style="display: none;"/>
