@@ -101,9 +101,19 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
-
+//Gets a list of Announces by user
 export function showByUser(req, res) {
-  return Announce.find().where('user').equals(req.params.id).exec()
+  return Announce.find().where('user._id').equals(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+
+
+//Gets a list of Announces by title
+export function showByTitle(req, res) {
+  return Announce.find().where('title').equals(req.params.title).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

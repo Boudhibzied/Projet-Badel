@@ -15,4 +15,5 @@ router.put('/show/:id', controller.update);
 router.patch('/show/:id', controller.update);
 router.delete('/show/:id', controller.destroy);
 router.get('/show/:id', controller.showByUser);
+router.get('/title/:title', controller.showByTitle);
 module.exports = router;

@@ -65,7 +65,6 @@ export function index(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
-
 // Gets a single Recherche from the DB
 export function show(req, res) {
   return Recherche.findById(req.params.id).exec()

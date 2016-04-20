@@ -1,15 +1,15 @@
 'use strict';
 angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
-  $stateProvider.state('Announces',{
-    url:'/Announces',
+  $stateProvider.state('AnnouncesR',{
+    url:'/Recherche/:title',
     templateUrl:'app/Recherche/Recherche.html',
-    controller:'AnnounceListController'
+    controller:'AnnounceListRechercheController'
   }).state('viewAnnounce',{
     url:'/Announces/:id',
     templateUrl:'app/announce/Annonces.html',
     controller:'AnnounceViewController'
   }).state('showAnnounce',{
-    url:'/MesAnnounces/:id',
+    url:'/showAnnounce/:id',
     templateUrl:'app/Favoris/Favoris.html',
     controller:'AnnounceShowController'
   }).state('newAnnounce',{

@@ -21,3 +21,5 @@ var AnnounceSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('announce', AnnounceSchema);
+
+

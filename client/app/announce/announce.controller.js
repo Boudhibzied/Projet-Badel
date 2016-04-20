@@ -4,50 +4,33 @@ angular.module('projetBadelApp')
 
     $scope.Announces=Announce.query();
 
-    $scope.deleteAnnounce=function(Announce){
-      Announce.$delete(function(){
-        $window.location.href='Announces';
-      });
-    }
-
   })
-
   .controller('AnnounceShowController',function($scope,$state,$window,$stateParams,Annonce){
-
-
 
     $scope.Announces=Annonce.getByID({id:$stateParams.id});
 
     $scope.deleteAnnounce=function(Annonce){
       Annonce.$delete(function(){
-        $window.location.href='showAnnounce';
+        $state.go('showAnnounce');
       });
     }
 
   })
-
-
-
-
   .controller('AnnounceViewController',function($scope,$stateParams,Announce){
 
     $scope.testt="LALALALA";
     $scope.offre=Offre.query();
     $scope.announce=Announce.get({id:$stateParams._id});
 
-
-
   })
-
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
     $scope.announce=new Announce();
 
     $scope.addAnnounce=function(){
       $scope.announce.$save(function(){
-        $state.go('Announces');
+        $state.go('showAnnounce');
       });
     }
-
   })
   .controller('AnnounceEditController',function($scope,$state,$stateParams,Announce){
 
