@@ -1,9 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose';
-
 var AnnounceSchema = new mongoose.Schema({
-
   title: String,
   price:Number,
   description: String,
@@ -13,12 +11,14 @@ var AnnounceSchema = new mongoose.Schema({
   category: String,
   underCategory:String,
   offer: [{body: String, rated: Boolean }],
+  premium: { type: Boolean, default: false},
   user:[{
     _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: String,
     email: String
   }]
 });
+
 
 export default mongoose.model('announce', AnnounceSchema);
 

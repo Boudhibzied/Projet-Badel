@@ -10,7 +10,8 @@ angular.module('projetBadelApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'textAngular'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

@@ -123,12 +123,12 @@
               <form class="form-horizontal" role="form" ng-submit="addOffre()">
 
               <label  class="col-sm-2 control-label">Description</label>
+
+
               <div class="col-sm-10">
 
-
-
-                <input type="text" ng-model="offre.description" class="form-control" id="offre.description" placeholder="Decrire votre offre ..."/>
-                <input type="text" ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
+                <div text-angular ng-model="offre.description"></div>
+                <input ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
                 <input type="text" ng-model="offre.prix" class="form-control" id="offre.prix" placeholder="Prix ..."/>
                 <input type="text" id="offre.user._id"  ng-value="offre.user._id= nav.getCurrentUser()._id " ng-model="offre.user._id"  class="form-control" disabled="disabled" style="display: none;" />
                 <input type="text" id="offre.user.name" ng-value="offre.user.name= nav.getCurrentUser().name" ng-model="offre.user.name"  class="form-control"  disabled="disabled"  style="display: none;"/>
@@ -150,7 +150,8 @@
 
             </form>
 
-            <br><br><br><br>
+              <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br>
+              <br><br><br><br> <br><br><br><br>  <br><br><br><br> <br><br><br><br>
 
 
           </div>
@@ -264,12 +265,13 @@
       </div>
       <div class="gap gap-small"></div>
     </div>
-  </div>
+    </div>
 
 </div>
-
 
 <!-- //////////////////////////////////
 //////////////END PAGE CONTENT/////////
 ////////////////////////////////////-->
-
+</div>
+</div>
+</div>
