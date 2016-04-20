@@ -16,6 +16,7 @@ function onConnect(socket) {
     socket.log(JSON.stringify(data, null, 2));
   });
   // Insert sockets below
+  require('../api/comments/comments.socket').register(socket);
   require('../api/Recherche/Recherche.socket').register(socket);
   require('../api/announce/announce.socket').register(socket);
   require('../api/offre/offre.socket').register(socket);

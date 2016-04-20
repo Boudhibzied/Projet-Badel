@@ -8,6 +8,7 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/commentss', require('./api/comments'));
   app.use('/api/Recherches', require('./api/Recherche'));
   app.use('/api/announces', require('./api/announce'));
   app.use('/api/offres', require('./api/offre'));

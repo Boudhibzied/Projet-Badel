@@ -26,28 +26,19 @@
       </div>
     </div>
         <div >
-          <input type="text" id="announce.user"  ng-init="announce.user= nav.getCurrentUser()._id " ng-model="announce.user" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user._id"  ng-init="announce.user._id= nav.getCurrentUser()._id " ng-model="announce.user._id" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user.name"  ng-init="announce.user.name= nav.getCurrentUser().name " ng-model="announce.user.name" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user.email"  ng-init="announce.user.email= nav.getCurrentUser().email " ng-model="announce.user.email" disabled="disabled" class="form-control"  style="display: none;" />
         </div>
       </div>
     </div>
 
-        <div class="row">
-          <div class="col-md-3 col-md-offset-3">
-            <div class="form-group">
-      <label for="Categorie">Categorie</label>
+    <div class="form-group">
+      <label for="category">photo</label>
       <div>
-        <select  ng-model="announce.category"  id="categorie">
-          <option value="objets personnels"> objets personnels</option>
-          <option value="beautÃ© et santÃ©">beautÃ© et santÃ©</option>
-          <option value="loisirs">loisirs</option>
-          <option value="MultimÃ©dia">MultimÃ©dia</option>
-          <option value="Maison">Maison</option>
-          <option value="VÃ©hicules">VÃ©hicules</option>
-          <option value="Autres">Autres</option>
-        </select>
+        <input type="text" ng-model="announce.category" class="form-control" id="category"/>
       </div>
     </div>
-          </div>
 
       <div class="col-md-5 col-md-offset-1">
         <div class="form-group">
@@ -55,7 +46,7 @@
       <div>
         <select  ng-model="announce.underCategory"  id="sousCategorie">
           <option value="vetement">vetement</option>
-          <optio0n value="beautÃ© et santÃ©">beautÃ© et santÃ©</optio0n>
+          <option value="beaute et sante">beaute et sante</option>
           <option value="montre et bijoux">montre et bijoux</option>
           <option value="sac et accessoires">sac et accessoires</option>
           <option value="maison">maison</option>
@@ -64,20 +55,20 @@
           <option value="films , livres et magazines">films , livres et magazines</option>
           <option value="animaux domestique">animaux domestique</option>
           <option value="intruments musiquales">intruments musiquales</option>
-          <option value="tÃ©lÃ©phonie">tÃ©lÃ©phonie</option>
+          <option value="telephonie">telephonie</option>
           <option value="informatique et accessoires">informatique et accessoires</option>
           <option value="jeux videos et console">jeux videos et console</option>
-          <option value="intÃ©rieur">intÃ©rieur</option>
+          <option value="interieur">interieur</option>
           <option value="electromenager">electromenager</option>
           <option value="moto">moto</option>
-          <option value="velo">velo</option>
+          <option value="velo">voiture</option>
           <option value="piece de rechange et accessoires">piece de rechange et accessoires</option>
           <option value="autres">autres</option>
         </select>
       </div>
     </div>
     </div>
-        </div>
+
 
         <div class="row">
           <div class="col-md-8 col-md-offset-10">
