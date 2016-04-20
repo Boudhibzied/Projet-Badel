@@ -136,18 +136,8 @@
                 <input type="text" id="offre.anounceUser.email" ng-value="offre.anounceUser.email= announce.user[0].email" ng-model="offre.anounceUser.email"  class="form-control" disabled="disabled" style="display: none;" />
                 <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
 
-                <p class="comment-content" id="messages"></p>
 
 
-                <form action="">
-                  <div class="form-group mb10">
-                    <label>Tchat</label>
-                  </div>
-                  <p class="mb10">Vous pouvez discuter avec votre acheteur/echangeur</p>
-                  <input id="m" autocomplete="off" />
-                  <button class="btn btn-primary">Send</button>
-
-                </form>
               </div>
 
             <div class="form-group">
@@ -276,19 +266,6 @@
   </div>
 
 </div>
-  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-    socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
-    });
-  </script>
 
 <!-- //////////////////////////////////
 //////////////END PAGE CONTENT/////////
