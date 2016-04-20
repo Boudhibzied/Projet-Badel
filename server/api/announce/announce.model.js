@@ -1,6 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose';
+import triggers from 'mongo-triggers';
 
 var AnnounceSchema = new mongoose.Schema({
   title: String,
@@ -19,5 +20,7 @@ var AnnounceSchema = new mongoose.Schema({
     email: String
   }]
 });
+
+
 
 export default mongoose.model('announce', AnnounceSchema);
