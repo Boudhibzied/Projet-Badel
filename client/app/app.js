@@ -11,7 +11,9 @@ angular.module('projetBadelApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'textAngular'
+  'textAngular',
+  'ngMaterial',
+  'ngMessages'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
