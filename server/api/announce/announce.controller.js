@@ -130,9 +130,15 @@ export function premium(req, res)
 export function findAndUpdate(req, res)
 {
   var query = {_id: req.params.id};
-  return Announce.findOne(query, function(doc){
+  return Announce.findOne(query, function(err,doc){
+    if(err)
+    {
+      handleError(res);
+    }
     doc.premium = true;
+    doc.datePost = new Date();
     doc.save();
+    res.end();
   });
 
 }

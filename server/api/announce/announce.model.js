@@ -1,14 +1,13 @@
 'use strict';
 
 import mongoose from 'mongoose';
-let date = new Date();
 var AnnounceSchema = new mongoose.Schema({
   title: String,
   price:Number,
   description: String,
   picture:String,
   status: { type: String, default:" en cours de negotiation"},
-  datePost:{ type: Date, default: function(){return new Date().toDateString()}},
+  datePost:{ type: Date, default: function(){return new Date()}},
   category: String,
   underCategory:String,
   offer: [{body: String, rated: Boolean }],

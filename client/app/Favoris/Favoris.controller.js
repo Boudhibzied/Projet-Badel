@@ -7,11 +7,15 @@ angular.module('projetBadelApp')
     $scope.premiums =premium.getPremium();
 
   })
-  .controller('PremiumEditController',function($scope,$state,$stateParams,premium){
+  .controller('PremiumEditController',function($scope,$state,premium){
 
-    $scope.updatePremium=function(){
-      $scope.announce.putpremium({id:announce._id}, function(){
-        $state.go('favoris');
+
+    $scope.updatePremium=function(announce){
+      var data = this.announce._id;
+      console.log(data);
+      premium.putpremium({id: data}, function(){
+        $state.reload();
+        
       });
     };
 

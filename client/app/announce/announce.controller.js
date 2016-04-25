@@ -11,23 +11,23 @@ angular.module('projetBadelApp')
 
     $scope.deleteAnnounce=function(Annonce){
       Annonce.$delete(function(){
-        $state.go('showAnnounce');
+        $state.reload();
       });
     };
 
   })
   .controller('AnnounceViewController',function($scope,$stateParams,Announce){
 
-    $scope.offre=Offre.query();
     $scope.announce=Announce.get({id:$stateParams._id});
 
   })
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
     $scope.announce=new Announce();
 
+
     $scope.addAnnounce=function(){
       $scope.announce.$save(function(){
-        $state.go('showAnnounce');
+        $state.go('Recherche');
       });
     }
   })

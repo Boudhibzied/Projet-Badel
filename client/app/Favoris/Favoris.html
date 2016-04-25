@@ -19,6 +19,7 @@
       <h3>Mes annonces</h3>
       <div class="row row-wrap">
         <div ng-controller="AnnounceShowController">
+
           <div ng-repeat="announce in Announces |orderBy:'-datePost'">
             <div class="col-md-4">
               <div class="product-thumb">
@@ -37,8 +38,10 @@
                       <li><a class="btn btn-info" ui-sref="viewAnnounce({id:announce._id})"><i class="fa fa-chevron-right"></i>Détails</a> </li>
                       <li>  <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)"><i class="fa fa-times"></i>effacer</a></li>
                     </ul>
-                    <ul class="product-actions-list">
-                    <li ng-if="announce.premium == false">  <a class="btn btn-success"  ng-click="updatePremium(announce._id)"><i class="fa fa-star"></i> Premium <i class="fa fa-star"></i></a></li>
+                    <ul class="product-actions-list" ng-if="announce.premium == false">
+                      <div ng-controller="PremiumEditController">
+                    <li>  <a class="btn btn-success"  ng-click="updatePremium(announce)"><i class="fa fa-star"></i> Premium <i class="fa fa-star"></i></a></li>
+                      </div>
                     </ul>
                   </div>
                 </div>
