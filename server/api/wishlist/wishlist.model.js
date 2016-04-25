@@ -3,11 +3,15 @@
 import mongoose from 'mongoose';
 var WishlistSchema = new mongoose.Schema({
 
-  name: String,
+  title: String,
   info: String,
   image:String,
   active: Boolean,
-  user:{type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  user:[{
+    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    name: String,
+    email: String
+  }]
 });
 
 export default mongoose.model('wishlist', WishlistSchema);

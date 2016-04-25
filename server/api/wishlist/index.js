@@ -12,4 +12,5 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/show/:id', controller.destroy);
 router.get('/show/:id', controller.showByUser);
+router.get('/annonce/:id', controller.showByUserAnnonce);
 module.exports = router;

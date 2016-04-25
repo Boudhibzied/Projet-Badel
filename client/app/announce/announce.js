@@ -13,7 +13,7 @@ angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
     templateUrl:'app/Favoris/Favoris.html',
     controller:'AnnounceShowController'
   }).state('newAnnounce',{
-    url:'/Announces/new',
+    url:'/newAnnounces',
     templateUrl:'app/announce/ajoutAnnonce.html',
     controller:'AnnounceCreateController'
   }).state('editAnnounce',{

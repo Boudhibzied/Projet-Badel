@@ -10,39 +10,6 @@
   <div class="row">
 
     <div class="col-md-9">
-      <div id="review-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix" >
-        <h3>Add a Review</h3>
-        <form>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="e.g. John Doe" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label>E-mail</label>
-            <input type="text" placeholder="e.g. jogndoe@gmail.com" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label>Review</label>
-            <textarea class="form-control"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Rating</label>
-            <ul class="icon-list icon-list-inline star-rating" id="star-rating">
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-          </div>
-          <input type="submit" class="btn btn-primary" value="Submit" />
-        </form>
-      </div>
       <div class="row">
         <div class="col-md-7">
           <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
@@ -63,9 +30,10 @@
             <ul class="icon-list list-space product-info-list">
               <li><i class="fa fa-check"></i>Catégorie :{{announce.underCategory}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
+              <li><i class="fa fa-check"></i>Id user: {{announce.user[0]._id}}</li>
             </ul>
             <ul class="list-inline">
-              <li><a ui-sref="Negociation" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Badel !</a>
+              <li><a ui-sref="Negociation" class="btn btn-primary"><i class="fa fa-exchange"></i> Badel !</a>
               </li>
               <li><a href="#" class="btn"><i class="fa fa-star"></i>Ajouter au Favoris</a>
               </li>
@@ -82,12 +50,15 @@
           </li>
           <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-video-camera"></i>conversation en Video</a>
           </li>
-          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
           </li>
+          <li><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          </li>
+
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab-1" >
-            <div ng-controller="commentListController">
+
             <ul class="comments-list" ng-repeat="c in comments">
               <li>
                 <!-- REVIEW -->
@@ -102,7 +73,7 @@
                 </article>
               </li>
             </ul>
-            </div>
+
             <div ng-controller="commentCreateController">
             <form class="form-horizontal" role="form" ng-submit="addcomment()">
             <textarea ng-model="comments.text"> </textarea>
@@ -117,45 +88,66 @@
 
           <div class="tab-pane fade" id="tab-3">
           </div>
-          <div class="tab-pane fade" id="tab-4">
+          <div class="tab-pane fade" id="tab-4" >
+            <div ng-controller="SupplierListController">
+            <h1> souhaits de </h1>
+            <table >
+              <thead>
+              <tr>
+                <th><b>Nom</b></th>
+                <th><b>Description</b></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr ng-repeat="announce in Suppliers | filter:announce.user[0]._id ">
+                <td>{{announce.title}}</td>
+                <td>{{announce.info}}</td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <div class="tab-pane fade" id="tab-5">
 
             <div class="form-group" ng-controller="OffreCreateController">
               <form class="form-horizontal" role="form" ng-submit="addOffre()">
 
-              <label  class="col-sm-2 control-label">Description</label>
+                <label  class="col-sm-2 control-label">Description</label>
 
 
-              <div class="col-sm-10">
+                <div class="col-sm-10">
 
-                <div text-angular ng-model="offre.description"></div>
-                <input ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
-                <input type="text" ng-model="offre.prix" class="form-control" id="offre.prix" placeholder="Prix ..."/>
-                <input type="text" id="offre.user._id"  ng-value="offre.user._id= nav.getCurrentUser()._id " ng-model="offre.user._id"  class="form-control" disabled="disabled" style="display: none;" />
-                <input type="text" id="offre.user.name" ng-value="offre.user.name= nav.getCurrentUser().name" ng-model="offre.user.name"  class="form-control"  disabled="disabled"  style="display: none;"/>
-                <input type="text" id="offre.user.email" ng-value="offre.user.email= nav.getCurrentUser().email" ng-model="offre.user.email"  class="form-control" disabled="disabled" style="display: none;" />
-                <input type="text" id="offre.anounceUser._id"  ng-value="offre.anounceUser._id= announce.user[0]._id " ng-model="offre.anounceUser._id"  class="form-control" disabled="disabled" style="display: none;" />
-                <input type="text" id="offre.anounceUser.name" ng-value="offre.anounceUser.name= announce.user[0].name" ng-model="offre.anounceUser.name"  class="form-control"  disabled="disabled" style="display: none;" />
-                <input type="text" id="offre.anounceUser.email" ng-value="offre.anounceUser.email= announce.user[0].email" ng-model="offre.anounceUser.email"  class="form-control" disabled="disabled" style="display: none;" />
-                <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
+                  <div text-angular ng-model="offre.description"></div>
+                  <input ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
+                  <input type="text" ng-model="offre.prix" class="form-control" id="offre.prix" placeholder="Prix ..."/>
+                  <input type="text" id="offre.user._id"  ng-value="offre.user._id= nav.getCurrentUser()._id " ng-model="offre.user._id"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.user.name" ng-value="offre.user.name= nav.getCurrentUser().name" ng-model="offre.user.name"  class="form-control"  disabled="disabled"  style="display: none;"/>
+                  <input type="text" id="offre.user.email" ng-value="offre.user.email= nav.getCurrentUser().email" ng-model="offre.user.email"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUser._id"  ng-value="offre.anounceUser._id= announce.user[0]._id " ng-model="offre.anounceUser._id"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUser.name" ng-value="offre.anounceUser.name= announce.user[0].name" ng-model="offre.anounceUser.name"  class="form-control"  disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUser.email" ng-value="offre.anounceUser.email= announce.user[0].email" ng-model="offre.anounceUser.email"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
 
 
 
-              </div>
+                </div>
 
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="btn btn-primary"  value="Demander"/>
-              </div>
-            </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-primary"  value="Demander"/>
+                  </div>
+                </div>
 
-            </form>
+              </form>
 
               <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br>
               <br><br><br><br> <br><br><br><br>  <br><br><br><br> <br><br><br><br>
 
 
+            </div>
           </div>
-        </div>
       </div>
       <div class="gap"></div>
       <h3>Produits similaires</h3>
