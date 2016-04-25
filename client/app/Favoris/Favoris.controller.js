@@ -15,7 +15,7 @@ angular.module('projetBadelApp')
       console.log(data);
       premium.putpremium({id: data}, function(){
         $state.reload();
-        
+
       });
     };
 

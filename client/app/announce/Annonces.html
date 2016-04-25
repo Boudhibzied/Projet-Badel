@@ -57,7 +57,7 @@
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab-1" >
             <div ng-controller="commentListController">
-              <ul class="comments-list" ng-repeat="c in comments">
+              <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
                 <li>
                   <!-- REVIEW -->
                   <article class="comment">
