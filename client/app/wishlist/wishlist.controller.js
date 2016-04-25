@@ -23,11 +23,37 @@ angular.module('projetBadelApp')
 
     $scope.deleteWishlist=function(Wish){
       Wish.$delete(function(){
-        $window.location.href='';
+        $state.reload();
       });
     }
 
+
+
+
   })
+
+
+
+
+
+
+  .controller('SupplierListController',function($scope,$state,$window,Wishlist){
+
+    $scope.Suppliers=Wishlist.query();
+
+
+
+  })
+
+  .controller('WishlistShowUserController',function($scope,$state,$window,$stateParams,Wis){
+
+    $scope.Wishlists=Wis.getByIDD({id:$stateParams.id});
+
+  })
+
+
+
+
   .controller('WishlistEditController',function($scope,$state,$stateParams,Wishlist){
 
     $scope.updateWishlist=function(){

@@ -30,7 +30,6 @@
             <ul class="icon-list list-space product-info-list">
               <li><i class="fa fa-check"></i>Catégorie :{{announce.underCategory}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
-              <li><i class="fa fa-check"></i>Id user: {{announce._id}}</li>
             </ul>
             <ul class="list-inline">
               <li><a ui-sref="Negociation" class="btn btn-primary"><i class="fa fa-exchange"></i> Badel !</a>
@@ -50,8 +49,9 @@
           </li>
           <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-video-camera"></i>conversation en Video</a>
           </li>
-          <li><a ui-sref="Wishlists({id:announce_id})" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
-          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
+          </li>
+          <li><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
           </li>
         </ul>
         <div class="tab-content">
@@ -89,7 +89,28 @@
 
           <div class="tab-pane fade" id="tab-3">
           </div>
-          <div class="tab-pane fade" id="tab-4">
+          <div class="tab-pane fade" id="tab-4" >
+            <div ng-controller="SupplierListController">
+            <h1> souhaits de </h1>
+            <table >
+              <thead>
+              <tr>
+                <th><b>Nom</b></th>
+                <th><b>Description</b></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr ng-repeat="announce in Suppliers | filter:announce.user[0]._id ">
+                <td>{{announce.title}}</td>
+                <td>{{announce.info}}</td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <div class="tab-pane fade" id="tab-5">
 
             <div class="form-group" ng-controller="OffreCreateController">
               <form class="form-horizontal" role="form" ng-submit="addOffre()">
@@ -128,114 +149,7 @@
 
             </div>
           </div>
-        </div>
-        <div class="gap"></div>
-        <h3>Produits similaires</h3>
-        <div class="gap gap-mini"></div>
-        <div class="row row-wrap">
-          <div class="col-md-4">
-            <div class="product-thumb">
-              <header class="product-header">
-                <img src="assets/img/oca1.jpg" alt="Image Alternative text" title="the best mode of transport here in maldives" />
-              </header>
-              <div class="product-inner">
-                <ul class="icon-group icon-list-rating icon-list-non-rated" title="not rated yet">
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <h5 class="product-title">Range Rover</h5>
-                <p class="product-desciption">Voiture neuf</p>
-                <div class="product-meta">
-                  <ul class="product-price-list">
-                    <li><span class="product-price">$190000</span>
-                    </li>
-                  </ul>
-                  <ul class="product-actions-list">
-                    <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="product-thumb">
-              <header class="product-header">
-                <img src="assets/img/oca2.jpg" alt="Image Alternative text" title="Ana 29" />
-              </header>
-              <div class="product-inner">
-                <ul class="icon-group icon-list-rating" title="4.4/5 rating">
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star-half-empty"></i>
-                  </li>
-                </ul>
-                <h5 class="product-title">Polo 5</h5>
-                <p class="product-desciption">Bonne ocasion neuf</p>
-                <div class="product-meta">
-                  <ul class="product-price-list">
-                    <li><span class="product-price">$12000</span>
-                    </li>
-                  </ul>
-                  <ul class="product-actions-list">
-                    <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="product-thumb">
-              <header class="product-header">
-                <img src="assets/img/oca3.jpg" alt="Image Alternative text" title="Gamer Chick" />
-              </header>
-              <div class="product-inner">
-                <ul class="icon-group icon-list-rating" title="4.4/5 rating">
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star-half-empty"></i>
-                  </li>
-                </ul>
-                <h5 class="product-title">BMW Serie 1</h5>
-                <p class="product-desciption">Offre classe pour, voiture en bonne état</p>
-                <div class="product-meta">
-                  <ul class="product-price-list">
-                    <li><span class="product-price">Offre classe pour, voiture en bonne état</span>
-                    </li>
-                  </ul>
-                  <ul class="product-actions-list">
-                    <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> Baddel !</a>
-                    </li>
-                    <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="gap gap-small"></div>
+      </div>
       </div>
     </div>
 
@@ -245,5 +159,4 @@
   //////////////END PAGE CONTENT/////////
   ////////////////////////////////////-->
 </div>
-</div>
-</div>
+

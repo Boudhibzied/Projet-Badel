@@ -14,6 +14,17 @@ angular.module('projetBadelApp')
       stripTrailingSlashes: false
     });
 })
+
+  .factory('Wis',function($resource){
+    return $resource('http://localhost:9000/api/wishlists/annonce/:id',{},
+      {  'getByIDD':  {method:'GET', params: { id: '@_id'}, isArray:true },
+
+      },
+      {
+        stripTrailingSlashes: false
+      });
+  })
+
   .factory('Wish',function($resource){
     return $resource('http://localhost:9000/api/wishlists/show/:id',{},
       {  'getByID':  {method:'GET', params: { id: '@_id'}, isArray:true },
