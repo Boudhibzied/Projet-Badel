@@ -9,7 +9,7 @@ angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
     templateUrl:'app/announce/ajoutAnnonce.html',
     controller:'AnnounceCreateController'
   }).state('viewAnnounce',{
-    url:'/Announces/:id',
+    url:'/Announcess/:id',
     templateUrl:'app/announce/Annonces.html',
     controller:'AnnounceViewController'
   }).state('showAnnounce',{
