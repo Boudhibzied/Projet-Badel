@@ -118,3 +118,12 @@ export function showByTitle(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+export function premium(req, res)
+{
+  return Announce.find().where('premium').equals('true').exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+

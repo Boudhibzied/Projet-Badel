@@ -14,7 +14,7 @@
                         <ul class="nav nav-pills nav-stacked nav-arrow">
                                <li><a ui-sref="settings" >Votre compte : </a>
                               </li>
-                              <li><a ui-sref="showAnnounce({id:nav.getCurrentUser()._id})">Votre Annonce :</a>
+                              <li><a ui-sref="showAnnounce({id:nav.getCurrentUser()._id})">Vos annonces :</a>
                               </li>
                               <li><a ui-sref="Wishlists({id:nav.getCurrentUser()._id})">Votre Wishlist : </a>
                               </li>
@@ -63,7 +63,6 @@
                  ng-show="form.confirmPassword.$error.match && vm.submitted">
                 Les mots de passe doivent correspondre.
               </p>
-
             </div>
             <button class="btn btn-primary" type="submit">Sauvegarder</button>
             </div>
@@ -71,12 +70,14 @@
           </form>
 
       </div>
-      <div class="gap"></div>
+        <div class="gap-big"></div>
     </div>
   </div>
 
 </div>
 
+
+</div>
 
 <!-- //////////////////////////////////
 //////////////END PAGE CONTENT/////////

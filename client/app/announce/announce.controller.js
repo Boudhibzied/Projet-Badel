@@ -13,12 +13,11 @@ angular.module('projetBadelApp')
       Annonce.$delete(function(){
         $state.go('showAnnounce');
       });
-    }
+    };
 
   })
   .controller('AnnounceViewController',function($scope,$stateParams,Announce){
 
-    $scope.testt="LALALALA";
     $scope.offre=Offre.query();
     $scope.announce=Announce.get({id:$stateParams._id});
 

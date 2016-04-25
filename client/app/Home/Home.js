@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('projetBadelApp')
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('Home', {
         url: '/',
-        templateUrl: 'app/Home/Home.html',
+        templateUrl: 'app/home/home.html',
       });
   });
