@@ -127,3 +127,13 @@ export function premium(req, res)
     .catch(handleError(res));
 }
 
+export function findAndUpdate(req, res)
+{
+  var query = {_id: req.params.id};
+  return Announce.findOne(query, function(doc){
+    doc.premium = true;
+    doc.save();
+  });
+
+}
+

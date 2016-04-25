@@ -5418,6 +5418,8 @@ img.mfp-img {
     transform: rotate(360deg);
   }
 }
+
+/*noinspection ALL*/
 @keyframes spinner {
   0% {
     -webkit-transform: rotate(0);
