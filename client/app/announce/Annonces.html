@@ -60,7 +60,7 @@
               <ul class="comments-list" ng-repeat="c in comments">
                 <li>
                   <!-- REVIEW -->
-                  <article class="comment">
+                  <article class="comment"  ng-if=" comments.idannounce == announce._id ">
                     <div class="comment-author">
                       <img src="assets/img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
                     </div>
@@ -75,7 +75,10 @@
             <div ng-controller="commentCreateController">
               <form class="form-horizontal" role="form" ng-submit="addcomment()">
                 <textarea ng-model="comments.text"> </textarea>
-                <input type="text" id="comments.postedby"  ng-init="comments.postedby= nav.getCurrentUser().name " ng-model="comments.postedby" disabled="disabled" class="form-control"  style="display: none;" />
+                <input type="text" id="comments.postedby"  ng-value="comments.postedby= nav.getCurrentUser().name " ng-model="comments.postedby" disabled="disabled" class="form-control"  style="display: none;" />
+                <input type="text" id="comments.idannounce"  ng-value="comments.idannounce = announce._id " ng-model="comments.idannounce" disabled="disabled" class="form-control"  style="display: none;" />
+                <input type="text" id="comments.iduser" ng-value="comments.iduser=  nav.getCurrentUser()._id  " ng-model="comments.iduser" disabled="disabled" class="form-control"  style="display: none;" />
+
                 <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Ajouter</button>
               </form>
             </div>

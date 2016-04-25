@@ -3,7 +3,6 @@ angular.module('projetBadelApp')
   .controller('commentListController',function($scope,$state,$window,comment){
 
     $scope.comments=comment.query();
-
     $scope.deletecomment=function(comment){
       comment.$delete(function(){
         $window.location.href='';
