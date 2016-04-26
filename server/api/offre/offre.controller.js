@@ -106,7 +106,7 @@ export function destroy(req, res) {
 }
 
 
- export function mail(req, res, next){
+export function mail(req, res, next){
 
     var data = req.body;
 
