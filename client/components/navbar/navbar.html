@@ -2,9 +2,9 @@
   <header class="main">
   <div class="container" ng-controller="NavbarController">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-1">
         <a ui-sref="Home" class="logo">
-          <img src="assets/img/badel.png" style="height: 42px;width: 150px" alt="Image Alternative text" title="Image Title" />
+          <img src="assets/img/badel.png" style="height: 42px;width: 100px" alt="Image Alternative text" title="Image Title" />
         </a>
       </div>
       <div class="col-md-6">
@@ -14,11 +14,11 @@
             <li>
               <a ui-sref="Home">Accueil</a>
             </li>
-            <li><a ui-sref="Recherche" >Rechercher des annonces</a>
+            <li ><a ui-sref="Recherche" >Nos annonces</a>
             </li>
-            <li ng-hide="nav.isLoggedIn()"><a ui-sref="About" >Pourquoi Badel</a>
+            <li ng-hide="nav.isLoggedIn()"><a ui-sref="About" >Pourquoi Badel !</a>
             </li>
-            <li><a ui-sref="contact" >Contactez</a>
+            <li ng-hide="nav.isLoggedIn()"><a ui-sref="contact" >Contactez nous</a>
             </li>
             <li ng-show="nav.isLoggedIn()"><a  ui-sref="newAnnounce" >Déposez votre annonce</a>
             </li>
@@ -26,11 +26,13 @@
         </nav>
       </div>
 
-      <div class="col-md-4"  id="navbar-main">
+      <div class="col-md-5"  id="navbar-main">
           <ul class="login-register nav navbar-nav navbar-right">
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="signup" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Inscription</a></li>
             <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a class="popup-text" ui-sref="login" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Connexion</a></li>
-            <li ng-show="nav.isLoggedIn()"><p class="navbar-text" style="color: #FFFFFF;">Bonjour<span>  </span>{{ nav.getCurrentUser().name }}</p> </li>
+            <li ng-show="nav.isLoggedIn()"><p class="navbar-text" style="color: #FFFFFF;">Bonjour {{ nav.getCurrentUser().name }}</p> </li>
+            <li ng-show="nav.isLoggedIn()"><p class="navbar-text" style="color: #FFFFFF;">point: {{ nav.getCurrentUser().point }}</p> </li>
+            <li ng-show="nav.isLoggedIn()"><p class="navbar-text" style="color: #FFFFFF;">{{ nav.getCurrentUser().status }}</p> </li>
             <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
             <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><i class="fa fa-sign-out"></i>Deconnexion</a></li>
           </ul>

@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Announce from './announce.model';
+import User from '../user/user.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -135,6 +136,15 @@ export function findAndUpdate(req, res)
     {
       handleError(res);
     }
+    User.findOne({_id: doc.user[0]._id}, function(err, user){
+      if(err)
+      {
+        handleError(res);
+      }
+      user.point -= 50;
+      user.reputation += 50;
+      user.save();
+    });
     doc.premium = true;
     doc.datePost = new Date();
     doc.save();
@@ -142,4 +152,22 @@ export function findAndUpdate(req, res)
   });
 
 }
+
+export function attribution(req, res, next)
+{
+  var data = req.body;
+  return User.findOne({_id: data.user._id}, function(err,user){
+    if(err)
+    {
+      handleError(res);
+    }
+    console.log(user);
+    user.point +=  10;
+    user.reputation += 10;
+    user.save();
+    next();
+  });
+
+}
+
 

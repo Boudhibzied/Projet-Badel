@@ -5,7 +5,7 @@ angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
     templateUrl:'app/Recherche/Recherche.html',
     controller:'AnnounceListRechercheController'
   }).state('viewAnnounce',{
-    url:'/Announcess/:id',
+    url:'/Announcess/:id/:name',
     templateUrl:'app/announce/Annonces.html',
     controller:'AnnounceViewController'
   }).state('showAnnounce',{

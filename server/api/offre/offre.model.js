@@ -8,7 +8,7 @@ var OffreSchema = new mongoose.Schema({
   prix: Number,
   photo: { type: String, default:'oca1.jpg'},
   status: { type: Number, default:0},
-  announce:{type: mongoose.Schema.Types.ObjectId, ref: 'announce'},
+  announce:{type: mongoose.Schema.Types.ObjectId, default: null},
   user:[{
     _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: String,

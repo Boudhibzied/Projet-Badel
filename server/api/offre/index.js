@@ -11,5 +11,6 @@ router.post('/', controller.mail, controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+router.get('/:id/Updateannonce', controller.Updateannonce);
 
 module.exports = router;

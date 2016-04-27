@@ -3,7 +3,7 @@ angular.module('projetBadelApp')
     return $resource('http://localhost:9000/api/scrappes/:name',{},
       {
         'get':    {method:'GET', isArray:true},
-        'save':    {method:'POST', params: {name:"@name"}}
+        'addscrappe':    {method:'POST', params: {name:"@name"}}
       },
 
       {

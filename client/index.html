@@ -40,61 +40,6 @@
       <link rel="stylesheet" href="components/oauth-buttons/oauth-buttons.css">
       <!-- endinjector -->
     <!-- endbuild -->
-    <!-- Prettify Code -->
-    <link rel="stylesheet" type="text/css" href="assets/css/easyrtc.css" />
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script type="text/javascript" src="assets/js/prettify.js"></script>
-    <script type="text/javascript" src="assets/js/loadAndFilter.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="assets/js/prettify.css" />
-    <!--show-->
-    <!-- Assumes global locations for socket.io.js and easyrtc.js -->
-    <script src="assets/js/socket.io.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="assets/js/easyrtc.js"></script>
-    <script type="text/javascript" src="assets/js/demo_video_only.js"></script>
-    <!--hide-->
-    <!-- Styles used within the demo -->
-    <style type="text/css">
-      #videoDemoContainer {
-        position:relative;
-      }
-      #connectControls {
-        float:left;
-        width:250px;
-        text-align:center;
-        border: 2px solid black;
-      }
-      #otherClients {
-        height:200px;
-        overflow-y:scroll;
-      }
-      #selfVideo {
-        height:225px;
-        width:300px;
-        float:left;
-        border:1px solid gray;
-        margin-left:10px;
-      }
-      #callerVideo {
-        height:225px;
-        width:300px;
-        border:1px solid gray;
-        margin-left:10px;
-      }
-      #acceptCallBox {
-        display:none;
-        z-index:2;
-        position:absolute;
-        top:100px;
-        left:400px;
-        border:red solid 2px;
-        background-color:pink;
-        padding:15px;
-      }
-    </style>
-
-
     <!-- Google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
@@ -104,8 +49,6 @@
     <link rel="stylesheet" href="assets/css/font_awesome.css">
     <!-- Main Template styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- Your custom styles (blank file) -->
-    <link rel="stylesheet" href="assets/css/mystyles.css">
   </head>
   <body ng-app="projetBadelApp">
     <!--[if lt IE 7]>
@@ -254,7 +197,7 @@
   ////////////////////////////////////-->
 
 
-      <footer class="main navbar-fixed-bottom"></footer>
+      <footer class="main"></footer>
 
 
       <!-- //////////////////////////////////
@@ -273,27 +216,6 @@
       ga('send', 'pageview');
     </script>
 
-
-      <!-- Scripts queries -->
-      <script src="assets/js/jquery.js"></script>
-      <script src="assets/js/boostrap.min.js"></script>
-      <script src="assets/js/countdown.min.js"></script>
-      <script src="assets/js/flexnav.min.js"></script>
-      <script src="assets/js/magnific.js"></script>
-      <script src="assets/js/tweet.min.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-      <script src="assets/js/fitvids.min.js"></script>
-      <script src="assets/js/mail.min.js"></script>
-      <script src="assets/js/ionrangeslider.js"></script>
-      <script src="assets/js/icheck.js"></script>
-      <script src="assets/js/fotorama.js"></script>
-      <script src="assets/js/card-payment.js"></script>
-      <script src="assets/js/owl-carousel.js"></script>
-      <script src="assets/js/masonry.js"></script>
-      <script src="assets/js/nicescroll.js"></script>
-
-      <!-- Custom scripts -->
-      <script src="assets/js/custom.js"></script>
 
 
 
@@ -386,6 +308,26 @@
       <script src="bower_components/angular-aria/angular-aria.min.js"></script>
       <script src="bower_components/angular-messages/angular-messages.min.js"></script>
       <script src="bower_components/angular-material/angular-material.min.js"></script>
+
+      <script src="assets/js/boostrap.min.js"></script>
+      <script src="assets/js/countdown.min.js"></script>
+      <script src="assets/js/flexnav.min.js"></script>
+      <script src="assets/js/magnific.js"></script>
+      <script src="assets/js/tweet.min.js"></script>
+      <script src="assets/js/fitvids.min.js"></script>
+      <script src="assets/js/mail.min.js"></script>
+      <script src="assets/js/ionrangeslider.js"></script>
+      <script src="assets/js/icheck.js"></script>
+      <script src="assets/js/fotorama.js"></script>
+      <script src="assets/js/card-payment.js"></script>
+      <script src="assets/js/owl-carousel.js"></script>
+      <script src="assets/js/masonry.js"></script>
+      <script src="assets/js/nicescroll.js"></script>
+
+      <!-- Custom scripts -->
+      <script src="assets/js/custom.js"></script>
+
+      <script src=http://cdn.pubnub.com/pubnub.min.js></script>
 
 
     </div>

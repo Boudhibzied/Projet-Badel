@@ -5,7 +5,7 @@ angular.module('projetBadelApp')
     $scope.comments=comment.query();
     $scope.deletecomment=function(comment){
       comment.$delete(function(){
-        $window.location.href='';
+        $state.reload();
       });
     }
 
@@ -16,7 +16,7 @@ angular.module('projetBadelApp')
 
     $scope.addcomment=function(){
       $scope.comments.$save(function(){
-        $window.location.href='Announces';
+        $window.location.reload();
       });
     }
 

@@ -20,16 +20,16 @@
 </div>
 <div class="bg-holder">
   <div class="bg-mask"></div>
-  <div class="bg-blur" style="background-image:url(img/backgrounds/Premium.jpg)"></div>
+  <div class="bg-blur" style="background-image:url(../../assets/img/backgrounds/Premium.jpg)"></div>
   <div class="container bg-holder-content">
     <div class="gap gap-big text-center">
       <h1 class="mb30 text-white">Les offres premium</h1>
       <div class="row row-wrap" ng-controller="announcePremiumController">
-        <div ng-repeat="premium in premiums|orderBy:'-datePost'">
+        <div ng-repeat="premium in premiums'">
         <a class="col-md-3" href="#">
           <div class="product-thumb">
             <header class="product-header">
-              <img src="assets/img/opel1.jpg" style="width: 263px; height: 195px" alt="Image Alternative text" />
+              <img src="../../assets/img/800x600.png" style="width: 263px; height: 195px" alt="Image Alternative text" />
             </header>
             <div class="product-inner">
               <h5 class="product-title">{{premium.title}}</h5>
@@ -41,7 +41,7 @@
               </div>
               <br>
               <ul class="product-actions-list">
-              <p ui-sref="viewAnnounce({id:premium._id})" class="btn btn-black btn-lg btn-ghost" ><i></i><i class="fa fa-chevron-right"></i> Details</p>
+              <p ui-sref="viewAnnounce({id:premium._id, name:premium.title})" class="btn btn-black btn-lg btn-ghost" ><i></i><i class="fa fa-chevron-right"></i> Details</p>
               </ul>
             </div>
           </div>
@@ -51,123 +51,27 @@
     </div>
   </div>
 </div>
-<!--
+
 <div class="gap"></div>
-<div class="container">
-  <div class="text-center">
+
+
+<div class="container" ng-controller="AnnounceListController">
+  <div class="text-center" >
     <h2 class="mb30">Les offres récentes</h2>
-    <div class="row row-wrap" id="masonry">
-      <a class="col-md-2 col-masonry" href="#">
+    <div class="row row-wrap" id="masonry" >
+      <a class="col-md-2 col-masonry" href="#" ng-repeat="a in Announces | limitTo:3">
         <div class="product-thumb">
           <header class="product-header">
             <img src="assets/img/800x600.png" alt="Image Alternative text" title="Our Coffee miss u" />
           </header>
           <div class="product-inner">
-            <h5 class="product-title">Coffe Shop Discount</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i>  16 h</span>
+            <h5 class="product-title">{{a.title}}</h5>
               <ul class="product-price-list">
-                <li><span class="product-price">$72</span>
-                </li>
-                <li><span class="product-old-price">$163</span>
+                <li><span class="product-price">{{a.price}}</span>
                 </li>
               </ul>
             </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-          </div>
-        </div>
-      </a>
-      <a class="col-md-2 col-masonry" href="#">
-        <div class="product-thumb">
-          <header class="product-header">
-            <img src="assets/img/800x600.png" alt="Image Alternative text" title="Green Furniture" />
-          </header>
-          <div class="product-inner">
-            <h5 class="product-title">Green Furniture Pack</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 5 days 34 h</span>
-              <ul class="product-price-list">
-                <li><span class="product-price">$102</span>
-                </li>
-                <li><span class="product-old-price">$162</span>
-                </li>
-              </ul>
-            </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-          </div>
-        </div>
-      </a>
-      <a class="col-md-2 col-masonry" href="#">
-        <div class="product-thumb">
-          <header class="product-header">
-            <img src="assets/img/800x600.png" alt="Image Alternative text" title="iPhone 5 iPad mini iPad 3" />
-          </header>
-          <div class="product-inner">
-            <h5 class="product-title">Electronics Big Deal</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 8 days 43 h</span>
-              <ul class="product-price-list">
-                <li><span class="product-price">$87</span>
-                </li>
-                <li><span class="product-old-price">$212</span>
-                </li>
-              </ul>
-            </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-          </div>
-        </div>
-      </a>
-      <a class="col-md-2 col-masonry" href="#">
-        <div class="product-thumb">
-          <header class="product-header">
-            <img src="assets/img/800x600.png" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
-          </header>
-          <div class="product-inner">
-            <h5 class="product-title">Best Camera</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 9 days 43 h</span>
-              <ul class="product-price-list">
-                <li><span class="product-price">$75</span>
-                </li>
-                <li><span class="product-old-price">$241</span>
-                </li>
-              </ul>
-            </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-          </div>
-        </div>
-      </a>
-      <a class="col-md-2 col-masonry" href="#">
-        <div class="product-thumb">
-          <header class="product-header">
-            <img src="assets/img/800x600.png" alt="Image Alternative text" title="waipio valley" />
-          </header>
-          <div class="product-inner">
-            <h5 class="product-title">Awesome Vacation</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 2 days 4 h</span>
-              <ul class="product-price-list">
-                <li><span class="product-price">$164</span>
-                </li>
-                <li><span class="product-old-price">$253</span>
-                </li>
-              </ul>
-            </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-          </div>
-        </div>
-      </a>
-      <a class="col-md-2 col-masonry" href="#">
-        <div class="product-thumb">
-          <header class="product-header">
-            <img src="assets/img/800x600.png" alt="Image Alternative text" title="The Violin" />
-          </header>
-          <div class="product-inner">
-            <h5 class="product-title">Violin Lessons</h5>
-            <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 4 days 48 h</span>
-              <ul class="product-price-list">
-                <li><span class="product-price">$135</span>
-                </li>
-                <li><span class="product-old-price">$275</span>
-                </li>
-              </ul>
-            </div>
-            <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
+            <p class="product-location"><i class="fa fa-map-marker"></i> {{a.location}}</p>
           </div>
         </div>
       </a>
@@ -175,8 +79,8 @@
   </div>
   <div class="gap"></div>
 </div>
--->
 
+<div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div>
 <!-- //////////////////////////////////
 //////////////END PAGE CONTENT/////////
 ////////////////////////////////////-->

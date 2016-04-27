@@ -8,15 +8,49 @@
 
 <div class="container">
   <div class="row">
-
+    <div class="col-md-3">
+      <aside class="sidebar-left">
+        <div class="sidebar-box" ng-controller="RechercheCtrl">
+          <h5>Annonces Tayara.tn</h5>
+          <ul class="thumb-list" ng-repeat="s in scrappes | limitTo:10" >
+            <li>
+              <a>
+                <img src="{{s.Image}}" alt="{{s.alt}}"  />
+              </a>
+              <div class="thumb-list-item-caption">
+                <h5 class="thumb-list-item-title"><a>{{s.Titre}}</a></h5>
+                <p class="thumb-list-item-price">{{s.Prix}}</p>
+              </div>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
     <div class="col-md-9">
+      <div id="review-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix" ng-controller="commentCreateController">
+        <h3>Ajouter un commentaire</h3>
+        <form ng-submit="addcomment()">
+          <div class="form-group" >
+            <label>Nom</label>
+            <input type="text" id="comments.postedby"  ng-value="comments.postedby= nav.getCurrentUser().name " ng-model="comments.postedby" disabled="disabled" class="form-control"/>
+            <input type="text" id="comments.idannounce"  ng-value="comments.idannounce = announce._id " ng-model="comments.idannounce" disabled="disabled" class="form-control"  style="display: none;" />
+            <input type="text" id="comments.iduser" ng-value="comments.iduser=  nav.getCurrentUser()._id  " ng-model="comments.iduser" disabled="disabled" class="form-control"  style="display: none;" />
+          </div>
+          <div class="form-group">
+            <label>Commentaire</label>
+            <textarea class="form-control" ng-model="comments.text"></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Envoyer" />
+        </form>
+      </div>
       <div class="row">
         <div class="col-md-7">
           <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
-            <img src="assets/images/{{announce.category}}" alt="Image Alternative text" />
-            <img src="assets/img/opel2.jpg" alt="Image Alternative text" title="AMaze" />
-            <img src="assets/img/opel3.jpg" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
-            <img src="assets/img/opel4.jpg" alt="Image Alternative text" title="Food is Pride" />
+            <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="Gamer Chick" />
+            <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="AMaze" />
+            <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
+            <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="Food is Pride" />
           </div>
         </div>
         <div class="col-md-5">
@@ -30,12 +64,15 @@
             <ul class="icon-list list-space product-info-list">
               <li><i class="fa fa-check"></i>Catégorie :{{announce.underCategory}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
-            </ul>
-            <ul class="list-inline">
-              <li><a ui-sref="Negociation" class="btn btn-primary"><i class="fa fa-exchange"></i> Badel !</a>
-              </li>
-              <li><a href="#" class="btn"><i class="fa fa-star"></i>Ajouter au Favoris</a>
-              </li>
+              <div ng-if="announce.user.status == 'novice'">
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
+              </div>
+              <div ng-if="announce.user[0].status == 'fiable'">
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} est digne de confiance ! </p></li>
+              </div>
+              <div ng-if="announce.user.status == 'Pro!'">
+                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.user[0].name}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
+              </div>
             </ul>
           </div>
         </div>
@@ -51,42 +88,37 @@
           </li>
           <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
           </li>
-          <li><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          <li ng-if="announce.status == ' en cours de negotiation'"><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
           </li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab-1" >
             <div ng-controller="commentListController">
-              <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
-                <li>
-                  <!-- REVIEW -->
-                  <article class="comment">
-                    <div class="comment-author">
-                      <img src="assets/img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
-                    </div>
-                    <div class="comment-inner">
-                      <span class="comment-author-name">{{ c.postedby }}</span>
-                      <p class="comment-content">{{ c.text }}</p>
-                    </div>
-                  </article>
-                </li>
-              </ul>
+            <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
+              <li>
+                <!-- REVIEW -->
+                <article class="comment">
+                  <div class="comment-author">
+                    <img src="../../assets/img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
+                  </div>
+                  <div class="comment-inner">
+                    <span class="comment-author-name">{{ c.postedby }}</span>
+                    <p class="comment-content">{{ c.text }}</p>
+                  </div>
+                </article>
+              </li>
+            </ul>
             </div>
-            <div ng-controller="commentCreateController">
-              <form class="form-horizontal" role="form" ng-submit="addcomment()">
-                <textarea ng-model="comments.text"> </textarea>
-                <input type="text" id="comments.postedby"  ng-value="comments.postedby= nav.getCurrentUser().name " ng-model="comments.postedby" disabled="disabled" class="form-control"  style="display: none;" />
-                <input type="text" id="comments.idannounce"  ng-value="comments.idannounce = announce._id " ng-model="comments.idannounce" disabled="disabled" class="form-control"  style="display: none;" />
-                <input type="text" id="comments.iduser" ng-value="comments.iduser=  nav.getCurrentUser()._id  " ng-model="comments.iduser" disabled="disabled" class="form-control"  style="display: none;" />
-
-                <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Ajouter</button>
-              </form>
-            </div>
+            <a class="popup-text btn btn-primary" href="#review-dialog" data-effect="mfp-zoom-out"><i class="fa fa-pencil"></i> Ajouter un commentaire</a>
           </div>
           <div class="tab-pane fade" id="tab-2">
 
-          </div>
+            Enter Chat and press enter
+            <div><input id=input placeholder=you-chat-here /></div>
 
+            Chat Output
+            <div id=box></div>
+          </div>
           <div class="tab-pane fade" id="tab-3">
           </div>
           <div class="tab-pane fade" id="tab-4" >
@@ -140,23 +172,111 @@
                     <input type="submit" class="btn btn-primary"  value="Demander"/>
                   </div>
                 </div>
-
               </form>
-
-              <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br>
-              <br><br><br><br> <br><br><br><br>  <br><br><br><br> <br><br><br><br>
-
-
+              <br><br><br><br>
             </div>
           </div>
       </div>
       </div>
+      <div class="gap"></div>
+      <div ng-if="announce.status == ' en cours de negotiation'">
+      <h3>Les Offres proposer</h3>
+      <div class="gap gap-mini"></div>
+      <div ng-controller="OffreListController">
+      <div class="row row-wrap">
+        <div class="col-md-4" ng-repeat="o in Offres |filter:announce._id">
+          <div class="product-thumb">
+            <header class="product-header">
+              <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title">{{o.marque}}</h5>
+              <p class="product-desciption">{{o.description}}</p>
+              <div class="product-meta">
+                <ul class="product-price-list">
+                  <li><span class="product-price">{{o.prix}}</span>
+                  </li>
+                </ul>
+                <ul class="product-actions-list">
+                  <li><a  class="btn btn-success" ng-click="UpdateAnnonce(o)" ><i class="fa fa-check"></i> Baddel !</a>
+                  </li>
+                  <li><a class="btn btn-danger"  ng-click="deleteOffre(o)"><i class="fa fa-times"></i>Refuser </a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="gap gap-small"></div>
     </div>
-
+      </div>
+      <div ng-if="announce.status == 'negotiation terminer'">
+      <div ng-controller="OffreListController">
+      <div class="col-md-12" ng-repeat="o in Offres |filter:announce.offer">
+      <h3>le propriétaire de cette annonce : {{ announce.user[0].name }} a finalisé la négociation avec {{o.user[0].name}} vous trouverez l'offre ci-dessous :</h3>
+      <div class="gap gap-mini"></div>
+        <div class="row row-wrap">
+            <div class="product-thumb">
+              <header class="product-header">
+                <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+              </header>
+              <div class="product-inner">
+                <h5 class="product-title">{{o.marque}}</h5>
+                <p class="product-desciption">{{o.description}}</p>
+                <div class="product-meta">
+                  <ul class="product-price-list">
+                    <li><span class="product-price">{{o.prix}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gap gap-small"></div>
+      </div>
+      </div>
   </div>
 
   <!-- //////////////////////////////////
   //////////////END PAGE CONTENT/////////
   ////////////////////////////////////-->
+
+    <script src="../../assets/js/boostrap.min.js"></script>
+    <script src="../../assets/js/countdown.min.js"></script>
+    <script src="../../assets/js/flexnav.min.js"></script>
+    <script src="../../assets/js/magnific.js"></script>
+    <script src="../../assets/js/tweet.min.js"></script>
+    <script src="../../assets/js/fitvids.min.js"></script>
+    <script src="../../assets/js/mail.min.js"></script>
+    <script src="../../assets/js/ionrangeslider.js"></script>
+    <script src="../../assets/js/icheck.js"></script>
+    <script src="../../assets/js/fotorama.js"></script>
+    <script src="../../assets/js/card-payment.js"></script>
+    <script src="../../assets/js/owl-carousel.js"></script>
+    <script src="../../assets/js/masonry.js"></script>
+    <script src="../../assets/js/nicescroll.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="../../assets/js/custom.js"></script>
+
+
+    <script>(function(){
+
+      var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
+      PUBNUB.subscribe({
+        channel  : channel,
+        callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
+      });
+      PUBNUB.bind( 'keyup', input, function(e) {
+        (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
+          channel : channel, message : input.value, x : (input.value='')
+        })
+      } )
+    })()</script>
 </div>
+
+</div>
+
 

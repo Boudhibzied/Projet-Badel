@@ -10,12 +10,14 @@ var AnnounceSchema = new mongoose.Schema({
   datePost:{ type: Date, default: function(){return new Date()}},
   category: String,
   underCategory:String,
-  offer: [{body: String, rated: Boolean }],
+  location: String,
+  offer: {type: mongoose.Schema.Types.ObjectId, ref: 'Offre', default: null},
   premium: { type: Boolean, default: false},
   user:[{
     _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: String,
-    email: String
+    email: String,
+    status: String
   }]
 });
 

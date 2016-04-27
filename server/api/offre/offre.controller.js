@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Offre from './offre.model';
+import Announce from '../announce/announce.model';
 import nodemailer from 'nodemailer';
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://ziedboudhib%40gmail.com:stellax2@smtp.gmail.com');
@@ -106,7 +107,7 @@ export function destroy(req, res) {
 }
 
 
- export function mail(req, res, next){
+export function mail(req, res, next){
 
     var data = req.body;
 
@@ -127,3 +128,41 @@ export function destroy(req, res) {
      next();
    });
  }
+
+export function Updateannonce(req, res)
+{
+  var query = {_id: req.params.id};
+  return Offre.findOne(query, function(err,doc){
+    if(err)
+    {
+      handleError(res);
+    }
+    console.log(doc);
+    Announce.findOne({_id: doc.announce}, function(err,ann){
+      if(err)
+      {
+        handleError(res);
+      }
+      ann.offer = doc._id;
+      ann.status = 'negotiation terminer';
+      ann.save();
+    });
+    res.end();
+  });
+}
+
+export function attribution(req, res, next)
+{
+  var data = req.body;
+  return User.findOne({_id: data.user._id}, function(err,user){
+    if(err)
+    {
+      handleError(res);
+    }
+    user.point +=  10;
+    user.reputation += 100;
+    user.save();
+    next();
+  });
+
+}

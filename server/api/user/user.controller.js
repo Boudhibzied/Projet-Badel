@@ -116,9 +116,31 @@ export function me(req, res, next) {
     .catch(err => next(err));
 }
 
+export function checkReputation (req, res, next)
+{
+  var query = {_id: req.user._id};
+  return User.findOne(query, function(err,user){
+    if(err)
+    {
+      handleError(res);
+    }
+    if(user.reputation > 100 && user.reputation < 200){
+      user.status = 'fiable';
+      user.save();
+    }
+    else if(user.reputation > 200){
+      user.status = 'Pro!';
+      user.save();
+    }
+    next();
+
+  });
+}
+
 /**
  * Authentication callback
  */
-export function authCallback(req, res, next) {
+export function authCallback (req, res, next) {
   res.redirect('/');
 }
+

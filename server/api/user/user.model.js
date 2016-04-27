@@ -19,6 +19,18 @@ var UserSchema = new Schema({
   password: String,
   provider: String,
   salt: String,
+  point: {
+    type: Number,
+    default: 50
+  },
+  reputation: {
+    type: Number,
+    default: 10
+  },
+  status:{
+    type:String,
+    default:'novice'
+  },
   facebook: {},
   twitter: {},
   google: {},
@@ -224,4 +236,34 @@ UserSchema.methods = {
   }
 };
 
+/*
+export function reputationDefinition (req, res)
+{
+  var r;
+  var query = {_id: req.params.id};
+  return User.findOne(query, function(err,user){
+    if(err)
+    {
+      handleError(res);
+    }
+    if(user.reputation>100 && user.reputation<500){
+      user.
+      res.end.return(r);
+    }
+    else if(user.reputation<100){
+      r='argent';
+      res.end.return(r);
+    }
+    else{
+      r='diamond';
+      res.end.return(r);
+    }
+
+  });
+}
+
+UserSchema.post('init', function(req ,doc) {
+ // console.log(this.get(req.body));
+});
+*/
 export default mongoose.model('User', UserSchema);

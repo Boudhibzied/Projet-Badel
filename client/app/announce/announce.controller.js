@@ -16,9 +16,16 @@ angular.module('projetBadelApp')
     };
 
   })
-  .controller('AnnounceViewController',function($scope,$stateParams,Announce){
+  .controller('AnnounceViewController',function($scope, $stateParams, Announce, Scrappe){
 
     $scope.announce=Announce.get({id:$stateParams.id});
+    $scope.scrappe=Scrappe.addscrappe({name:$stateParams.name})
+
+
+  })
+  .controller('scrappeController',function($scope, $stateParams, Scrappe){
+
+    $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name})
 
   })
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){

@@ -35,12 +35,17 @@
                       </li>
                     </ul>
                     <ul class="product-actions-list">
-                      <li><a class="btn btn-info" ui-sref="viewAnnounce({id:announce._id})"><i class="fa fa-chevron-right"></i>Détails</a> </li>
+                      <li><a class="btn btn-info" ui-sref="viewAnnounce({id:announce._id, name:announce.title})"><i class="fa fa-chevron-right"></i>Détails</a> </li>
                       <li>  <a class="btn btn-danger"  ng-click="deleteAnnounce(announce)"><i class="fa fa-times"></i>effacer</a></li>
                     </ul>
                     <ul class="product-actions-list" ng-if="announce.premium == false">
                       <div ng-controller="PremiumEditController">
+                        <div   ng-if="nav.getCurrentUser().point >= 50">
                     <li>  <a class="btn btn-success"  ng-click="updatePremium(announce)"><i class="fa fa-star"></i> Premium <i class="fa fa-star"></i></a></li>
+                        </div>
+                        <div   ng-if="nav.getCurrentUser().point < 49">
+                          <p>Vous navez pas assez de points Badel ! </p>
+                        </div>
                       </div>
                     </ul>
                   </div>
@@ -57,5 +62,15 @@
 
 </div>
 
-
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
+<div class="gap"></div>
 
