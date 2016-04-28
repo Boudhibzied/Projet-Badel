@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('projetBadelApp')
-  .controller('RechercheCtrl', function ($scope,$state,$stateParams,$window,Scrappe) {
+  .controller('RechercheCtrl', function ($scope,$state,$stateParams,$window,Scrappe,$timeout) {
 
-    $scope.scrappes = Scrappe.get();
+    $timeout(function(){
+      $scope.scrappes = Scrappe.get();
+    },3000);
   });
+
