@@ -114,6 +114,7 @@ export function  search(req, res)
       alt: '.item-img img@alt'
     }]
   )(function(err, results){
+
     fs.writeFile("./output.json", JSON.stringify(results, null, '\t'));
     res.end();
   })

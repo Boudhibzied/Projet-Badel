@@ -2,7 +2,7 @@
 
 angular.module('projetBadelApp')
   .factory('Offre',function($resource){
-    return $resource('http://localhost:9000/api/offres/:id/:dest',{},
+    return $resource('/api/offres/:id/:dest',{},
       {  'get':    {method:'GET', params: { id: '@_id'}},
         'save':   {method:'POST'},
         'query':  {method:'GET', isArray:true},

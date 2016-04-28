@@ -20,7 +20,7 @@ angular.module('projetBadelApp')
                           'main';
                           */
           Auth.logout();
-          $state.href('/home');
+          $state.go('Home');
         }
       })
       .state('signup', {

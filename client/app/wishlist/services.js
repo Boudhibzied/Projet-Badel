@@ -1,7 +1,7 @@
 'use strict';
 angular.module('projetBadelApp')
 .factory('Wishlist',function($resource){
-  return $resource('http://localhost:9000/api/wishlists/:id',{},
+  return $resource('/api/wishlists/:id',{},
     {  'get':    {method:'GET', params: { id: '@_id'}},
       'save':   {method:'POST'},
       'query':  {method:'GET', isArray:true},
@@ -14,7 +14,7 @@ angular.module('projetBadelApp')
 })
 
   .factory('Wis',function($resource){
-    return $resource('http://localhost:9000/api/wishlists/annonce/:id',{},
+    return $resource('/api/wishlists/annonce/:id',{},
       {  'getByIDD':  {method:'GET', params: { id: '@_id'}, isArray:true },
 
       },
@@ -24,7 +24,7 @@ angular.module('projetBadelApp')
   })
 
   .factory('Wish',function($resource){
-    return $resource('http://localhost:9000/api/wishlists/show/:id',{},
+    return $resource('/api/wishlists/show/:id',{},
       {  'getByID':  {method:'GET', params: { id: '@_id'}, isArray:true },
         'delete': {method:'DELETE', params: { id: '@_id'}},
       },

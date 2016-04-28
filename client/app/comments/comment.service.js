@@ -1,7 +1,7 @@
 'use strict';
 angular.module('projetBadelApp')
   .factory('Comment',function($resource){
-    return $resource('http://localhost:9000/api/commentss/:id',{},
+    return $resource('/api/commentss/:id',{},
       { 'get':   {method:'GET', params: { id: '@_id'}},
         'save':   {method:'POST'},
         'query':  {method:'GET', isArray:true},
