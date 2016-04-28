@@ -14,9 +14,11 @@ angular.module('projetBadelApp')
         referrer: 'Home',
         template: '',
         controller: function($state, Auth) {
+          /*
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
                           'main';
+                          */
           Auth.logout();
           $state.go('Home');
         }

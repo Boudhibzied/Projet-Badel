@@ -10,7 +10,7 @@ angular.module('projetBadelApp')
   .controller('PremiumEditController',function($scope,$state,premium){
 
 
-    $scope.updatePremium=function(announce){
+    $scope.updatePremium=function(){
       var data = this.announce._id;
       console.log(data);
       premium.putpremium({id: data}, function(){

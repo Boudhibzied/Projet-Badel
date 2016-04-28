@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('projetBadelApp')
@@ -5,4 +6,4 @@ angular.module('projetBadelApp')
 
     $scope.premiums =premium.getPremium();
 
-  })
+  });

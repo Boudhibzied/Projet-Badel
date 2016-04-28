@@ -1,3 +1,6 @@
+
+'use strict';
+
 angular.module('projetBadelApp')
   .config(function($stateProvider) {
     $stateProvider

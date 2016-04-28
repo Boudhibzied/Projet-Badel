@@ -1,3 +1,6 @@
+
+'use strict';
+
 angular.module('projetBadelApp')
 
   .controller('AnnounceListController',function($scope,$state,$window,Announce){
@@ -19,13 +22,13 @@ angular.module('projetBadelApp')
   .controller('AnnounceViewController',function($scope, $stateParams, Announce, Scrappe){
 
     $scope.announce=Announce.get({id:$stateParams.id});
-    $scope.scrappe=Scrappe.addscrappe({name:$stateParams.name})
+    $scope.scrappe=Scrappe.addscrappe({name:$stateParams.name});
 
 
   })
   .controller('scrappeController',function($scope, $stateParams, Scrappe){
 
-    $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name})
+    $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name});
 
   })
   .controller('AnnounceCreateController',function($scope,$state,$stateParams,Announce){
@@ -36,7 +39,7 @@ angular.module('projetBadelApp')
       $scope.announce.$save(function(){
         $state.go('Recherche');
       });
-    }
+    };
   })
   .controller('AnnounceEditController',function($scope,$state,$stateParams,Announce){
 
