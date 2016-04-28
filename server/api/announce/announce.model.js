@@ -25,7 +25,7 @@ AnnounceSchema.post('init', function(doc) {
   var date = new Date();
   var resultat= date.getDate() -  doc.datePost.getDate();
 
-  if(resultat > 0 && doc.premium == true)
+  if(resultat > 0 && doc.premium === true)
   {
     doc.premium = false;
     doc.save();

@@ -29,15 +29,3 @@ Run `grunt build` for building and `grunt serve` for preview.
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
-
-
-
-test t2 
-
-## test git zied
-
-## Test git faten
-
-## Saddem viens de commencer a utiliser GIT!
-
-

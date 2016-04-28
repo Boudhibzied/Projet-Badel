@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('projetBadelApp')
 
   .controller('OffreListController',function($scope,$state,$window,Offre){
@@ -9,7 +11,7 @@ angular.module('projetBadelApp')
         $state.reload();
       });
     };
-    $scope.UpdateAnnonce = function (o){
+    $scope.UpdateAnnonce = function (){
       var data = this.o._id;
       Offre.putAnnonce({id: data}, function(){
         $state.reload();
@@ -23,7 +25,7 @@ angular.module('projetBadelApp')
       $scope.offre.$save(function(){
         $state.reload();
       });
-    }
+    };
 
 
-  })
+  });

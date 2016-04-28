@@ -1,3 +1,6 @@
+
+'use strict';
+
 angular.module('projetBadelApp')
   .factory('premium',function($resource){
     return $resource('http://localhost:9000/api/announces/:dest/:id',{},

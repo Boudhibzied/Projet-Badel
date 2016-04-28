@@ -113,11 +113,10 @@ export function  search(req, res)
       Image: '.item-img img@src',
       alt: '.item-img img@alt'
     }]
-  )
-  (function(err, results){
+  )(function(err, results){
     fs.writeFile("./output.json", JSON.stringify(results, null, '\t'));
     res.end();
-  });
+  })
 
 }
 

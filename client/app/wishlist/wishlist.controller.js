@@ -1,6 +1,6 @@
-/**
- * Created by faten on 11/04/2016.
- */
+
+'use strict';
+
 angular.module('projetBadelApp')
 
 
@@ -13,7 +13,7 @@ angular.module('projetBadelApp')
       $scope.wishlist.$save(function(){
         $state.go('Wishlists');
       });
-    }
+    };
 
   })
 
@@ -25,7 +25,7 @@ angular.module('projetBadelApp')
       Wish.$delete(function(){
         $state.reload();
       });
-    }
+    };
 
 
 

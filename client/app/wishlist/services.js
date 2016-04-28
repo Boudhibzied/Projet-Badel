@@ -1,6 +1,4 @@
-/**
- * Created by faten on 11/04/2016.
- */
+'use strict';
 angular.module('projetBadelApp')
 .factory('Wishlist',function($resource){
   return $resource('http://localhost:9000/api/wishlists/:id',{},

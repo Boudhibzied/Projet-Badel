@@ -1,4 +1,5 @@
-angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
+/* jshint strict:false */
+angular.module('projetBadelApp').config(function($stateProvider){
   $stateProvider.state('Wishlists',{
     url:'/Wishlists/:id',
     templateUrl:'app/wishlist/wishlist.html',

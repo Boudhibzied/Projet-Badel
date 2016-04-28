@@ -1,5 +1,5 @@
 'use strict';
-angular.module('projetBadelApp').config(function($stateProvider,$httpProvider){
+angular.module('projetBadelApp').config(function($stateProvider){
   $stateProvider.state('AnnouncesR',{
     url:'/Recherche/:title',
     templateUrl:'app/Recherche/Recherche.html',

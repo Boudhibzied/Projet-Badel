@@ -12,6 +12,7 @@
 import _ from 'lodash';
 import Offre from './offre.model';
 import Announce from '../announce/announce.model';
+import User from '../user/user.model';
 import nodemailer from 'nodemailer';
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://ziedboudhib%40gmail.com:stellax2@smtp.gmail.com');
