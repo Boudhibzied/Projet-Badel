@@ -1,9 +1,9 @@
 'use strict';
 angular.module('projetBadelApp')
 
-  .controller('commentListController',function($scope,$state,$window,comment){
+  .controller('commentListController',function($scope,$state,$window,Comment){
 
-    $scope.comments=comment.query();
+    $scope.comments=Comment.query();
     $scope.deletecomment=function(comment){
       comment.$delete(function(){
         $state.reload();
@@ -22,7 +22,7 @@ angular.module('projetBadelApp')
     };
 
   })
-  .controller('commentEditController',function($scope,$state,$stateParams,comment, $window){
+  .controller('commentEditController',function($scope,$state,$stateParams,Comment, $window){
 
     $scope.updatecomment=function(){
       $scope.comment.$update(function(){
