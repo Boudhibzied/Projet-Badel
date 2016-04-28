@@ -18,7 +18,7 @@ angular.module('projetBadelApp')
                           $state.current.referrer ||
                           'main';
           Auth.logout();
-          $state.go('Home');
+          $state.href('/home');
         }
       })
       .state('signup', {

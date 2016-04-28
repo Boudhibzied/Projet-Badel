@@ -197,7 +197,7 @@
                   <li><span class="product-price">{{o.prix}}</span>
                   </li>
                 </ul>
-                <ul class="product-actions-list">
+                <ul class="product-actions-list" ng-if=" announce.user[0]._id === nav.getCurrentUser()._id ">
                   <li><a  class="btn btn-success" ng-click="UpdateAnnonce(o)" ><i class="fa fa-check"></i> Baddel !</a>
                   </li>
                   <li><a class="btn btn-danger"  ng-click="deleteOffre(o)"><i class="fa fa-times"></i>Refuser </a>
