@@ -5,6 +5,6 @@ angular.module('projetBadelApp')
     $stateProvider
       .state('Home', {
         url: '/',
-        templateUrl: 'app/home/home.html',
+        templateUrl: 'app/Home/Home.html',
       });
   });
