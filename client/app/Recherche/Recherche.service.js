@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular.module('projetBadelApp')
@@ -12,4 +11,15 @@ angular.module('projetBadelApp')
       {
         stripTrailingSlashes: false
       });
+  })
+  .factory('page',function($resource){
+    return $resource('http://localhost:9000/api/announces/underCategory/:underCategory',{},
+      {  'get':  {method:'GET', params:{underCategory: '@underCategory'}, isArray:true },
+
+      },
+      {
+        stripTrailingSlashes: false
+      });
   });
+
+

@@ -22,7 +22,6 @@
 <!-- //////////////////////////////////
 //////////////PAGE CONTENT/////////////
 ////////////////////////////////////-->
-
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -93,45 +92,34 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-7">
           <div class="product-view pull-right">
-            <a class="fa fa-th-large active" ui-sref="Vertical"></a>
-            <a class="fa fa-list" ui-sref="Horizontal"></a>
+            <a class="fa fa-th-large" ui-sref="Vertical"></a>
+            <a class="fa fa-list active" ui-sref="Horizontal"></a>
           </div>
         </div>
-      </div>
-
-      <div class="row row-wrap">
-        <div ng-controller="AnnounceListController">
-          <div ng-repeat="announce in Announces | filter:search ">
-            <div class="col-md-4">
-              <div class="product-thumb">
-                <header class="product-header">
-                  <img style="width: 263px; height: 195px" src="assets/images/montre.jpg" alt="Image Alternative text" />
-                </header>
-                <div class="product-inner">
-                  <h5 class="product-title">{{announce.title}}</h5>
-                  <p class="product-desciption">{{announce.description}}</p>
-                  <div class="product-meta">
-                    <ul class="product-price-list">
-                      <li><span class="product-price">{{announce.price}} DT</span>
-                      </li>
-                    </ul>
-                    <ul class="product-actions-list">
-                      <li><a class="btn btn-black btn-lg btn-ghost" ui-sref="viewAnnounce({id:announce._id})"><i class="fa fa-chevron-right"></i>Détails</a> </li>
-
-
-                    </ul>
-                  </div>
-                </div>
+    </div>
+      <div ng-controller="AnnounceListController">
+        <div ng-repeat="announce in Announces | filter:search ">
+          <div class="product-thumb product-thumb-horizontal">
+            <header class="product-header">
+              <img src="assets/images/lunette.jpg" alt="Image Alternative text" " />
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title">{{announce.title}}</h5>
+              <p class="product-desciption">{{announce.description}}</p>
+              <div class="product-meta">
+                <ul class="product-price-list">
+                  <li><span class="product-price">{{announce.price}} DT</span>
+                  </li>
+                </ul>
+                <ul class="product-actions-list">
+                  <li><a class="btn btn-black btn-lg btn-ghost" ui-sref="viewAnnounce({id:announce._id})"><i class="fa fa-chevron-right"></i>Détails</a> </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
       <div class="gap"></div>
     </div>
-
-
   </div>
 </div>
