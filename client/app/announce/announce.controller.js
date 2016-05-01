@@ -53,4 +53,63 @@ angular.module('projetBadelApp')
     };
 
     $scope.loadAnnounce();
+  })
+  .controller('repeatController', function($scope) {
+    $scope.categories=[{
+        title: 'objets personnels',
+        underCategory:[
+          { name: 'vetement'},
+          { name: 'chaussures'},
+          { name: 'Sacs et accessoires'},
+          { name: "Montres et bijoux"}
+        ]},
+        {
+          title: "beauté et santé",
+          underCategory:[
+            { name: "produits cosmétiques"},
+            { name: "Équipement medical"}
+          ]},
+        {
+          title: "Maison",
+          underCategory:[
+            { name: "Intérieur"},
+            { name: "Electroménager"},
+          ]},
+        {
+          title: "Loisirs",
+          underCategory:[
+            { name: "films , livres et magazines"},
+            { name: "Instruments musicales"},
+            { name: "animaux domestiques"}
+          ]},
+        {
+          title: "Multimedia",
+          underCategory:[
+            { name: "Téléphonie"},
+            { name: "jeux videos et console"},
+            { name: "informatique et accessoires"}
+          ]},
+      {
+        title: "véhicules",
+        underCategory:[
+          { name: "Motos"},
+          { name: "Vélos"},
+          { name: "Voitures"},
+          { name: "Pièces de rechange et accessoires"}
+        ]},
+      {
+        title: "Autres",
+        underCategory:[
+          { name: "Autres Produits"}
+        ]},
+
+   ]
+
+
+    $scope.selectedCategory = $scope.categories[0];
+
   });
+
+
+
+

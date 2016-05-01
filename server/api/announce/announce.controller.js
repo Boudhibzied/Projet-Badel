@@ -121,7 +121,7 @@ export function showByTitle(req, res) {
 }
 //Gets a list of Announces by underCategory
 export function showByUnderCategory(req, res) {
-  return Announce.find().where('underCategory').equals(req.params.underCategory).exec()
+  return Announce.find().where('category.underCategory.name').equals(req.params.underCategory).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

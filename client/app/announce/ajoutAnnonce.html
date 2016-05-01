@@ -37,33 +37,15 @@
 
       <div class="col-md-5 col-md-offset-1">
         <div class="form-group">
-      <label for="sousCategorie">SousCategorie</label>
-      <div>
-        <select  ng-model="announce.underCategory"  id="sousCategorie">
-          <option value="vetement">vetement</option>
-          <option value="beaute et sante">beaute et sante</option>
-          <option value="montre et bijoux">montre et bijoux</option>
-          <option value="sac et accessoires">sac et accessoires</option>
-          <option value="maison">maison</option>
-          <option value="produits cosmetiques">produits cosmetiques</option>
-          <option value="equipement medicale">equipement medicale</option>
-          <option value="films , livres et magazines">films , livres et magazines</option>
-          <option value="animaux domestique">animaux domestique</option>
-          <option value="intruments musiquales">intruments musiquales</option>
-          <option value="telephonie">telephonie</option>
-          <option value="informatique et accessoires">informatique et accessoires</option>
-          <option value="jeux videos et console">jeux videos et console</option>
-          <option value="interieur">interieur</option>
-          <option value="electromenager">electromenager</option>
-          <option value="moto">moto</option>
-          <option value="velo">voiture</option>
-          <option value="piece de rechange et accessoires">piece de rechange et accessoires</option>
-          <option value="autres">autres</option>
-        </select>
+          <div  ng-controller="repeatController">
+      <label>Les Categories</label>
+          <div class="panel-heading">
+            Select category: <select ng-options="item as item.title for item in categories track by item.title" ng-model="announce.category"></select>
+            <select ng-model="announce.underCategory" ng-options="o.name for o in announce.category.underCategory" id="sousCategorie"></select>
+          </div>
+    </div>
+    </div>
       </div>
-    </div>
-    </div>
-
 
         <div class="row">
           <div class="col-md-8 col-md-offset-10">
@@ -72,6 +54,12 @@
         </div>
 
   </form>
+
+
+
+
+
+
 </div>
 <div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div>
 <div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div>

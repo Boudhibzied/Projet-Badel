@@ -8,8 +8,12 @@ var AnnounceSchema = new mongoose.Schema({
   picture:String,
   status: { type: String, default:" en cours de negotiation"},
   datePost:{ type: Date, default: function(){return new Date()}},
-  category: String,
-  underCategory:String,
+  category:[{
+  title: String,
+    underCategory:[
+    { name: String},
+  ]
+  }],
   location: String,
   offer: {type: mongoose.Schema.Types.ObjectId, ref: 'Offre', default: null},
   premium: { type: Boolean, default: false},
