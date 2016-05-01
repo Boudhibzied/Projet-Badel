@@ -94,20 +94,20 @@
         <div class="tab-content">
           <div class="tab-pane fade in active" id="tab-1" >
             <div ng-controller="commentListController">
-            <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
-              <li>
-                <!-- REVIEW -->
-                <article class="comment">
-                  <div class="comment-author">
-                    <img src="../../assets/img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
-                  </div>
-                  <div class="comment-inner">
-                    <span class="comment-author-name">{{ c.postedby }}</span>
-                    <p class="comment-content">{{ c.text }}</p>
-                  </div>
-                </article>
-              </li>
-            </ul>
+              <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
+                <li>
+                  <!-- REVIEW -->
+                  <article class="comment">
+                    <div class="comment-author">
+                      <img src="../../assets/img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
+                    </div>
+                    <div class="comment-inner">
+                      <span class="comment-author-name">{{ c.postedby }}</span>
+                      <p class="comment-content">{{ c.text }}</p>
+                    </div>
+                  </article>
+                </li>
+              </ul>
             </div>
             <a class="popup-text btn btn-primary" href="#review-dialog" data-effect="mfp-zoom-out"><i class="fa fa-pencil"></i> Ajouter un commentaire</a>
           </div>
@@ -122,25 +122,25 @@
           <div class="tab-pane fade" id="tab-3">
           </div>
           <div class="tab-pane fade" id="tab-4" >
-            <div ng-controller="SupplierListController">
-            <h1> souhaits de </h1>
-            <table >
-              <thead>
-              <tr>
-                <th><b>Nom</b></th>
-                <th><b>Description</b></th>
-              </tr>
-              </thead>
-              <tbody>
+            <div ng-controller="WishlistListController">
+              <h1> Liste de souhaits&nbsp;&nbsp;{{announce.user[0].name}}</h1>
+              <table class="table table-striped mb0">
+                <thead>
+                <tr>
+                  <th><b>Nom</b></th>
+                  <th><b>Description</b></th>
+                </tr>
+                </thead>
+                <tbody>
 
-              <tr ng-repeat="announce in Suppliers | filter:announce.user[0]._id ">
-                <td>{{announce.title}}</td>
-                <td>{{announce.info}}</td>
-              </tr>
+                <tr ng-repeat="announce in Wishlists | filter:announce.user[0]._id ">
+                  <td>{{announce.title}}</td>
+                  <td>{{announce.info}}</td>
+                </tr>
 
-              </tbody>
-            </table>
-          </div>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="tab-pane fade" id="tab-5">
 
@@ -176,76 +176,75 @@
               <br><br><br><br>
             </div>
           </div>
-      </div>
+        </div>
       </div>
       <div class="gap"></div>
       <div ng-if="announce.status == ' en cours de negotiation'">
-      <h3>Les Offres proposer</h3>
-      <div class="gap gap-mini"></div>
-      <div ng-controller="OffreListController">
-      <div class="row row-wrap">
-        <div class="col-md-4" ng-repeat="o in Offres |filter:announce._id">
-          <div class="product-thumb">
-            <header class="product-header">
-              <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
-            </header>
-            <div class="product-inner">
-              <h5 class="product-title">{{o.marque}}</h5>
-              <p class="product-desciption">{{o.description}}</p>
-              <div class="product-meta">
-                <ul class="product-price-list">
-                  <li><span class="product-price">{{o.prix}}</span>
-                  </li>
-                </ul>
-                <ul class="product-actions-list" ng-if=" announce.user[0]._id === nav.getCurrentUser()._id ">
-                  <li><a  class="btn btn-success" ng-click="UpdateAnnonce(o)" ><i class="fa fa-check"></i> Baddel !</a>
-                  </li>
-                  <li><a class="btn btn-danger"  ng-click="deleteOffre(o)"><i class="fa fa-times"></i>Refuser </a>
-                  </li>
-                </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="gap gap-small"></div>
-    </div>
-      </div>
-      <div ng-if="announce.status == 'negotiation terminer'">
-      <div ng-controller="OffreListController">
-      <div class="col-md-12" ng-repeat="o in Offres |filter:announce.offer">
-      <h3>le propriétaire de cette annonce : {{ announce.user[0].name }} a finalisé la négociation avec {{o.user[0].name}} vous trouverez l'offre ci-dessous :</h3>
-      <div class="gap gap-mini"></div>
-        <div class="row row-wrap">
-            <div class="product-thumb">
-              <header class="product-header">
-                <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
-              </header>
-              <div class="product-inner">
-                <h5 class="product-title">{{o.marque}}</h5>
-                <p class="product-desciption">{{o.description}}</p>
-                <div class="product-meta">
-                  <ul class="product-price-list">
-                    <li><span class="product-price">{{o.prix}}</span>
-                    </li>
-                  </ul>
+        <h3>Les Offres proposer</h3>
+        <div class="gap gap-mini"></div>
+        <div ng-controller="OffreListController">
+          <div class="row row-wrap">
+            <div class="col-md-4" ng-repeat="o in Offres |filter:announce._id">
+              <div class="product-thumb">
+                <header class="product-header">
+                  <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+                </header>
+                <div class="product-inner">
+                  <h5 class="product-title">{{o.marque}}</h5>
+                  <p class="product-desciption">{{o.description}}</p>
+                  <div class="product-meta">
+                    <ul class="product-price-list">
+                      <li><span class="product-price">{{o.prix}}</span>
+                      </li>
+                    </ul>
+                    <ul class="product-actions-list" ng-if=" announce.user[0]._id === nav.getCurrentUser()._id ">
+                      <li><a  class="btn btn-success" ng-click="UpdateAnnonce(o)" ><i class="fa fa-check"></i> Baddel !</a>
+                      </li>
+                      <li><a class="btn btn-danger"  ng-click="deleteOffre(o)"><i class="fa fa-times"></i>Refuser </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="gap gap-small"></div>
         </div>
-        <div class="gap gap-small"></div>
       </div>
+      <div ng-if="announce.status == 'negotiation terminer'">
+        <div ng-controller="OffreListController">
+          <div class="col-md-12" ng-repeat="o in Offres |filter:announce.offer">
+            <h3>le propriétaire de cette annonce : {{ announce.user[0].name }} a finalisé la négociation avec {{o.user[0].name}} vous trouverez l'offre ci-dessous :</h3>
+            <div class="gap gap-mini"></div>
+            <div class="row row-wrap">
+              <div class="product-thumb">
+                <header class="product-header">
+                  <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+                </header>
+                <div class="product-inner">
+                  <h5 class="product-title">{{o.marque}}</h5>
+                  <p class="product-desciption">{{o.description}}</p>
+                  <div class="product-meta">
+                    <ul class="product-price-list">
+                      <li><span class="product-price">{{o.prix}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gap gap-small"></div>
+        </div>
       </div>
-  </div>
+    </div>
 
-  <!-- //////////////////////////////////
-  //////////////END PAGE CONTENT/////////
-  ////////////////////////////////////-->
+    <!-- //////////////////////////////////
+    //////////////END PAGE CONTENT/////////
+    ////////////////////////////////////-->
 
 
     <script>(function(){
-
       var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
       PUBNUB.subscribe({
         channel  : channel,
@@ -257,8 +256,6 @@
         })
       } )
     })()</script>
-</div>
+  </div>
 
 </div>
-
-

@@ -17,4 +17,5 @@ router.delete('/show/:id', controller.destroy);
 router.get('/show/:id', controller.showByUser);
 router.get('/title/:title', controller.showByTitle);
 router.get('/premiumUpdate/:id', controller.findAndUpdate);
+router.get('/underCategory/:underCategory', controller.showByUnderCategory);
 module.exports = router;

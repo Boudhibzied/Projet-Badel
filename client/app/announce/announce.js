@@ -18,8 +18,8 @@ angular.module('projetBadelApp').config(function($stateProvider){
     templateUrl:'app/announce/ajoutAnnonce.html',
     controller:'AnnounceCreateController'
   }).state('editAnnounce',{
-  url:'/Announces/:id/edit',
-  templateUrl:'app/announce/editAnnounce.html',
-  controller:'AnnounceEditController'
-});
+    url:'/Announces/:id/edit',
+    templateUrl:'app/announce/editAnnounce.html',
+    controller:'AnnounceEditController'
+  });
 });
