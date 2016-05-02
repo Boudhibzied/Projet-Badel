@@ -69,16 +69,16 @@
       <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     </div>
     <div class="form-group">
-          <input type="text" id="announce.user._id"  ng-init="announce.user._id= nav.getCurrentUser()._id " ng-model="announce.user._id" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.user.name"  ng-init="announce.user.name= nav.getCurrentUser().name " ng-model="announce.user.name" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.user.email"  ng-init="announce.user.email= nav.getCurrentUser().email " ng-model="announce.user.email" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.user.status"  ng-init="announce.user.status= nav.getCurrentUser().status " ng-model="announce.user.status" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.user_id"  ng-init="announce.user_id= nav.getCurrentUser()._id " ng-model="announce.user_id" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.username"  ng-init="announce.username= nav.getCurrentUser().name " ng-model="announce.username" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.useremail"  ng-init="announce.useremail= nav.getCurrentUser().email " ng-model="announce.useremail" disabled="disabled" class="form-control"  style="display: none;" />
+          <input type="text" id="announce.userstatus"  ng-init="announce.userstatus= nav.getCurrentUser().status " ng-model="announce.userstatus" disabled="disabled" class="form-control"  style="display: none;" />
     </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-10">
-        <button type="submit" class="btn btn-primary" value="Save" ng-click="uploadPic(picFile)" style="height:80px;width:200px">Déposez votre annonce</button>
+        <button type="submit" class="btn btn-primary" value="Save" style="height:80px;width:200px">Déposez votre annonce</button>
       </div>
     </div>
 

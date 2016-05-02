@@ -10,6 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
+import fs from 'fs';
 import Wishlist from './wishlist.model';
 
 function respondWithResult(res, statusCode) {
@@ -76,7 +77,7 @@ export function show(req, res) {
 
 // Gets my Wishlist from the DB
 export function showByUser(req, res) {
-  return Wishlist.find().where('user._id').equals(req.params.id).exec()
+  return Wishlist.find().where('user_id').equals(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -85,7 +86,7 @@ export function showByUser(req, res) {
 
 // Gets my Wishlist from the DB
 export function showByUserAnnonce(req, res) {
-  return Wishlist.find().where('user._id').equals(req.params.id).exec()
+  return Wishlist.find().where('user_id').equals(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -94,9 +95,50 @@ export function showByUserAnnonce(req, res) {
 
 // Creates a new Wishlist in the DB
 export function create(req, res) {
+  var file = req.files.file;
+  console.log(file.name);
+  console.log(file.type);
+  console.log(file.path);
+  console.log(req.body.wishlist);
+  var art = req.body.wishlist;
+  var wishlist = new Wishlist(art);
+  //offre.user = req.user;
+
+  fs.readFile(file.path, function (err,original_data) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+    // save image in db as base64 encoded - this limits the image size
+    // to there should be size checks here and in client
+    var base64Image = original_data.toString('base64');
+    fs.unlink(file.path, function (err) {
+      if (err)
+      {
+        console.log('failed to delete ' + file.path);
+      }
+      else{
+        console.log('successfully deleted ' + file.path);
+      }
+    });
+    wishlist.image = base64Image;
+    wishlist.save(function(err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else
+      {
+        res.json(wishlist);
+      }
+    });
+  });
+  /*
   return Wishlist.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+    */
 }
 
 // Updates an existing Wishlist in the DB

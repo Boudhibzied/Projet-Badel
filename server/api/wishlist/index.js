@@ -1,13 +1,15 @@
 'use strict';
 
 var express = require('express');
+var multiparty = require('connect-multiparty'),
+  multipartyMiddleware = multiparty();
 var controller = require('./wishlist.controller');
 
 var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
-router.post('/', controller.create);
+router.post('/', multipartyMiddleware, controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/show/:id', controller.destroy);

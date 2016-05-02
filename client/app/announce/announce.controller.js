@@ -30,10 +30,10 @@ angular.module('projetBadelApp')
     $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name});
 
   })
-  .controller('AnnounceCreateController',function($scope,$state,$stateParams, $timeout, Upload, $location){
+  .controller('AnnounceCreateController',function($scope, $state, $stateParams, $timeout, Upload, $location){
     $scope.fileReaderSupported = window.FileReader !== null;
 
-    // Create new Article
+    // Create new Announce
     $scope.create = function(picFile, announce) {
       console.log('create');
       console.log(picFile);
@@ -47,7 +47,7 @@ angular.module('projetBadelApp')
         file: picFile
       }).success(function (response, status) {
         console.log(response);
-        $state.go('showAnnounce', {id: announce.user._id});
+        $state.go('showAnnounce', {id: announce.user_id});
       }).error(function (err) {
         $scope.error = err.data.message;
       });

@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Offre from './offre.model';
+import fs from 'fs';
 import Announce from '../announce/announce.model';
 import User from '../user/user.model';
 import nodemailer from 'nodemailer';
@@ -82,9 +83,50 @@ export function show(req, res) {
 
 // Creates a new Offre in the DB
 export function create(req, res) {
+  var file = req.files.file;
+  console.log(file.name);
+  console.log(file.type);
+  console.log(file.path);
+  console.log(req.body.offre);
+  var art = req.body.offre;
+  var offre = new Offre(art);
+  //offre.user = req.user;
+
+  fs.readFile(file.path, function (err,original_data) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+    // save image in db as base64 encoded - this limits the image size
+    // to there should be size checks here and in client
+    var base64Image = original_data.toString('base64');
+    fs.unlink(file.path, function (err) {
+      if (err)
+      {
+        console.log('failed to delete ' + file.path);
+      }
+      else{
+        console.log('successfully deleted ' + file.path);
+      }
+    });
+    offre.image = base64Image;
+    offre.save(function(err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else
+      {
+        res.json(offre);
+      }
+    });
+  });
+  /*
   return Offre.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+    */
 }
 
 // Updates an existing Offre in the DB
@@ -111,13 +153,13 @@ export function destroy(req, res) {
 export function mail(req, res, next){
 
     var data = req.body;
-
-   // setup e-mail data with unicode symbols
+    console.log(req.body);
+    // setup e-mail data with unicode symbols
     var mailOptions = {
     from: '"Badel : " <ziedboudhib@gmail.com>', // sender address
-    to: data.anounceUser.email, // list of receivers
+    to: data.offre.anounceUseremail, // list of receivers
     subject: 'Notification Badel', // Subject line
-    html: 'lutilisateur : ' + data.user.name + ' vient de proposer une offre veuillez consulter votre annonce.' // html body
+    html: 'lutilisateur : ' + data.offre.username + ' vient de proposer une offre veuillez consulter votre annonce.' // html body
     };
 
    // send mail with defined transport object

@@ -147,7 +147,7 @@ export function destroy(req, res) {
 
 //Gets a list of Announces by user
 export function showByUser(req, res) {
-  return Announce.find().where('user._id').equals(req.params.id).exec()
+  return Announce.find().where('user_id').equals(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -183,7 +183,7 @@ export function findAndUpdate(req, res) {
     {
       handleError(res);
     }
-    User.findOne({_id: doc.user[0]._id}, function(err, user){
+    User.findOne({_id: doc.user_id}, function(err, user){
       if(err)
       {
         handleError(res);
@@ -201,14 +201,12 @@ export function findAndUpdate(req, res) {
 }
 
 export function attribution(req, res, next) {
-  var data = JSON.stringify(req.body);
-  console.log(data);
-  return User.findOne({_id: data.user[0]._id}, function(err,user){
+  var data = req.body;
+  return User.findOne({_id: data.announce.user_id}, function(err,user){
     if(err)
     {
       handleError(res);
     }
-    console.log(user);
     user.point +=  10;
     user.reputation += 10;
     user.save();

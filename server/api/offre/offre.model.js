@@ -9,16 +9,16 @@ var OffreSchema = new mongoose.Schema({
   photo: { type: String, default:'oca1.jpg'},
   status: { type: Number, default:0},
   announce:{type: mongoose.Schema.Types.ObjectId, default: null},
-  user:[{
-    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    name: String,
-    email: String
-  }],
-  anounceUser:[{
-    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    name: String,
-    email: String
-  }]
+  image: {
+    type: String,
+    default: ''
+  },
+  user_id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  username: String,
+  useremail: String,
+  anounceUser_id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  anounceUsername: String,
+  anounceUseremail: String
 });
 
 export default mongoose.model('Offre', OffreSchema);

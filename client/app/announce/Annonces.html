@@ -142,7 +142,7 @@
           <div class="tab-pane fade" id="tab-5">
 
             <div class="form-group" ng-controller="OffreCreateController">
-              <form class="form-horizontal" role="form" ng-submit="addOffre()">
+              <form class="form-horizontal" role="form" ng-submit="create(picFile, offre)">
 
                 <label  class="col-sm-2 control-label">Description</label>
 
@@ -152,16 +152,34 @@
                   <div text-angular ng-model="offre.description"></div>
                   <input ng-model="offre.marque" class="form-control" id="offre.marque" placeholder="Marque ..."/>
                   <input type="text" ng-model="offre.prix" class="form-control" id="offre.prix" placeholder="Prix ..."/>
-                  <input type="text" id="offre.user._id"  ng-value="offre.user._id= nav.getCurrentUser()._id " ng-model="offre.user._id"  class="form-control" disabled="disabled" style="display: none;" />
-                  <input type="text" id="offre.user.name" ng-value="offre.user.name= nav.getCurrentUser().name" ng-model="offre.user.name"  class="form-control"  disabled="disabled"  style="display: none;"/>
-                  <input type="text" id="offre.user.email" ng-value="offre.user.email= nav.getCurrentUser().email" ng-model="offre.user.email"  class="form-control" disabled="disabled" style="display: none;" />
-                  <input type="text" id="offre.anounceUser._id"  ng-value="offre.anounceUser._id= announce.user[0]._id " ng-model="offre.anounceUser._id"  class="form-control" disabled="disabled" style="display: none;" />
-                  <input type="text" id="offre.anounceUser.name" ng-value="offre.anounceUser.name= announce.user[0].name" ng-model="offre.anounceUser.name"  class="form-control"  disabled="disabled" style="display: none;" />
-                  <input type="text" id="offre.anounceUser.email" ng-value="offre.anounceUser.email= announce.user[0].email" ng-model="offre.anounceUser.email"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.user_id"  ng-value="offre.user_id= nav.getCurrentUser()._id " ng-model="offre.user_id"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.username" ng-value="offre.username= nav.getCurrentUser().name" ng-model="offre.username"  class="form-control"  disabled="disabled"  style="display: none;"/>
+                  <input type="text" id="offre.useremail" ng-value="offre.useremail= nav.getCurrentUser().email" ng-model="offre.useremail"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUser_id"  ng-value="offre.anounceUser_id= announce.user_id " ng-model="offre.anounceUser_id"  class="form-control" disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUsername" ng-value="offre.anounceUsername= announce.username" ng-model="offre.anounceUsername"  class="form-control"  disabled="disabled" style="display: none;" />
+                  <input type="text" id="offre.anounceUseremail" ng-value="offre.anounceUseremail= announce.useremail" ng-model="offre.anounceUseremail"  class="form-control" disabled="disabled" style="display: none;" />
                   <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
 
 
 
+                </div>
+
+                <div class="form-group">
+                  <br>Photo:
+                  <input type="file" ngf-select ng-model="picFile" name="file"
+                         accept="image/*" ngf-max-size="2MB" required
+                         ngf-model-invalid="errorFile">
+                  <i ng-show="myForm.file.$error.required">*required</i><br>
+                  <i ng-show="myForm.file.$error.maxSize">File too large
+                    {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                  <br>
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+             ng-bind="picFile.progress + '%'"></div>
+      </span>
+                  <span ng-show="picFile.result">Upload Successful</span>
+                  <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
                 </div>
 
                 <div class="form-group">
@@ -184,7 +202,7 @@
             <div class="col-md-4" ng-repeat="o in Offres |filter:announce._id">
               <div class="product-thumb">
                 <header class="product-header">
-                  <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+                  <img ng-src="data:image/jpeg;base64,{{o.image}}" alt="Image Alternative text" title="the best mode of transport here in maldives" />
                 </header>
                 <div class="product-inner">
                   <h5 class="product-title">{{o.marque}}</h5>
@@ -194,7 +212,7 @@
                       <li><span class="product-price">{{o.prix}}</span>
                       </li>
                     </ul>
-                    <ul class="product-actions-list" ng-if=" announce.user[0]._id === nav.getCurrentUser()._id ">
+                    <ul class="product-actions-list" ng-if=" announce.user_id === nav.getCurrentUser()._id ">
                       <li><a  class="btn btn-success" ng-click="UpdateAnnonce(o)" ><i class="fa fa-check"></i> Baddel !</a>
                       </li>
                       <li><a class="btn btn-danger"  ng-click="deleteOffre(o)"><i class="fa fa-times"></i>Refuser </a>
@@ -216,7 +234,7 @@
             <div class="row row-wrap">
               <div class="product-thumb">
                 <header class="product-header">
-                  <img src="../../assets/img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+                  <img ng-src="data:image/jpeg;base64,{{o.image}}" alt="Image Alternative text" title="the best mode of transport here in maldives" />
                 </header>
                 <div class="product-inner">
                   <h5 class="product-title">{{o.marque}}</h5>

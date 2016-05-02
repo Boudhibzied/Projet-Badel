@@ -5,13 +5,14 @@ var WishlistSchema = new mongoose.Schema({
 
   title: String,
   info: String,
-  image:String,
   active: Boolean,
-  user:[{
-    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    name: String,
-    email: String
-  }]
+  image: {
+    type: String,
+    default: ''
+  },
+  user_id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  username: String,
+  useremail: String
 });
 
 export default mongoose.model('wishlist', WishlistSchema);

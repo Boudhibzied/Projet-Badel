@@ -17,12 +17,10 @@ var AnnounceSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  user:[{
-    _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    name: String,
-    email: String,
-    status: String
-  }]
+  user_id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  username: String,
+  useremail: String,
+  userstatus: String
 });
 
 AnnounceSchema.post('init', function(doc) {
