@@ -10,6 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
+import fs from 'fs';
 import Announce from './announce.model';
 import User from '../user/user.model';
 
@@ -77,10 +78,52 @@ export function show(req, res) {
 
 // Creates a new Announce in the DB
 export function create(req, res) {
-  return Announce.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
-}
+  var file = req.files.file;
+  console.log(file.name);
+  console.log(file.type);
+  console.log(file.path);
+  console.log(req.body.announce);
+  var art = req.body.announce;
+  var announce = new Announce(art);
+  //announce.user = req.user;
+
+  fs.readFile(file.path, function (err,original_data) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+    // save image in db as base64 encoded - this limits the image size
+    // to there should be size checks here and in client
+    var base64Image = original_data.toString('base64');
+    fs.unlink(file.path, function (err) {
+      if (err)
+      {
+        console.log('failed to delete ' + file.path);
+      }
+      else{
+        console.log('successfully deleted ' + file.path);
+      }
+    });
+    announce.image = base64Image;
+    announce.save(function(err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else
+      {
+        res.json(announce);
+      }
+    });
+  });
+
+    /*
+    return Announce.create(req.body)
+      .then(respondWithResult(res, 201))
+      .catch(handleError(res));
+  */
+};
 
 // Updates an existing Announce in the DB
 export function update(req, res) {
@@ -110,8 +153,6 @@ export function showByUser(req, res) {
     .catch(handleError(res));
 }
 
-
-
 //Gets a list of Announces by title
 export function showByTitle(req, res) {
   return Announce.find().where('title').equals(req.params.title).exec()
@@ -119,6 +160,7 @@ export function showByTitle(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
 //Gets a list of Announces by underCategory
 export function showByUnderCategory(req, res) {
   return Announce.find().where('underCategory').equals(req.params.underCategory).exec()
@@ -126,16 +168,15 @@ export function showByUnderCategory(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
-export function premium(req, res)
-{
+
+export function premium(req, res) {
   return Announce.find().where('premium').equals('true').exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-export function findAndUpdate(req, res)
-{
+export function findAndUpdate(req, res) {
   var query = {_id: req.params.id};
   return Announce.findOne(query, function(err,doc){
     if(err)
@@ -159,10 +200,10 @@ export function findAndUpdate(req, res)
 
 }
 
-export function attribution(req, res, next)
-{
-  var data = req.body;
-  return User.findOne({_id: data.user._id}, function(err,user){
+export function attribution(req, res, next) {
+  var data = JSON.stringify(req.body);
+  console.log(data);
+  return User.findOne({_id: data.user[0]._id}, function(err,user){
     if(err)
     {
       handleError(res);

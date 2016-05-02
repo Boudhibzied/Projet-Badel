@@ -13,7 +13,8 @@ angular.module('projetBadelApp', [
   'validation.match',
   'textAngular',
   'ngMaterial',
-  'ngMessages'
+  'ngMessages',
+  'ngFileUpload'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
