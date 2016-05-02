@@ -13,6 +13,7 @@ var AnnounceSchema = new mongoose.Schema({
   location: String,
   offer: {type: mongoose.Schema.Types.ObjectId, ref: 'Offre', default: null},
   premium: { type: Boolean, default: false},
+  image:String,
   user:[{
     _id:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: String,
