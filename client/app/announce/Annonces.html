@@ -55,11 +55,14 @@
 
             <h3>Titre : {{announce.title}}</h3>
             <p class="product-info-price">Prix : {{announce.price}} DT</p>
-            <p class="text-smaller text-muted"> Description du produit :
-              {{announce.description}}
+            <p class="text-smaller text-muted"> Catégorie :
+              {{announce.category}}
+            </p>
+            <p class="text-smaller text-muted"> Sous-Catégorie :
+              {{announce.underCategory}}
             </p>
             <ul class="icon-list list-space product-info-list">
-              <li><i class="fa fa-check"></i>Catégorie :{{announce.underCategory}}</li>
+              <li><i class="fa fa-check"></i>Description du produit: {{announce.description}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
               <div ng-if="announce.user.status == 'novice'">
                 <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
@@ -120,7 +123,7 @@
           </div>
           <div class="tab-pane fade" id="tab-4" >
             <div ng-controller="WishlistListController">
-              <h1> Liste de souhaits&nbsp;&nbsp;{{announce.user[0].name}}</h1>
+              <h1> Liste de souhaits &nbsp;&nbsp;{{announce.username}}</h1>
               <table class="table table-striped mb0">
                 <thead>
                 <tr>
@@ -130,9 +133,10 @@
                 </thead>
                 <tbody>
 
-                <tr ng-repeat="announce in Wishlists | filter:announce.user[0]._id ">
+                <tr ng-repeat="announce in Wishlists | filter:announce.user_id ">
                   <td>{{announce.title}}</td>
                   <td>{{announce.info}}</td>
+               <td><img  ng-src="data:image/jpeg;base64,{{announce.image}}" alt="Description"  style="height: 200px;width: 200px;"/></td>
                 </tr>
 
                 </tbody>
@@ -229,7 +233,7 @@
       <div ng-if="announce.status == 'negotiation terminer'">
         <div ng-controller="OffreListController">
           <div class="col-md-12" ng-repeat="o in Offres |filter:announce.offer">
-            <h3>le propriétaire de cette annonce : {{ announce.user[0].name }} a finalisé la négociation avec {{o.user[0].name}} vous trouverez l'offre ci-dessous :</h3>
+            <h3>le propriétaire de cette annonce : {{ announce.username }} a finalisé la négociation avec {{o.username}} vous trouverez l'offre ci-dessous :</h3>
             <div class="gap gap-mini"></div>
             <div class="row row-wrap">
               <div class="product-thumb">
