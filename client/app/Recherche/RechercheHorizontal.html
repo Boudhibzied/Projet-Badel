@@ -39,22 +39,22 @@
           </li>
           <li class="active"><a href="#"><i class="fa fa-bolt"></i>beauté et santé</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'produits cosmetiques'})">Produit cosmetique</a>
+          <li><a ui-sref="Category({underCategory:'produits cosmétiques'})">produits cosmétiques</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'equipement medicale'})">Équipement medical</a>
+          <li><a ui-sref="Category({underCategory:'Équipement medical'})">Équipement medical</a>
           </li>
 
           <li class="active"><a href="#"><i class="fa fa-headphones"></i>Loisirs</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'films , livres et magazines'})">Films,Livres et Magazines</a>
+          <li><a ui-sref="Category({underCategory:'films , livres et magazines'})">films , livres et magazines</a>
           </li>
-          <li><a  ui-sref="Category({underCategory:'animaux domestique'})">Animaux domestiques</a>
+          <li><a  ui-sref="Category({underCategory:'animaux domestiques'})">animaux domestiques</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'instruments musiquales'})">Instruments musical</a>
+          <li><a ui-sref="Category({underCategory:'Instruments musicales'})">Instruments musicales</a>
           </li>
           <li class="active"><a href="#"><i class="fa fa-image"></i>Multimedia</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'telephonie'})">Téléphonie</a>
+          <li><a ui-sref="Category({underCategory:'Téléphonie'})">Téléphonie</a>
           </li>
           <li><a ui-sref="Category({underCategory:'informatique et accessoires'})">Informatique et Accessoires</a>
           </li>
@@ -62,23 +62,23 @@
           </li>
           <li class="active"><a href="#"><i class="fa fa-home"></i>Maison</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'interieur'})">Intérieur</a>
+          <li><a ui-sref="Category({underCategory:'Intérieur'})">Intérieur</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'electromenager'})">Electroménager</a>
+          <li><a ui-sref="Category({underCategory:'Electroménager'})">Electroménager</a>
           </li>
           <li class="active"><a href="#"><i class="fa fa-plane"></i>véhicules</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'moto'})" >Motos</a>
+          <li><a ui-sref="Category({underCategory:'Motos'})" >Motos</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'velo'})">Vélos</a>
+          <li><a ui-sref="Category({underCategory:'Vélos'})">Vélos</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'piece de rechange et accessoires'})">Pièces de rechange et accessoires</a>
+          <li><a ui-sref="Category({underCategory:'Pièces de rechange et accessoires'})">Pièces de rechange et accessoires</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'voiture'})">Voitures</a>
+          <li><a ui-sref="Category({underCategory:'Voiture'})">Voitures</a>
           </li>
           <li class="active"><a href="#"><i class="fa fa-shopping-cart"></i>Autres</a>
           </li>
-          <li><a ui-sref="Category({underCategory:'autres'})">Autres Produits</a>
+          <li><a ui-sref="Category({underCategory:'Autres'})">Autres Produits</a>
           </li>
         </ul>
       </aside>
@@ -98,10 +98,10 @@
         </div>
     </div>
       <div ng-controller="AnnounceListController">
-        <div ng-repeat="announce in Announces | filter:search ">
+        <div ng-repeat="announce in Announces | filter:search | orderBy :'-datePost' ">
           <div class="product-thumb product-thumb-horizontal">
             <header class="product-header">
-              <img src="assets/images/lunette.jpg" alt="Image Alternative text"/>
+              <img style="width: 263px; height: 195px" ng-src="data:image/jpeg;base64,{{announce.image}}" alt="Image Alternative text" />
             </header>
             <div class="product-inner">
               <h5 class="product-title">{{announce.title}}</h5>
