@@ -31,17 +31,9 @@ angular.module('projetBadelApp')
 
 
   })
+  .controller('WishlistListController',function($scope,$state,$window,Wishlist){
 
-
-
-
-
-
-  .controller('SupplierListController',function($scope,$state,$window,Wishlist){
-
-    $scope.Suppliers=Wishlist.query();
-
-
+    $scope.Wishlists=Wishlist.query();
 
   })
 
