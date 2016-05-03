@@ -6,6 +6,8 @@ angular.module('projetBadelApp')
 
     $scope.Announces=Announce.query();
 
+
+
   })
   .controller('AnnounceShowController',function($scope,$state,$window,$stateParams,Annonce){
 
@@ -18,19 +20,43 @@ angular.module('projetBadelApp')
     };
 
   })
-  .controller('AnnounceViewController',function($scope, $stateParams, Announce, Scrappe){
+  .controller('AnnounceViewController',function($scope, $stateParams, Announce, Scrappe, Auth){
 
-    $scope.announce=Announce.get({id:$stateParams.id});
-    $scope.scrappe=Scrappe.addscrappe({name:$stateParams.name});
+    (function(){
+
+      $scope.announce=Announce.get({id:$stateParams.id},function(announce){
+        //on success callback function
+        console.log(announce._id);
+
+        var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = announce._id;
+        PUBNUB.subscribe({
+          channel  : channel,
+          callback : function(text) { box.innerHTML = ("" +
+            "<md-list-item class='md-3-line md-long-text md-no-proxy' role='listitem'>" +
+            " <img ng-src='../../assets/img/50x50.png' class='md-avatar' alt='Min Li Chan' src='../../assets/img/50x50.png'>" +
+            " <div class='md-list-item-text'>" +
+            "<font class='ng-binding'><font color='#8b0000'>"+Auth.getCurrentUser().name+'</font></h3><p> '+text+
+            "</p></div></md-list-item>") + box.innerHTML }
+        });
+        PUBNUB.bind( 'keyup', input, function(e) {
+          (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
+            channel : channel, message : input.value, x : (input.value='')
+          })
+        } )
+      });
+      console.log($scope.announce);
+
+      var data = $stateParams.name.replace(/ /g,"_");
+      $scope.scrappe=Scrappe.addscrappe({name: data});
+
+    })()
 
 
   })
   .controller('scrappeController',function($scope, $stateParams, Scrappe){
-
     $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name});
-
   })
-  .controller('AnnounceCreateController',function($scope, $state, $stateParams, $timeout, Upload, $location){
+  .controller('AnnounceCreateController',function($scope, $state, $stateParams, $timeout, Upload, $location, Auth){
     $scope.fileReaderSupported = window.FileReader !== null;
 
     // Create new Announce

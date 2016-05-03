@@ -84,10 +84,6 @@ export function show(req, res) {
 // Creates a new Offre in the DB
 export function create(req, res) {
   var file = req.files.file;
-  console.log(file.name);
-  console.log(file.type);
-  console.log(file.path);
-  console.log(req.body.offre);
   var art = req.body.offre;
   var offre = new Offre(art);
   //offre.user = req.user;
