@@ -65,13 +65,13 @@
               <li><i class="fa fa-check"></i>Description du produit: {{announce.description}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
               <div ng-if="announce.userstatus == 'novice'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
               </div>
               <div ng-if="announce.userstatus == 'fiable'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} est digne de confiance ! </p></li>
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} est digne de confiance ! </p></li>
               </div>
-              <div ng-if="announce.userstatus == 'Pro!'">
-                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.user[0].name}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
+              <div ng-if="announce.userstatus == 'Pro'">
+                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.username}} est un vrai Pro ! Négociez avec lui les yeux fermés  </p></li>
               </div>
             </ul>
           </div>
@@ -211,7 +211,7 @@
       </div>
       <div class="gap"></div>
       <div ng-if="announce.status == ' en cours de negotiation'">
-        <h3>Les Offres proposer</h3>
+        <h3>Les Offres proposées</h3>
         <div class="gap gap-mini"></div>
         <div ng-controller="OffreListController">
           <div class="row row-wrap">
