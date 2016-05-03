@@ -1,131 +1,131 @@
 <div class="gap"></div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-1"><h1>Créez votre annonce</h1></div>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex"> <p style="color: #fff6de" >Créez votre annonce</p></h2>
+      </div>
+    </md-toolbar>
+    <div class="gap"></div>
+    <div class="col-md-6 col-md-offset-3">
+          <form name="projectForm"    class="form-horizontal"  role="form"  ng-submit="create(picFile, announce)">
+            <md-input-container class="md-block">
+              <label>Titre</label>
+              <input required name="clientName" ng-model="announce.title"  placeholder="Votre annonce">
+              <div ng-messages="projectForm.clientName.$error">
+                <div ng-message="required">Saisissez un titre</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Description</label>
+              <input md-maxlength="300" required md-no-asterisk name="description" ng-model="wishlist.info">
+              <div ng-messages="projectForm.description.$error">
+                <div ng-message="required">Saisissez un texte</div>
+                <div ng-message="md-maxlength">Le texte doit être inférieur à 301 caractères.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Valeur</label>
+              <input required type="number" step="any" name="rate" ng-model="announce.price" min="1"
+                     max="999999"  />
+              <div ng-messages="projectForm.rate.$error">
+                <div ng-message="required">Saisissez un valeur</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Emplacement</label>
+              <input required name="clienName" ng-model="announce.location"  placeholder="Votre emplacement">
+              <div ng-messages="projectForm.clienName.$error">
+                <div ng-message="required">Saisissez un emplacement</div>
+              </div>
+            </md-input-container>
+            <label >Les Categorie</label>
+            <div class="row">
+              <div layout="column" class="col-md-4" class="md-block">
+                <md-select placeholder="Choisir une catégorie" ng-model="announce.category" style="min-width: 200px;">
+                  <md-option value="objets personnels" >objets personnels</md-option>
+                  <md-option value="beauté et santé">beauté et santé</md-option>
+                  <md-option value="Loisirs">Loisirs</md-option>
+                  <md-option value="Multimedia">Multimedia</md-option>
+                  <md-option value="Maison">Maison</md-option>
+                  <md-option value="véhicules">véhicules</md-option>
+                  <md-option value="Autres">Autres</md-option>
+                </md-select>
+              </div>
+              <div layout="column" class="col-md-6" class="md-block">
+                <div ng-if="announce.category == 'objets personnels' " layout="column"  ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   >
+                    <md-option value="vetement">vetement</md-option>
+                    <md-option value="chaussures">chaussures</md-option>
+                    <md-option value="montre et bijoux">montre et bijoux</md-option>
+                    <md-option value="sac et accessoires">sac et accessoires</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'beauté et santé' "layout="column"  ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="produits cosmétiques">produits cosmetiques</md-option>
+                    <md-option value="Équipement medical">equipement medicale</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'Loisirs' "layout="column"  ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="films , livres et magazines">films , livres et magazines</md-option>
+                    <md-option value="animaux domestiques">animaux domestique</md-option>
+                    <md-option value="Instruments musicales">intruments musiquales</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'Multimedia' "layout="column"  ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="Téléphonie">telephonie</md-option>
+                    <md-option value="informatique et accessoires">informatique et accessoires</md-option>
+                    <md-option value="jeux videos et console">jeux videos et console</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'Maison' " layout="column" ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="Intérieur">interieur</md-option>
+                    <md-option value="Electroménager">electromenager</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'véhicules' "layout="column"  ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="Motos">moto</md-option>
+                    <md-option value="Vélos">Vélos</md-option>
+                    <md-option value="Voiture">Voiture</md-option>
+                    <md-option value="Pièces de rechange et accessoires">Pièces de rechange et accessoires</md-option>
+                  </md-select>
+                </div>
+                <div ng-if="announce.category == 'Autres' "layout="column" ng-cloak>
+                  <md-select   placeholder="Choisir une Sous-catégorie" ng-model="announce.underCategory"   style="min-width: 200px;" >
+                    <md-option value="Autres">autres</md-option>
+                  </md-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <br>Photo:
+              <input type="file" ngf-select ng-model="picFile" name="file"
+                     accept="image/*" ngf-max-size="2MB" required
+                     ngf-model-invalid="errorFile">
+              <i ng-show="myForm.file.$error.required">*required</i><br>
+              <i ng-show="myForm.file.$error.maxSize">File too large
+                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+              <span ng-show="picFile.result">Upload Successful</span>
+              <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            </div>
+            <div class="form-group">
+              <input type="text" id="announce.user_id"  ng-init="announce.user_id= nav.getCurrentUser()._id " ng-model="announce.user_id" disabled="disabled" class="form-control"  style="display: none;" />
+              <input type="text" id="announce.username"  ng-init="announce.username= nav.getCurrentUser().name " ng-model="announce.username" disabled="disabled" class="form-control"  style="display: none;" />
+              <input type="text" id="announce.useremail"  ng-init="announce.useremail= nav.getCurrentUser().email " ng-model="announce.useremail" disabled="disabled" class="form-control"  style="display: none;" />
+              <input type="text" id="announce.userstatus"  ng-init="announce.userstatus= nav.getCurrentUser().status " ng-model="announce.userstatus" disabled="disabled" class="form-control"  style="display: none;" />
+            </div>
+            <md-button class="md-raised md-primary" type="submit">Déposez votre annonce</md-button>
+          </form>
   </div>
-  <form class="form-horizontal" name="myForm" role="form"  ng-submit="create(picFile, announce)">
-
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-    <div class="form-group">
-      <label for="title">Titre</label>
-      <div >
-        <input type="text" ng-model="announce.title" class="form-control" id="title" placeholder="Votre annonce"/>
       </div>
+  <md-button md-no-ink class="md-primary" ui-sref="wishlistAdd">Ajouter un produit à <b><u>votre wishlist</u></b></md-button>
     </div>
-    <div class="form-group">
-      <label for="price">price</label>
-      <div>
-        <input type="number" ng-model="announce.price" class="form-control" id="price"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="description">description</label>
-      <div>
-        <input type="text" ng-model="announce.description" class="form-control" id="description"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="sousCategorie">SousCategorie</label>
-        <div>
-          <select   ng-model="announce.category" >
-            <option value="objets personnels">objets personnels</option>
-            <option value="beauté et santé">beauté et santé</option>
-            <option value="Loisirs">Loisirs</option>
-            <option value="sac et accessoires">Multimedia</option>
-            <option value="Maison">Maison</option>
-            <option value="véhicules">véhicules</option>
-            <option value="Autres">Autres</option>
-          </select>
-        </div>
-
-
-
-        <div ng-if="announce.category == 'objets personnels' " >
-          <select  ng-model="announce.underCategory"  id="sousCategorie" >
-            <option value="vetement">vetement</option>
-            <option value="chaussures">chaussures</option>
-            <option value="montre et bijoux">montre et bijoux</option>
-            <option value="sac et accessoires">sac et accessoires</option>
-          </select>
-        </div>
-
-        <div ng-if="announce.category == 'beauté et santé' " >
-          <select  ng-model="announce.underCategory"   >
-            <option value="produits cosmétiques">produits cosmetiques</option>
-            <option value="Équipement medical">equipement medicale</option>
-          </select>
-        </div>
-
-
-        <div ng-if="announce.category == 'Loisirs' " >
-          <select  ng-model="announce.underCategory">
-            <option value="films , livres et magazines">films , livres et magazines</option>
-            <option value="animaux domestiques">animaux domestique</option>
-            <option value="Instruments musicales">intruments musiquales</option>
-          </select>
-        </div>
-
-
-        <div ng-if="announce.category == 'Multimedia' " >
-          <select  ng-model="announce.underCategory">
-            <option value="Téléphonie">telephonie</option>
-            <option value="informatique et accessoires">informatique et accessoires</option>
-            <option value="jeux videos et console">jeux videos et console</option>
-          </select>
-        </div>
-
-
-        <div ng-if="announce.category == 'Maison' " >
-          <select  ng-model="announce.underCategory">
-            <option value="Intérieur">interieur</option>
-            <option value="Electroménager">electromenager</option>
-          </select>
-        </div>
-
-        <div ng-if="announce.category == 'véhicules' " >
-          <select  ng-model="announce.underCategory">
-            <option value="Motos">moto</option>
-            <option value="Vélos">Vélos</option>
-            <option value="Voiture">Voiture</option>
-            <option value="Pièces de rechange et accessoires">Pièces de rechange et accessoires</option>
-          </select>
-        </div>
-
-
-        <div ng-if="announce.category == 'Autres' " >
-          <select  ng-model="announce.underCategory">
-            <option value="Autres">autres</option>
-          </select>
-        </div>
-      </div>
-    <div class="form-group">
-      <br>Photo:
-      <input type="file" ngf-select ng-model="picFile" name="file"
-             accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFile">
-      <i ng-show="myForm.file.$error.required">*required</i><br>
-      <i ng-show="myForm.file.$error.maxSize">File too large
-        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    </div>
-    <div class="form-group">
-          <input type="text" id="announce.user_id"  ng-init="announce.user_id= nav.getCurrentUser()._id " ng-model="announce.user_id" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.username"  ng-init="announce.username= nav.getCurrentUser().name " ng-model="announce.username" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.useremail"  ng-init="announce.useremail= nav.getCurrentUser().email " ng-model="announce.useremail" disabled="disabled" class="form-control"  style="display: none;" />
-          <input type="text" id="announce.userstatus"  ng-init="announce.userstatus= nav.getCurrentUser().status " ng-model="announce.userstatus" disabled="disabled" class="form-control"  style="display: none;" />
-    </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-10">
-        <button type="submit" class="btn btn-primary" value="Save" style="height:80px;width:200px">Déposez votre annonce</button>
-      </div>
-    </div>
-
-  </form>
-</div>
 <div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div>
 <div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div><div class="gap"></div>
 

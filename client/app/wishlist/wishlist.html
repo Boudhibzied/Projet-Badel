@@ -37,14 +37,13 @@
               <td>{{Wish.info}}</td>
               <td><img  ng-src="data:image/jpeg;base64,{{Wish.image}}" alt="Description"  style="height: 100px;width: 100px;"/></td>
               <td>
-                <a class="btn btn-primary" ui-sref="editWishlist({id:Wish._id})">Modifier</a>
                 <a class="btn btn-danger"  ng-click="deleteWishlist(Wish)">abandonner</a>
               </td>
             </tr>
             </tbody>
           </table>
           </div>
-          <a ui-sref="newWishlist" class="btn-primary btn-lg nodecoration">Ajoutez vos souhaits</a>
+          <md-button class="md-raised md-primary" ui-sref="newWishlist">Ajoutez vos souhaits</md-button>
           <div class="gap"></div>
         </div>
       </div>

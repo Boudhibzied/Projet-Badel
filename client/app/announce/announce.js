@@ -12,6 +12,10 @@ angular.module('projetBadelApp').config(function($stateProvider){
     url:'/showAnnounce/:id',
     templateUrl:'app/Favoris/Favoris.html',
     controller:'AnnounceShowController'
+  }).state('wishlistAdd',{
+    url:'/ajout wishlist',
+    templateUrl:'app/wishlist/wishlist-add.html',
+    controller:'AnnounceCreateController'
   }).state('newAnnounce',{
     url:'/newAnnounces',
     templateUrl:'app/announce/ajoutAnnonce.html',
