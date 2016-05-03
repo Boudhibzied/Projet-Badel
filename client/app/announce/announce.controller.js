@@ -51,7 +51,7 @@ angular.module('projetBadelApp')
   .controller('scrappeController',function($scope, $stateParams, Scrappe){
     $scope.scrappe=Scrappe.addscrappe({name: $stateParams.name});
   })
-  .controller('AnnounceCreateController',function($scope, $state, $stateParams, $timeout, Upload, $location){
+  .controller('AnnounceCreateController',function($scope, $state, $stateParams, $timeout, Upload, $location, Auth){
     $scope.fileReaderSupported = window.FileReader !== null;
 
     // Create new Announce
