@@ -82,11 +82,11 @@
       <div class="gap"></div>
       <div class="tabbable">
         <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
+          <li><a href="#tab-1" data-toggle="tab"><i class="fa fa-info-circle" aria-hidden="true"></i>Description</a>
           </li>
-          <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
+          <li class="active"><a href="#tab-2" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
           </li>
-          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-video-camera"></i>conversation en Video</a>
+          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
           </li>
           <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
           </li>
@@ -94,7 +94,10 @@
           </li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane fade in active" id="tab-1" >
+          <div class="tab-pane fade" id="tab-1">
+          <p>{{announce.description}}</p>
+          </div>
+          <div class="tab-pane fade in active" id="tab-2" >
             <div ng-controller="commentListController">
               <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
                 <li>
@@ -113,7 +116,7 @@
             </div>
             <a class="popup-text btn btn-primary" href="#review-dialog" data-effect="mfp-zoom-out"><i class="fa fa-pencil"></i> Ajouter un commentaire</a>
           </div>
-          <div class="tab-pane fade" id="tab-2">
+          <div class="tab-pane fade" id="tab-3">
 
             <div>
 
@@ -132,8 +135,6 @@
             </div>
 
             <div id=box></div>
-          </div>
-          <div class="tab-pane fade" id="tab-3">
           </div>
           <div class="tab-pane fade" id="tab-4" >
             <div ng-controller="WishlistListController">
@@ -178,27 +179,22 @@
                   <input type="text" id="offre.anounceUseremail" ng-value="offre.anounceUseremail= announce.useremail" ng-model="offre.anounceUseremail"  class="form-control" disabled="disabled" style="display: none;" />
                   <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
 
+                  <div class="form-group">
+                    <br>Photo:
+                    <input type="file" ngf-select ng-model="picFile" name="file"
+                           accept="image/*" ngf-max-size="2MB" required
+                           ngf-model-invalid="errorFile">
+                    <i ng-show="myForm.file.$error.required">*required</i><br>
+                    <i ng-show="myForm.file.$error.maxSize">File too large
+                      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
 
+                    <span ng-show="picFile.result">Upload Successful</span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                  </div>
 
                 </div>
 
-                <div class="form-group">
-                  <br>Photo:
-                  <input type="file" ngf-select ng-model="picFile" name="file"
-                         accept="image/*" ngf-max-size="2MB" required
-                         ngf-model-invalid="errorFile">
-                  <i ng-show="myForm.file.$error.required">*required</i><br>
-                  <i ng-show="myForm.file.$error.maxSize">File too large
-                    {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-                  <br>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
-      </span>
-                  <span ng-show="picFile.result">Upload Successful</span>
-                  <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                </div>
+
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
