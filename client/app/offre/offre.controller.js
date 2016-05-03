@@ -36,7 +36,7 @@ angular.module('projetBadelApp')
         file: picFile
       }).success(function (response, status) {
         console.log(response);
-        $state.go('viewAnnounce', {id: offre.announce});
+        $state.reload();
       }).error(function (err) {
         $scope.error = err.data.message;
       });

@@ -96,10 +96,6 @@ export function showByUserAnnonce(req, res) {
 // Creates a new Wishlist in the DB
 export function create(req, res) {
   var file = req.files.file;
-  console.log(file.name);
-  console.log(file.type);
-  console.log(file.path);
-  console.log(req.body.wishlist);
   var art = req.body.wishlist;
   var wishlist = new Wishlist(art);
   //offre.user = req.user;

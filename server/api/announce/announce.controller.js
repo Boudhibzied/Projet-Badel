@@ -79,10 +79,6 @@ export function show(req, res) {
 // Creates a new Announce in the DB
 export function create(req, res) {
   var file = req.files.file;
-  console.log(file.name);
-  console.log(file.type);
-  console.log(file.path);
-  console.log(req.body.announce);
   var art = req.body.announce;
   var announce = new Announce(art);
   //announce.user = req.user;

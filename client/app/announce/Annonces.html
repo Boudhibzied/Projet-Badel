@@ -46,8 +46,8 @@
       </div>
       <div class="row">
         <div class="col-md-7">
-          <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
-            <img ng-src="data:image/jpeg;base64,{{announce.image}}" alt="Image Alternative text" title="Gamer Chick" />
+          <div  data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
+            <img ng-src="data:image/jpeg;base64,{{announce.image}}" alt="{{announce.title}}"  />
           </div>
         </div>
         <div class="col-md-5">
@@ -64,13 +64,13 @@
             <ul class="icon-list list-space product-info-list">
               <li><i class="fa fa-check"></i>Description du produit: {{announce.description}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
-              <div ng-if="announce.user.status == 'novice'">
+              <div ng-if="announce.userstatus == 'novice'">
                 <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
               </div>
-              <div ng-if="announce.user[0].status == 'fiable'">
+              <div ng-if="announce.userstatus == 'fiable'">
                 <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} est digne de confiance ! </p></li>
               </div>
-              <div ng-if="announce.user.status == 'Pro!'">
+              <div ng-if="announce.userstatus == 'Pro!'">
                 <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.user[0].name}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
               </div>
             </ul>
@@ -113,10 +113,8 @@
           </div>
           <div class="tab-pane fade" id="tab-2">
 
-            Enter Chat and press enter
             <div><input id=input placeholder=you-chat-here /></div>
 
-            Chat Output
             <div id=box></div>
           </div>
           <div class="tab-pane fade" id="tab-3">
@@ -262,19 +260,30 @@
     //////////////END PAGE CONTENT/////////
     ////////////////////////////////////-->
 
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/boostrap.js"></script>
+    <script src="assets/js/boostrap.min.js"></script>
+    <script src="assets/js/countdown.min.js"></script>
+    <script src="assets/js/fitvids.js"></script>
+    <script src="assets/js/fitvids.min.js"></script>
+    <script src="assets/js/flexnav.js"></script>
+    <script src="assets/js/flexnav.min.js"></script>
+    <script src="assets/js/fotorama.js"></script>
+    <script src="assets/js/icheck.js"></script>
+    <script src="assets/js/ionrangeslider.js"></script>
+    <script src="assets/js/loadAndFilter.js"></script>
+    <script src="assets/js/magnific.js"></script>
+    <script src="assets/js/magnific.min.js"></script>
+    <script src="assets/js/mail.js"></script>
+    <script src="assets/js/mail.min.js"></script>
+    <script src="assets/js/masonry.js"></script>
+    <script src="assets/js/nicescroll.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/tweet.js"></script>
+    <script src="assets/js/tweet.min.js"></script>
+    <script src="assets/js/custom.js"></script>
 
-    <script>(function(){
-      var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
-      PUBNUB.subscribe({
-        channel  : channel,
-        callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
-      });
-      PUBNUB.bind( 'keyup', input, function(e) {
-        (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
-          channel : channel, message : input.value, x : (input.value='')
-        })
-      } )
-    })()</script>
   </div>
 
 </div>
