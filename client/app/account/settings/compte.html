@@ -27,11 +27,17 @@
   <br>
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-6">
-          <h1>Changer mot de passe </h1>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2 class="md-flex"> <p style="color: #fff6de" >Changer mot de passe </p></h2>
+          </div>
+        </md-toolbar>
+        <div class="gap"></div>
+        <div class="col-md-4">
+
           <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
 
-            <div class="form-group">
+            <md-input-container class="md-block">
               <label>Mot de passe actuel</label>
 
               <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
@@ -39,23 +45,24 @@
               <p class="help-block" ng-show="form.password.$error.mongoose">
                 {{ vm.errors.other }}
               </p>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
+            </md-input-container >
+            <br>
+            <md-input-container class="md-block">
+              <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
                                             'has-error': form.password.$invalid && vm.submitted }">
-              <label>Nouveau mot de passe</label>
+                <label>Nouveau mot de passe</label>
                 <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
-                     ng-minlength="3"
-                     required/>
-              <p class="help-block"
-                 ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
-                Mot de passe doit être au moins 3 caractères.
-              </p>
-            </div>
-
-            <div class="form-group">
-              <label>Confirmer le nouveau mot de passe</label>
-              <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
+                       ng-minlength="3"
+                       required/>
+                <p class="help-block"
+                   ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
+                  Mot de passe doit être au moins 3 caractères.
+                </p>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+            <label>Confirmer le nouveau mot de passe</label>
+            <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
                                             'has-error': form.confirmPassword.$invalid && vm.submitted }">
               <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
                      match="vm.user.newPassword"
@@ -66,9 +73,8 @@
                 Les mots de passe doivent correspondre.
               </p>
             </div>
-            <button class="btn btn-primary" type="submit">Sauvegarder</button>
-            </div>
-
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit">Sauvegarder</md-button>
           </form>
 
       </div>
