@@ -1,43 +1,51 @@
 <div class="container">
   <div class="gap"></div>
   <div class="row">
-   <div class="col-md-3 col-md-offset-5"> <h1>Connexion</h1></div>
-  </div>
-      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex"> <p style="color: #fff6de" >Login</p></h2>
+      </div>
+    </md-toolbar>
+    <div class="gap"></div>
+    <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
 
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-        <md-content layout="column" class="md-padding">
-          <md-input-container>
-            <label>Email</label>
-            <input type="email" name="email" ng-model="vm.user.email" required ng-pattern="/^.+@.+\..+$/"/>
-            <div ng-messages="form.email.$error.email && vm.submitted" role="alert">
-              <div ng-message-exp="['required', 'pattern']">
-                Veillez valider votre email.
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="form-group">
+            <md-input-container class="md-block" >
+              <label>Email</label>
+              <input type="email" name="email" ng-model="vm.user.email" required ng-pattern="/^.+@.+\..+$/"/>
+              <div ng-messages="form.email.$error.email && vm.submitted" role="alert">
+                <div ng-message-exp="['required', 'pattern']">
+                  Veuillez valider votre email.
+                </div>
               </div>
-            </div>
-          </md-input-container>
-          <md-input-container>
-            <label>Mot de passe</label>
-            <input type="password" name="password" ng-model="vm.user.password" required/>
-            <div ng-messages="form.email.$error.required && form.password.$error.required && vm.submitted" role="alert">
-              <div ng-message-exp="['required']">
-                Veillez valider votre mot de passe.
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container class="md-block" >
+              <label>Mot de passe</label>
+              <input type="password" name="password" ng-model="vm.user.password" required/>
+              <div ng-messages="form.email.$error.required && form.password.$error.required && vm.submitted" role="alert">
+                <div ng-message-exp="['required']">
+                  Veillez valider votre mot de passe.
+                </div>
               </div>
-            </div>
-          </md-input-container>
+            </md-input-container>
+          </div>
+
           <div layout="row" layout-align="center center" style="padding-top:20px;">
-            <md-button class="md-raised md-primary" type="submit">s'identifier</md-button>
+            <md-button class="md-raised md-primary" type="submit">Authentification</md-button>
             <div flex="flex"></div>
-            <md-button ui-sref="signup" md-no-ink="md-no-ink">s'inscrire</md-button>
+            <md-buttnon ui-sref="signup" md-no-ink="md-no-ink">Inscription</md-buttnon>
           </div>
-        </md-content>
+          </md-content>
 
-        <hr/>
+          <hr/>
 
-            <oauth-buttons classes="btn-block"></oauth-buttons>
-          </div>
+          <oauth-buttons classes="btn-block"></oauth-buttons>
         </div>
-      </form>
+      </div>
+    </form>
 
-    </div>
+  </div>

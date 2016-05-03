@@ -46,8 +46,8 @@
       </div>
       <div class="row">
         <div class="col-md-7">
-          <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
-            <img ng-src="data:image/jpeg;base64,{{announce.image}}" alt="Image Alternative text" title="Gamer Chick" />
+          <div  data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
+            <img ng-src="data:image/jpeg;base64,{{announce.image}}" alt="{{announce.title}}"  />
           </div>
         </div>
         <div class="col-md-5">
@@ -70,8 +70,9 @@
               <div ng-if="announce.userstatus == 'fiable'">
                 <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} est digne de confiance ! </p></li>
               </div>
-              <div ng-if="announce.userstatus == 'Pro!'">
-                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.username}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
+
+              <div ng-if="announce.userstatus == 'Pro'">
+                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.username}} est un vrai Pro ! Négociez avec lui les yeux fermés  </p></li>
               </div>
             </ul>
           </div>
@@ -80,11 +81,11 @@
       <div class="gap"></div>
       <div class="tabbable">
         <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
+          <li><a href="#tab-1" data-toggle="tab"><i class="fa fa-info-circle" aria-hidden="true"></i>Description</a>
           </li>
-          <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
+          <li class="active"><a href="#tab-2" data-toggle="tab"><i class="fa fa-comments"></i>Discussion</a>
           </li>
-          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-video-camera"></i>conversation en Video</a>
+          <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
           </li>
           <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
           </li>
@@ -92,7 +93,10 @@
           </li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane fade in active" id="tab-1" >
+          <div class="tab-pane fade" id="tab-1">
+          <p>{{announce.description}}</p>
+          </div>
+          <div class="tab-pane fade in active" id="tab-2" >
             <div ng-controller="commentListController">
               <ul class="comments-list" ng-repeat="c in comments |filter:announce._id">
                 <li>
@@ -111,15 +115,25 @@
             </div>
             <a class="popup-text btn btn-primary" href="#review-dialog" data-effect="mfp-zoom-out"><i class="fa fa-pencil"></i> Ajouter un commentaire</a>
           </div>
-          <div class="tab-pane fade" id="tab-2">
-
-            Enter Chat and press enter
-            <div><input id=input placeholder=you-chat-here /></div>
-
-            Chat Output
-            <div id=box></div>
-          </div>
           <div class="tab-pane fade" id="tab-3">
+
+            <div>
+
+
+
+              <md-input-container class="md-icon-float md-block md-has-icon md-input-has-value">
+                <!-- Use floating label instead of placeholder -->
+                <label for="input">Message</label>
+                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                  <path d="M0 0h24v24h-24z" fill="none"></path>
+                </svg></md-icon>
+                <input ng-model="user.name" type="text" class="ng-pristine ng-valid md-input ng-touched" id="input" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+              </md-input-container>
+
+            </div>
+
+            <div id=box></div>
           </div>
           <div class="tab-pane fade" id="tab-4" >
             <div ng-controller="WishlistListController">
@@ -164,27 +178,22 @@
                   <input type="text" id="offre.anounceUseremail" ng-value="offre.anounceUseremail= announce.useremail" ng-model="offre.anounceUseremail"  class="form-control" disabled="disabled" style="display: none;" />
                   <input type="text" id="offre.announce"   ng-value="offre.announce=announce._id" ng-model="offre.announce"  class="form-control"  disabled="disabled" style="display: none;" />
 
+                  <div class="form-group">
+                    <br>Photo:
+                    <input type="file" ngf-select ng-model="picFile" name="file"
+                           accept="image/*" ngf-max-size="2MB" required
+                           ngf-model-invalid="errorFile">
+                    <i ng-show="myForm.file.$error.required">*required</i><br>
+                    <i ng-show="myForm.file.$error.maxSize">File too large
+                      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
 
+                    <span ng-show="picFile.result">Upload Successful</span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                  </div>
 
                 </div>
 
-                <div class="form-group">
-                  <br>Photo:
-                  <input type="file" ngf-select ng-model="picFile" name="file"
-                         accept="image/*" ngf-max-size="2MB" required
-                         ngf-model-invalid="errorFile">
-                  <i ng-show="myForm.file.$error.required">*required</i><br>
-                  <i ng-show="myForm.file.$error.maxSize">File too large
-                    {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-                  <br>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
-      </span>
-                  <span ng-show="picFile.result">Upload Successful</span>
-                  <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                </div>
+
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
@@ -199,7 +208,7 @@
       </div>
       <div class="gap"></div>
       <div ng-if="announce.status == ' en cours de negotiation'">
-        <h3>Les Offres proposer</h3>
+        <h3>Les Offres proposées</h3>
         <div class="gap gap-mini"></div>
         <div ng-controller="OffreListController">
           <div class="row row-wrap">
@@ -262,19 +271,30 @@
     //////////////END PAGE CONTENT/////////
     ////////////////////////////////////-->
 
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/boostrap.js"></script>
+    <script src="assets/js/boostrap.min.js"></script>
+    <script src="assets/js/countdown.min.js"></script>
+    <script src="assets/js/fitvids.js"></script>
+    <script src="assets/js/fitvids.min.js"></script>
+    <script src="assets/js/flexnav.js"></script>
+    <script src="assets/js/flexnav.min.js"></script>
+    <script src="assets/js/fotorama.js"></script>
+    <script src="assets/js/icheck.js"></script>
+    <script src="assets/js/ionrangeslider.js"></script>
+    <script src="assets/js/loadAndFilter.js"></script>
+    <script src="assets/js/magnific.js"></script>
+    <script src="assets/js/magnific.min.js"></script>
+    <script src="assets/js/mail.js"></script>
+    <script src="assets/js/mail.min.js"></script>
+    <script src="assets/js/masonry.js"></script>
+    <script src="assets/js/nicescroll.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/tweet.js"></script>
+    <script src="assets/js/tweet.min.js"></script>
+    <script src="assets/js/custom.js"></script>
 
-    <script>(function(){
-      var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
-      PUBNUB.subscribe({
-        channel  : channel,
-        callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
-      });
-      PUBNUB.bind( 'keyup', input, function(e) {
-        (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
-          channel : channel, message : input.value, x : (input.value='')
-        })
-      } )
-    })()</script>
   </div>
 
 </div>
