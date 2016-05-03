@@ -1,20 +1,15 @@
-
-
-
-
-
 <div class="gap"></div>
-<div class="gap"></div>
-<div class="gap"></div>
-<div class="gap"></div>
-
 <div class="container">
   <div class="row">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex"> <p style="color: #fff6de" >Ajouter un produit</p></h2>
+      </div>
+    </md-toolbar>
+    <div class="gap"></div>
     <div class="col-md-6 col-md-offset-3">
-      <div   ng-cloak>
-        <md-content layout-padding>
+      <div ng-cloak>
           <form name="projectForm"  role="form" ng-submit="create(picFile, wishlist)">
-
             <md-input-container class="md-block">
               <label>Titre</label>
               <input required name="Titre" ng-model="wishlist.title" placeholder="je souhaite !">
@@ -42,27 +37,16 @@
               <i ng-show="myForm.file.$error.required">*required</i><br>
               <i ng-show="myForm.file.$error.maxSize">File too large
                 {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-              <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-              <br>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
-      </span>
               <span ng-show="picFile.result">Upload Successful</span>
               <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
             </div>
 
             <div class="col-sm-offset-6 col-sm-10">
-              <input type="submit" class="btn btn-primary" value="Ajouter"/>
+              <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
             </div>
           </form>
-        </md-content>
-
-
       </div>
       </form>
-
-
-
     </div>
-
+  </div>
+</div>

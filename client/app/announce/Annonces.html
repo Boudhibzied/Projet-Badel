@@ -54,7 +54,7 @@
           <div class="product-info box">
 
             <h3>Titre : {{announce.title}}</h3>
-            <p class="product-info-price">Prix : {{announce.price}} DT</p>
+            <p class="product-info-price">valeur : {{announce.price}} DT</p>
             <p class="text-smaller text-muted"> Catégorie :
               {{announce.category}}
             </p>
@@ -62,16 +62,16 @@
               {{announce.underCategory}}
             </p>
             <ul class="icon-list list-space product-info-list">
-              <li><i class="fa fa-check"></i>Description du produit: {{announce.description}}</li>
+              <li><i class="fa fa-check"></i>lieu: {{announce.location}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
-              <div ng-if="announce.user.status == 'novice'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
+              <div ng-if="announce.userstatus == 'novice'">
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
               </div>
-              <div ng-if="announce.user[0].status == 'fiable'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.user[0].name}} est digne de confiance ! </p></li>
+              <div ng-if="announce.userstatus == 'fiable'">
+                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} est digne de confiance ! </p></li>
               </div>
-              <div ng-if="announce.user.status == 'Pro!'">
-                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.user[0].name}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
+              <div ng-if="announce.userstatus == 'Pro!'">
+                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.username}} est un vrais Pro ! avec lui, négociez les yeux fermés  </p></li>
               </div>
             </ul>
           </div>

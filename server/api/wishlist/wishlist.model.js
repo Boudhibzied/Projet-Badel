@@ -6,6 +6,7 @@ var WishlistSchema = new mongoose.Schema({
   title: String,
   info: String,
   active: Boolean,
+  annonce_id:{type: mongoose.Schema.Types.ObjectId, ref: 'announce'},
   image: {
     type: String,
     default: ''
