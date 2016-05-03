@@ -6,7 +6,7 @@ var AnnounceSchema = new mongoose.Schema({
   price:Number,
   description: String,
   picture:String,
-  status: { type: String, default:" en cours de negotiation"},
+  status: { type: String, default:" en cours de négociation"},
   datePost:{ type: Date, default: function(){return new Date()}},
   category: String,
   underCategory:String,

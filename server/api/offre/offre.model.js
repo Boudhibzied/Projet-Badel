@@ -6,6 +6,7 @@ var OffreSchema = new mongoose.Schema({
   description: String,
   marque: String,
   prix: Number,
+  lucation:String,
   photo: { type: String, default:'oca1.jpg'},
   status: { type: Number, default:0},
   announce:{type: mongoose.Schema.Types.ObjectId, default: null},
