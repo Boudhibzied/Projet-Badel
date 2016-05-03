@@ -11,7 +11,7 @@
     <div class="col-md-3">
       <aside class="sidebar-left">
         <div class="sidebar-box" ng-controller="RechercheCtrl">
-          <h5>Annonces Tayara.tn</h5>
+          <h5>Se faire une idée sur des annonces similaires sur le web : </h5>
           <ul class="thumb-list" ng-repeat="s in scrappes | limitTo:10" >
             <li>
               <a>
@@ -54,7 +54,7 @@
           <div class="product-info box">
 
             <h3>Titre : {{announce.title}}</h3>
-            <p class="product-info-price">valeur : {{announce.price}} DT</p>
+            <p class="product-info-price">Valeur : {{announce.price}} DT</p>
             <p class="text-smaller text-muted"> Catégorie :
               {{announce.category}}
             </p>
@@ -62,17 +62,17 @@
               {{announce.underCategory}}
             </p>
             <ul class="icon-list list-space product-info-list">
-              <li><i class="fa fa-check"></i>lieu: {{announce.location}}</li>
+              <li><i class="fa fa-check"></i>Lieu : {{announce.location}}</li>
               <li><i class="fa fa-check"></i>Date d'ajout : {{announce.datePost}}</li>
               <div ng-if="announce.userstatus == 'novice'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} vient de nous rejoindre ! souhaitons le bienvenu !  </p></li>
+                <li><p><i class="fa fa-check"></i> Le statut de {{announce.username}} est {{announce.userstatus}} </p></li>
               </div>
               <div ng-if="announce.userstatus == 'fiable'">
-                <li><p><i class="fa fa-check"></i> l'utilisateur {{announce.username}} est digne de confiance ! </p></li>
+                <li><p><i class="fa fa-check"></i> Le statut de {{announce.username}} est {{announce.userstatus}} </p></li>
               </div>
 
               <div ng-if="announce.userstatus == 'Pro'">
-                <li><p><i class="fa fa-check"></i>l'utilisateur {{announce.username}} est un vrai Pro ! Négociez avec lui les yeux fermés  </p></li>
+                <li><p><i class="fa fa-check"></i>Le statut de {{announce.username}} est {{announce.userstatus}}  </p></li>
               </div>
             </ul>
           </div>
@@ -87,9 +87,9 @@
           </li>
           <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-comment"></i>conversation instantanée</a>
           </li>
-          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir wishlist </a>
+          <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir sa wishlist </a>
           </li>
-          <li ng-if="announce.status == ' en cours de negotiation'"><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          <li ng-if="announce.status == ' en cours de negociation'"><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
           </li>
         </ul>
         <div class="tab-content">
@@ -137,7 +137,7 @@
           </div>
           <div class="tab-pane fade" id="tab-4" >
             <div ng-controller="WishlistListController">
-              <h1> Liste de souhaits &nbsp;&nbsp;{{announce.username}}</h1>
+              <h1> Liste de souhaits de  &nbsp;&nbsp;{{announce.username}}</h1>
               <table class="table table-striped mb0">
                 <thead>
                 <tr>
@@ -183,11 +183,11 @@
                     <input type="file" ngf-select ng-model="picFile" name="file"
                            accept="image/*" ngf-max-size="2MB" required
                            ngf-model-invalid="errorFile">
-                    <i ng-show="myForm.file.$error.required">*required</i><br>
-                    <i ng-show="myForm.file.$error.maxSize">File too large
-                      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                    <i ng-show="myForm.file.$error.required">*Obligatoire</i><br>
+                    <i ng-show="myForm.file.$error.maxSize">Fichier trop volumineux
+                      {{errorFile.size / 1000000|number:1}}max 2M</i>
 
-                    <span ng-show="picFile.result">Upload Successful</span>
+                    <span ng-show="picFile.result">Success</span>
                     <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
                   </div>
 
