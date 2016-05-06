@@ -89,7 +89,7 @@
           </li>
           <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-shopping-cart"></i>voir sa wishlist </a>
           </li>
-          <li ng-if="announce.status == ' en cours de negociation'"><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
+          <li ng-if="announce.status == ' en cours de négociation'"><a href="#tab-5" data-toggle="tab"><i class="fa fa-exchange"></i>Badel !!!</a>
           </li>
         </ul>
         <div class="tab-content">
@@ -207,7 +207,7 @@
         </div>
       </div>
       <div class="gap"></div>
-      <div ng-if="announce.status == ' en cours de negotiation'">
+      <div ng-if="announce.status == ' en cours de négociation'">
         <h3>Les Offres proposées</h3>
         <div class="gap gap-mini"></div>
         <div ng-controller="OffreListController">
@@ -239,7 +239,7 @@
           <div class="gap gap-small"></div>
         </div>
       </div>
-      <div ng-if="announce.status == 'negotiation terminer'">
+      <div ng-if="announce.status == 'négociation terminée'">
         <div ng-controller="OffreListController">
           <div class="col-md-12" ng-repeat="o in Offres |filter:announce.offer">
             <h3>le propriétaire de cette annonce : {{ announce.username }} a finalisé la négociation avec {{o.username}} vous trouverez l'offre ci-dessous :</h3>

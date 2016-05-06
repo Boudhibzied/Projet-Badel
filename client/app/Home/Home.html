@@ -10,44 +10,11 @@
 <div class="container">
   <!-- TOP AREA -->
 
-    <div class="owl-carousel owl-slider" id="owl-carousel-slider" data-inner-pagination="true" data-white-pagination="true">
-      <div>
-        <div class="bg-holder">
-          <img src="img/1200x480.png" alt="Image Alternative text" title="4 Strokes of Fun" />
-          <div class="bg-mask"></div>
-          <div class="bg-front vert-center text-white text-center">
-            <h2 class="text-hero">Adrenaline Madness</h2>
-            <div class="countdown countdown-big" data-countdown="Jul 18, 2014 5:30:00"></div><a class="btn btn-lg btn-ghost btn-white" href="#">Save 60% Now</a>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="bg-holder">
-          <img src="img/1200x480.png" alt="Image Alternative text" title="Bridge" />
-          <div class="bg-mask"></div>
-          <div class="bg-front vert-center text-white text-center">
-            <h2 class="text-hero">London Weekends</h2>
-            <div class="countdown countdown-big" data-countdown="Jul 30, 2014 5:30:00"></div><a class="btn btn-lg btn-ghost btn-white" href="#">Save 70% Now</a>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="bg-holder">
-          <img src="img/1200x480.png" alt="Image Alternative text" title="LHOTEL PORTO BAY SAO PAULO luxury suite" />
-          <div class="bg-mask"></div>
-          <div class="bg-front vert-center text-white text-center">
-            <h2 class="text-hero">Premium Apartments</h2>
-            <div class="countdown countdown-big" data-countdown="Jul 16, 2014 5:30:00"></div><a class="btn btn-lg btn-ghost btn-white" href="#">Save 70% Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="text-center">
         <h1>avec Badel</h1>
-        <p class="text-bigger">Vous pouvez maintenant poster vos offres d'échange <br> demander une négociation ou en rejoindre une <br> et celà est gratuit et sa le resteras toujours"</p>
+        <p class="text-bigger">Vous pouvez maintenant  echanger vos biens ou vos sevices ! <br>postez vos annonces ou proposer vos offres et négociez sans restriction ! <br> Badel est gratuit et sa le resteras toujours !</p>
       </div>
     </div>
   </div>
@@ -58,7 +25,7 @@
   <div class="bg-blur" style="background-image:url(../../assets/img/backgrounds/Blue_Background.jpg)"></div>
   <div class="container bg-holder-content">
     <div class="gap gap-big text-center">
-      <h1 class="mb30 text-white">Les offres premium</h1>
+      <h1 class="mb30 text-white">Les annonces premium</h1>
       <div class="row row-wrap" ng-controller="announcePremiumController">
         <div ng-repeat="premium in premiums">
         <a class="col-md-3" href="#">
@@ -73,6 +40,7 @@
                   <li><span class="product-price">{{premium.price}} DT</span>
                   </li>
                 </ul>
+                <p class="product-location"><i class="fa fa-map-marker"></i>{{a.location}}</p>
               </div>
               <br>
               <ul class="product-actions-list">
@@ -92,10 +60,10 @@
 
 <div class="container" ng-controller="AnnounceListController">
   <div class="text-center" >
-    <h2 class="mb30">Les offres récentes</h2>
+    <h2 class="mb30">Les annonces récentes</h2>
     <div class="row row-wrap" id="masonry" >
 
-      <a class="col-md-3 col-masonry" href="#" ng-repeat="a in Announces | orderBy: '-datePost' | limitTo:10">
+      <a class="col-md-3 col-masonry" href="#" ng-repeat="a in Announces | orderBy: '-datePost' | limitTo:4">
         <div class="product-thumb">
           <header class="product-header">
             <img ng-src="data:image/jpeg;base64,{{a.image}}" style="width: 263px; height: 195px" alt="Image Alternative text" title="Our Coffee miss u" />
@@ -106,8 +74,12 @@
                 <li><span class="product-price">{{a.price}}</span>
                 </li>
               </ul>
-            </div>
             <p class="product-location"><i class="fa fa-map-marker"></i>{{a.location}}</p>
+            </div>
+          <br>
+          <ul class="product-actions-list">
+            <p ui-sref="viewAnnounce({id:a._id, name:a.title})" class="btn btn-black btn-lg btn-ghost" ><i></i><i class="fa fa-chevron-right"></i> Details</p>
+          </ul>
           </div>
       </a>
         </div>

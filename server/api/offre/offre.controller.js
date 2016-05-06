@@ -183,7 +183,7 @@ export function Updateannonce(req, res)
         handleError(res);
       }
       ann.offer = doc._id;
-      ann.status = 'negotiation terminer';
+      ann.status = 'négociation terminée';
       ann.save();
     });
     res.end();
